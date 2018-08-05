@@ -116,6 +116,88 @@ API.add('dropdown', function() {
     }
 });
 
+API.add('fake-data', function() {
+	var tpl1 = find("#trade-log-sell-template").innerHTML;
+	var tpl2 = find("#trade-log-buy-template").innerHTML;
+	var tpl3 = find("#trade-history-template").innerHTML;
+	var tpl4 = find("#order-list-open-template").innerHTML;
+	var tpl5 = find("#order-list-history-template").innerHTML;
+	var tradeHistory = find('#trade-history');
+	var tradeLogSellList = find('#trade-log-sell-list');
+	var tradeLogBuyList = find('#trade-log-buy-list');
+	var ordersOpenList = find('#orders-list-open');
+	var ordersHistoryList = find('#orders-list-history');
+
+	var item = document.createElement('div');
+	var template = Handlebars.compile(tpl1);
+	for (var i = 0; i < 30; i++) {
+	    tradeLogSellList.appendChild(item);
+	    item.outerHTML = template();
+	}
+
+	var template = Handlebars.compile(tpl2);
+	var item = document.createElement('div');
+	for (var i = 0; i < 30; i++) {
+	    tradeLogBuyList.appendChild(item);
+	    item.outerHTML = template();
+	}
+
+
+	var template = Handlebars.compile(tpl3);
+	var item = document.createElement('div');
+	for (var i = 0; i < 30; i++) {
+	    tradeHistory.appendChild(item);
+	    item.outerHTML = template();
+	}
+
+	// var template = Handlebars.compile(tpl4);
+	// var item = document.createElement('div');
+	// for (var i = 0; i < 15; i++) {
+	//     ordersOpenList.appendChild(item);
+	//     item.outerHTML = template();
+	// }
+	this.addItems(tpl4, ordersOpenList, 15);
+	// var template = Handlebars.compile(tpl5);
+	// var item = document.createElement('div');
+	// for (var i = 0; i < 15; i++) {
+	//     ordersHistoryList.appendChild(item);
+	//     item.ordersHistoryList = template(template);
+	// }
+	this.addItems(tpl5, ordersHistoryList, 15);
+
+	setTimeout(function() {
+		var qwe = find('#trade-scroller');//
+		var qwer = find('.simplebar-scroll-content', qwe);
+		qwer.scrollTop  = qwer.scrollHeight / 2 - qwer.clientHeight/ 2;
+	}, 0);
+
+}, {
+	addItems: function(tpl, elem, count) {
+		var template = Handlebars.compile(tpl);
+		var item = document.createElement('div');
+		for (var i = 0; i < count; i++) {
+		    elem.appendChild(item);
+		    item.outerHTML = template();
+		}
+	}
+});
+
+API.add('toggle', function() {
+	var btn = find('[data-toggle]');
+	var elem;
+	addEvent(btn, 'click', function(e) {
+		e.stopPropagation();
+		var id = btn.getAttribute('data-toggle');
+		elem = find('[data-toggle-content="'+id+'"]');
+		toggleClass(elem, 'active');
+	});
+
+	window.addEventListener('click', function(e) {
+	    if (elem && elem.classList.contains('active') && !elem.contains(e.target)) {
+	        removeClass(elem, 'active');
+	    }
+	}, false);
+});
 
 
 API.add('modal', function() {

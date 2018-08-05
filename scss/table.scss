@@ -6,7 +6,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 20px;
+        padding: 0 10px;
         height: 30px;
         &.filled {
 
@@ -24,7 +24,7 @@
             justify-content: space-between;
             align-items: center;
             height: 20px;
-            padding: 0 20px;
+            padding: 0 10px;
         }
         &__col {
             color: #fff;
@@ -37,6 +37,34 @@
         }
         &.scrolled {
             overflow: auto;
+        }
+    }
+
+    &.col-3 {
+        .table-head__col, .table-body__col {
+            width: calc(100%/3);
+            text-align: right;
+            &:first-child {
+                text-align: left;
+            }
+        }
+    }
+
+    &.col-4 {
+        .table-head__col, .table-body__col {
+            width: 25%;
+        }
+    }
+
+    &.col-8 {
+        .table-head__col, .table-body__col {
+            width: calc(100% / 8);
+        }
+    }
+
+    &.col-9 {
+        .table-head__col, .table-body__col {
+            width: calc(100% / 9);
         }
     }
 }

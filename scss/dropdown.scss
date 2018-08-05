@@ -38,6 +38,12 @@
     &-dark-grey {
         background: #333f52;
     }
+
+    &-coins {
+        #{$c}__content {
+            width: 300px;
+        }
+    }
     &-value {
         cursor: pointer;
         color: #fff;

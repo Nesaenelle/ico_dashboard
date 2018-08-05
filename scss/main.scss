@@ -35,77 +35,8 @@ main {
     color: #39b54a!important;
 }
 
-.dashboard-header {
-    height: 100px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-.dashboard-logo {
-    width: 60px;
-    margin-right: 20px;
-    img {
-        width: 100%;
-    }
-}
-
-.dashboard-status {
-    display: flex;
-    width: calc(20%);
-    &__time {
-        color: #fff;
-        margin-top: 10px;
-        font-size: 14px;
-    }
-}
-
-.dashboard-pairs {
-    padding: 10px;
-    display: flex;
-    width: calc(40% - 20px);
-}
-
-.dashboard-balance {
-    padding: 10px;
-    width: calc(20%);
-    &__item {
-        display: flex;
-        &_title {
-            font-size: 14px;
-            color: #fff;
-        }
-        &_value {
-            font-size: 12px;
-            color: #fff;
-            small {
-                color: #7f8fa4;
-                font-size: 10px;
-            }
-        }
-    }
-}
-
-.dashboard-auth {
-    $c: &;
-    width: calc(20% - 20px);
-    &-buttons {}
-    &.authorized {
-        #{$c}__unauthorized {
-            display: none;
-        }
-        #{$c}__authorized {
-            display: block;
-        }
-    }
-    &__unauthorized {
-        display: block;
-    }
-    &__authorized {
-        display: none;
-    }
+.grey {
+    color: #7f8fa4!important;
 }
 
 .dashboard-block {
@@ -121,6 +52,133 @@ main {
         width: 100%;
     }
 }
+
+.dashboard-header {
+    height: 100px;
+    margin-bottom: 20px;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__left {
+        width: calc(60% - 20px);
+        display: flex;
+        justify-content: space-between;
+    }
+    &__right {
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+
+.dashboard-logo {
+    width: 60px;
+    margin-right: 20px;
+    img {
+        width: 100%;
+    }
+}
+
+.dashboard-status {
+    display: flex;
+    width: calc(20%);
+    padding-left: 20px;
+    &__time {
+        color: #fff;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+}
+
+.dashboard-pairs {
+    padding: 10px;
+    display: flex;
+    width: calc(70% - 20px);
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    .table {
+        width: calc(100% - 120px);
+    }
+}
+
+.dashboard-balance {
+    padding: 10px;
+    width: calc(50% - 20px);
+    position: relative;
+    height: 80px;
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        &_title {
+            font-size: 14px;
+            color: #fff;
+        }
+        &_value {
+            font-size: 12px;
+            color: #fff;
+            small {
+                color: #7f8fa4;
+                font-size: 10px;
+            }
+        }
+    }
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 5px;
+    }
+    .toggle-content {
+        position: absolute;
+        width: 100%;
+        padding: 15px;
+        background: #333f52;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s;
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.dashboard-auth {
+    $c: &;
+    width: calc(50% - 20px);
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    &__buttons {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    &.authorized {
+        #{$c}__unauthorized {
+            display: none;
+        }
+        #{$c}__authorized {
+            display: block;
+        }
+    }
+    &__unauthorized {
+        display: block;
+    }
+    &__authorized {
+        display: none;
+    }
+    .dashboard-theme {
+        // width: 100%;
+    }
+}
+
+
 
 .dashboard-container {
     display: flex;
@@ -138,6 +196,7 @@ main {
 .dashboard-trade-log {
     width: calc(20% - 20px);
     height: calc(50vh - 20px);
+    padding: 10px 20px;
     &__tabs {
         width: 80px;
         display: flex;
@@ -159,20 +218,36 @@ main {
         color: #fff;
         display: flex;
         justify-content: space-between;
+        padding: 10px;
+        margin: 5px 0;
+        div {
+            width: calc(100% / 3);
+            text-align: right;
+            &:first-child {
+                text-align: left;
+            }
+        }
     }
 
     .table {
-        height: calc(100% - 12px);
+        height: calc(100% - 30px);
         overflow: auto;
+        &-body {
+            height: calc(100% - 30px);
+        }
     }
 }
 
 .dashboard-trade-history {
     width: 20%;
     height: calc(50vh - 20px);
+    padding: 10px 20px;
     .table {
-        height: calc(100% - 12px);
+        height: calc(100% - 30px);
         overflow: auto;
+        &-body {
+            height: calc(100% - 30px);
+        }
     }
 }
 
@@ -227,6 +302,85 @@ main {
             text-align: center;
         }
     }
+    &__balance {
+        font-size: 14px;
+        color: #7f8fa4;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__total {
+        margin-top: 10px;
+       font-size: 14px;
+       color: #7f8fa4;
+       display: flex;
+       justify-content: space-between;
+       &_value {
+        color: #ffffff;
+       } 
+    }
+    &__subtitle {
+        margin-top: 3px;
+        font-size: 10px;   
+        color: #7f8fa4;
+    }
+    .btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+    form {
+        margin-top: 10px;
+        .input {
+            position: relative;
+            width: 100%;
+            margin-top: 10px;
+            // height: 60px;
+            input {
+                padding: 5px;
+                border: none;
+                background: none;
+                outline: none;
+                color: #fff;
+                font-size: 14px;
+                width: 100%;
+                border-bottom: 1px solid #fff;
+                font-family: 'ProximaNova', sans-serif;
+            }
+
+            &__label {
+                // position: absolute;
+                color: #7f8fa4;
+                font-size: 14px;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                &_extra {
+                    font-size: 12px;
+                }
+            }
+            &__tag {
+                position: absolute;
+                right: 10px;
+                bottom: 5px;
+                color: #7f8fa4;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+.simplebar-track.vertical {
+    background: #fff;
+    border-radius: 10px;
+    width: 5px;
+}
+
+.simplebar-scrollbar {
+    right: 0!important;
+    width: 5px!important;
+}
+
+.simplebar-scrollbar:before {
+    background: #273142;
 }
 
 
