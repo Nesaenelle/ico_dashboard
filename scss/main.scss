@@ -1,0 +1,277 @@
+body {
+    font-family: 'ProximaNova', sans-serif;
+    min-width: 320px;
+    background: #516173;
+    padding: 20px;
+}
+
+main {
+    min-height: calc(100% - 120px);
+}
+
+// .container {
+//     width: 100%;
+//     max-width: 1920px;
+//     margin: auto;
+//     padding: 0 25px;
+// }
+[data-animate] {
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+[data-tabs-content] {
+    display: none;
+    &.active {
+        display: block;
+    }
+}
+
+.red {
+    color: #f85359!important;
+}
+
+.green {
+    color: #39b54a!important;
+}
+
+.dashboard-header {
+    height: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.dashboard-logo {
+    width: 60px;
+    margin-right: 20px;
+    img {
+        width: 100%;
+    }
+}
+
+.dashboard-status {
+    display: flex;
+    width: calc(20%);
+    &__time {
+        color: #fff;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+}
+
+.dashboard-pairs {
+    padding: 10px;
+    display: flex;
+    width: calc(40% - 20px);
+}
+
+.dashboard-balance {
+    padding: 10px;
+    width: calc(20%);
+    &__item {
+        display: flex;
+        &_title {
+            font-size: 14px;
+            color: #fff;
+        }
+        &_value {
+            font-size: 12px;
+            color: #fff;
+            small {
+                color: #7f8fa4;
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+.dashboard-auth {
+    $c: &;
+    width: calc(20% - 20px);
+    &-buttons {}
+    &.authorized {
+        #{$c}__unauthorized {
+            display: none;
+        }
+        #{$c}__authorized {
+            display: block;
+        }
+    }
+    &__unauthorized {
+        display: block;
+    }
+    &__authorized {
+        display: none;
+    }
+}
+
+.dashboard-block {
+    background: #273142;
+    padding: 20px; // overflow: auto;
+    &__inner {
+        background: #333f52;
+    }
+    &__title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #fff;
+        width: 100%;
+    }
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100%; // height: calc(100vh - 160px);
+}
+
+.dashboard-chart {
+    width: calc(60% - 20px); // height: calc(50%);
+    height: calc(50vh - 20px);
+    &__panel {}
+}
+
+.dashboard-trade-log {
+    width: calc(20% - 20px);
+    height: calc(50vh - 20px);
+    &__tabs {
+        width: 80px;
+        display: flex;
+        justify-content: space-between;
+        float: right;
+        &_item {
+            cursor: pointer;
+            width: 22px;
+            height: 22px;
+            background: #516173;
+            &.active {
+                background: none;
+                border: 1px solid #1bb934;
+            }
+        }
+    }
+
+    &__price {
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .table {
+        height: calc(100% - 12px);
+        overflow: auto;
+    }
+}
+
+.dashboard-trade-history {
+    width: 20%;
+    height: calc(50vh - 20px);
+    .table {
+        height: calc(100% - 12px);
+        overflow: auto;
+    }
+}
+
+.dashboard-orders {
+    margin-top: 20px;
+    width: calc(60% - 20px);
+    height: calc(36vh - 20px);
+    padding-right: 10px;
+    &__tabs {
+        display: flex;
+        margin-bottom: 10px;
+        &_item {
+            padding: 10px;
+            background: #516173;
+            margin-right: 10px;
+            color: #fff;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: 0.3s;
+            &.active {
+                background: no-repeat;
+                border: 1px solid #1bb934;
+            }
+        }
+    }
+    .table {
+        height: calc(100% - 42px);
+        &-body {
+            height: calc(100% - 46px);
+        }
+    }
+}
+
+.dashboard-limit {
+    width: 40%;
+    height: calc(36vh - 20px);
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    &__buy {
+        width: 45%;
+        padding: 10px;
+        .dashboard-block__title {
+            text-align: center;
+        }
+    }
+    &__sell {
+        width: 45%;
+        padding: 10px;
+        .dashboard-block__title {
+            text-align: center;
+        }
+    }
+}
+
+
+
+// .canvas {
+//     height: 400px;
+// }
+@keyframes slideinUp {
+    from {
+        transform: translateY(400px);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes slideinRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes slideinLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}

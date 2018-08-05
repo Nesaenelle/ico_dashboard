@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
+</head>
+
+<body>
+    <div class="dashboard-header dashboard-block">
+        <div class="dashboard-status">
+            <div class="dashboard-logo"><img src="img/logo.svg" alt=""></div>
+            <div>
+                <button class="btn btn-small btn-green">OPEN TRADE</button>
+                <div class="dashboard-status__time">June 25, 2018 16:38:23</div>
+            </div>
+        </div>
+        <div class="dashboard-pairs dashboard-block__inner">
+            <div class="dropdown dropdown-grey dropdown-big" data-dropdown>
+                <div class="dropdown-value" data-dropdown-value>BTC / USD</div>
+                <div class="dropdown-content" data-dropdown-content>
+                    <input type="text">
+                    <ul>
+                        <li data-dropdown-item>BTC / ETH 1</li>
+                        <li data-dropdown-item>BTC / ETH 2</li>
+                        <li data-dropdown-item>BTC / ETH 3</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="table">
+                <div class="table-head">
+                    <div class="table-head__col">Last price</div>
+                    <div class="table-head__col">24h Change</div>
+                    <div class="table-head__col">24h High / Low </div>
+                    <div class="table-head__col"> 24h Volume</div>
+                </div>
+                <div class="table-body">
+                    <div class="table-body__row">
+                        <div class="table-body__col">$ 6,100.67</div>
+                        <div class="table-body__col">$ 6,100.67 <span class="green">+3,44%</span></div>
+                        <div class="table-body__col">$ 6,100.67 <span class="red">6,100.67</span></div>
+                        <div class="table-body__col">234,356,100.67</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="dashboard-balance dashboard-block__inner">
+            <div class="dashboard-balance__item">
+                <div class="dashboard-balance__item_title">BTC Balance:</div>
+                <div class="dashboard-balance__item_value">9,999.99999999 / 9,999.99999999 <small>/ 999,999.99 USD</small></div>
+            </div>
+            <div class="dashboard-balance__item">
+                <div class="dashboard-balance__item_title">ETH Balance: </div>
+                <div class="dashboard-balance__item_value">9,999.99999999 / 9,999.99999999 <small>/ 999,999.99 USD</small></div>
+            </div>
+            <div>Others coins</div>
+            <button class="btn btn-small btn-grey">Check balance</button>
+        </div>
+        <div class="dashboard-auth">
+            <div class="dashboard-theme">
+                <img src="" alt="">
+                <label class="checkbox" data-theme-switcher>
+                    <input type="checkbox" checked>
+                    <div class="checkbox__bg"></div>
+                    <div class="checkbox__inner"></div>
+                </label>
+                <img src="" alt="">
+            </div>
+            <div class="dashboard-auth-buttons">
+                <div class="dashboard-auth__unauthorized">
+                    <button class="btn btn-grey btn-small" data-modal-open="sign-in">LOG IN</button>
+                    <button class="btn btn-green btn-small">REGISTER</button>
+                </div>
+                <div class="dashboard-auth__authorized">
+                    <span>xkjhcdihbce@gmail.com</span>
+                    <button class="btn btn-grey btn-small">LOG OUT</button>
+                </div>
+            </div>
+            <div class="dropdown dropdown-dark-grey dropdown-small" data-dropdown>
+                <div class="dropdown-value" data-dropdown-value>Eng</div>
+                <div class="dropdown-content" data-dropdown-content>
+                    <ul>
+                        <li data-dropdown-item>Eng</li>
+                        <li data-dropdown-item>Rus</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="dashboard-container">
+            <div class="dashboard-block dashboard-chart">
+                <div class="dashboard-chart__panel dashboard-block__inner">
+                    <div class="dropdown dropdown-green dropdown-small">
+                        <div class="dropdown-value">Year</div>
+                    </div>
+                    TradeChart Depth
+                    <div></div>
+                </div>
+                <div class="canvas"></div>
+            </div>
+            <div class="dashboard-block dashboard-trade-log" data-tabs>
+                <div class="dashboard-block__title">Trade Log
+                    <div class="dashboard-trade-log__tabs">
+                        <div class="dashboard-trade-log__tabs_item active" data-tabs-item="1"></div>
+                        <div class="dashboard-trade-log__tabs_item" data-tabs-item="1"></div>
+                        <div class="dashboard-trade-log__tabs_item" data-tabs-item="1"></div>
+                    </div>
+                </div>
+                <div class="table active" data-tabs-content="1">
+                    <div class="table-head">
+                        <div class="table-head__col">Price (USD)</div>
+                        <div class="table-head__col">Amount (BTC)</div>
+                        <div class="table-head__col">Total (USD)</div>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-body__row">
+                            <div class="table-body__col red">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col red">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col red">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col red">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                        </div>
+                        <div class="dashboard-trade-log__price dashboard-block__inner">
+                            <div>BTC / USD</div>
+                            <div>6,1001.99</div>
+                            <div class="green">6,999.99 $</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col green">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col green">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col green">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col green">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-block dashboard-trade-history">
+                <div class="dashboard-block__title">Trade History</div>
+                <div class="table">
+                    <div class="table-head">
+                        <div class="table-head__col">Price (USD)</div>
+                        <div class="table-head__col">Amount (BTC)</div>
+                        <div class="table-head__col">Deal Time</div>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-body__row">
+                            <div class="table-body__col green">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">12:32:23</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col green">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">12:32:23</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col red">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">12:32:23</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col red">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">12:32:23</div>
+                        </div>
+                        <div class="table-body__row">
+                            <div class="table-body__col red">6,100.99</div>
+                            <div class="table-body__col">6,100.99</div>
+                            <div class="table-body__col">12:32:23</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-block dashboard-orders" data-tabs>
+                <div class="dashboard-orders__tabs">
+                    <div class="dashboard-orders__tabs_item active" data-tabs-item="1">Open Orders</div>
+                    <div class="dashboard-orders__tabs_item" data-tabs-item="2">Order History</div>
+                    <div class="dashboard-orders__tabs_item" data-tabs-item="3">Funds</div>
+                </div>
+                <div class="table active" data-tabs-content="1">
+                    <div class="table-filter">
+                        Period
+                        <div class="dropdown dropdown-green dropdown-small">
+                            <div class="dropdown-value">Month</div>
+                        </div>
+                    </div>
+                    <div class="table-head filled">
+                        <div class="table-head__col">Value</div>
+                        <div class="table-head__col">Pair</div>
+                        <div class="table-head__col">Type</div>
+                        <div class="table-head__col">Amount</div>
+                        <div class="table-head__col">Filled</div>
+                        <div class="table-head__col">Price</div>
+                        <div class="table-head__col">Fidded %</div>
+                        <div class="table-head__col">
+                            <button class="btn btn-grey btn-small">Cancel All</button>
+                        </div>
+                    </div>
+                    <div class="table-body filled scrolled">
+                        <div class="table-body__row">
+                            <div class="table-body__col">28-Jan-2018</div>
+                            <div class="table-body__col">BTC/ETH</div>
+                            <div class="table-body__col">Buy</div>
+                            <div class="table-body__col">9,999.99999999</div>
+                            <div class="table-body__col">0.00000000</div>
+                            <div class="table-body__col">0.00000000</div>
+                            <div class="table-body__col">0.0099 %</div>
+                            <div class="table-body__col">Cancel</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table" data-tabs-content="2">
+                    <div class="table-filter">
+                        Period History
+                        <div class="dropdown dropdown-green dropdown-small">
+                            <div class="dropdown-value">Month</div>
+                        </div>
+                    </div>
+                    <div class="table-head filled">
+                        <div class="table-head__col">Value</div>
+                        <div class="table-head__col">Pair</div>
+                        <div class="table-head__col">Type</div>
+                        <div class="table-head__col">Amount</div>
+                        <div class="table-head__col">Filled</div>
+                        <div class="table-head__col">Price</div>
+                        <div class="table-head__col">Fidded %</div>
+                        <div class="table-head__col">
+                            <button class="btn btn-grey btn-small">Cancel All</button>
+                        </div>
+                    </div>
+                    <div class="table-body filled scrolled">
+                        <div class="table-body__row">
+                            <div class="table-body__col">28-Jan-2018</div>
+                            <div class="table-body__col">BTC/ETH</div>
+                            <div class="table-body__col">Buy</div>
+                            <div class="table-body__col">9,999.99999999</div>
+                            <div class="table-body__col">0.00000000</div>
+                            <div class="table-body__col">0.00000000</div>
+                            <div class="table-body__col">0.0099 %</div>
+                            <div class="table-body__col">Cancel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-block dashboard-limit">
+                <div class="dashboard-block__title">Limit</div>
+                <div class="dashboard-limit__buy dashboard-block__inner">
+                    <div class="dashboard-block__title">Buy BTC</div>
+                    <button class="btn btn-green btn-big">Log in or Register to trade</button>
+                </div>
+                <div class="dashboard-limit__sell dashboard-block__inner">
+                    <div class="dashboard-block__title">Sell BTC</div>
+                    <button class="btn btn-green btn-big">Log in or Register to trade</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal" data-modal="sign-in">
+        <div class="modal-body">
+            <div class="modal-logo"><img class="modal-logo" src="img/logo.svg"></div>
+            <div class="js-close-modal modal__close"></div>
+            <div class="modal-line-text"><span>LOG IN</span></div>
+            <form novalidate="">
+                <div class="modal-text">Please check that you are visiting <a href="">https://www.exchange2.net</a></div>
+                <div class="modal-input-link">
+                    <div class="modal-input-link-icon"><img src="img/padlock.svg" alt=""></div><span><b>https:</b>//www.exchange2.net</span></div>
+            </form>
+            <div class="modal-line-text"></div>
+            <form id="sign-in-form" novalidate="">
+                <div class="modal-label">Email</div>
+                <div class="modal-input">
+                    <input type="text" placeholder="Email" required="" data-pattern="email">
+                </div>
+                <div class="modal-label">Password</div>
+                <div class="modal-input">
+                    <input type="password" placeholder="Password" required="" data-pattern="password">
+                </div>
+                <div class="modal-link">forgot password?</div>
+                <button class="btn">LOG IN</button>
+                <div class="modal-bottom-text">Not on Exchange#2 yet? <span class="modal-link js-popup" data-modal="sign-up">register</span></div>
+            </form>
+        </div>
+    </div>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/all.js"></script>
+</body>
+
+</html>

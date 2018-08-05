@@ -1,0 +1,187 @@
+input {
+//     border: 1px solid #a1a1a1;
+//     color: #a1a1a1;
+//     padding: 20px;
+//     margin-bottom: 20px;
+//     width: 100%;
+//     font-family: 'Circe', sans-serif;
+//     font-size: 20px;
+    outline: none;
+//     &::-webkit-input-placeholder {
+//         color: #a1a1a1;
+//     }
+//     &::-moz-placeholder {
+//         color: #a1a1a1;
+//     }
+//     /* Firefox 19+ */
+//     &:-moz-placeholder {
+//         color: #a1a1a1;
+//     }
+//     /* Firefox 18- */
+//     &:-ms-input-placeholder {
+//         color: #a1a1a1;
+//     }
+//     &.invalid {
+//         border-color: #f85359!important;
+//     }
+//     &.valid {
+//         border-color: #39b54a!important;
+//     }
+ }
+// textarea {
+//     border: 1px solid #a1a1a1;
+//     color: #a1a1a1;
+//     width: 100%;
+//     padding: 20px;
+//     margin-bottom: 20px;
+//     font-family: 'Circe', sans-serif;
+//     font-size: 20px;
+//     outline: none;
+//     resize: none;
+//     &::-webkit-input-placeholder {
+//         color: #a1a1a1;
+//     }
+//     &::-moz-placeholder {
+//         color: #a1a1a1;
+//     }
+//     /* Firefox 19+ */
+//     &:-moz-placeholder {
+//         color: #a1a1a1;
+//     }
+//     /* Firefox 18- */
+//     &:-ms-input-placeholder {
+//         color: #a1a1a1;
+//     }
+//     &.invalid {
+//         border-color: #f85359;
+//     }
+//     &.valid {
+//         border-color: #39b54a;
+//     }
+// }
+// // .input {
+// //     position: relative;
+// //     border-radius: 4px;
+// //     margin-bottom: 20px;
+// //     // padding: 5px 10px;
+// //     display: flex;
+// //     justify-content: space-between;
+// //     // border-radius: 4px;
+// //     // overflow: hidden;
+// //     width: 508px;
+// //     box-shadow: 0px 10px 50px -18px #000;
+// //     height: 49px;
+// //     input {
+// //         width: 70%;
+// //         height: 49px;
+// //         outline: none;
+// //         border: none;
+// //         padding:  0 20px;
+// //         font-size: 14px;
+// //         border: 1px solid transparent;
+// //         border-right: none;
+// //         border-radius: 4px 0px 0px 4px;
+// //         &.invalid {
+// //             border-color: #f85359;
+// //         }
+// //         &.valid {
+// //             border-color: #39b54a;
+// //         }
+// //     }
+// //     .btn {
+// //         border-radius: 0px 4px 4px 0;
+// //         width: 30%;
+// //         cursor: pointer;
+// //         outline: none;
+// //         border: none;
+// //         height: 49px;
+// //         padding: 5px;
+// //         // border-radius:0;
+// //         background-color: #39b54a;
+// //         font-family: Helvetica;
+// //         font-size: 14px;
+// //         line-height: 2.14;
+// //         font-weight: 300;
+// //         font-size: 14px;
+// //             text-transform: uppercase;
+// //         letter-spacing: 0.5px;
+// //         color: #ffffff;
+// //     }
+// //     &::-webkit-input-placeholder {
+// //         color: #b0b0b1;
+// //     }
+// //     &::-moz-placeholder {
+// //         color: #b0b0b1;
+// //     }
+// //     /* Firefox 19+ */
+// //     &:-moz-placeholder {
+// //         color: #b0b0b1;
+// //     }
+// //     /* Firefox 18- */
+// //     &:-ms-input-placeholder {
+// //         color: #b0b0b1;
+// //     }
+// //     &:focus {
+// //         // box-shadow: 0 0 1px 0px #000;
+// //     }
+// //     &.has-error {
+// //         // box-shadow: none;
+// //         border: 2px solid #ed1c24;
+// //     }
+// //     &.valid {
+// //         border: 2px solid #00a651;
+// //     }
+// // }
+// // .input-msg {
+// //     position: absolute;
+// //     font-size: 14px;
+// //     top: -17px;
+// //     left: 10px;
+// //     &.invalid {
+// //        color: #f85359;
+// //     }
+// //     &.valid {
+// //        color: #39b54a;
+// //     }
+// // }
+.checkbox {
+    width: 36px;
+    height: 20px;
+    // background-color: #c5d0de;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    input {
+        display: none;
+        &:checked + .checkbox__bg {
+            background: #39b54a;
+        }
+        &:checked ~ .checkbox__inner {
+            left: 18px; 
+        }
+    }
+    &__bg {
+        background: #c5d0de;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transition: 0.3s;
+    }
+
+    &__inner {
+        transition: 0.3s;
+        width: 16px;
+        height: 16px;
+        background-color: #ffffff;
+        position: absolute;
+        border-radius: 100%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 3px;
+        z-index: 2;
+    }
+}

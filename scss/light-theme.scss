@@ -1,0 +1,33 @@
+.light-theme {
+	background: #fff;
+	.dashboard-block{
+		background: #f1f4f8;
+	}
+
+	.dashboard-block__inner {
+		background: #e2e7ee;
+	}
+
+	.dashboard-block__title {
+		color: #333f52;
+	}
+		
+	.dashboard-limit__buy .dashboard-block__title, .dashboard-limit__sell .dashboard-block__title{
+		color: #516173;
+
+	}
+
+	.table {
+		
+		&-head {
+			&__col {
+				color: #7f8fa4;
+			}
+		}
+		&-body {
+			&__col {
+				color: #354052;
+			}
+		}
+	}
+}

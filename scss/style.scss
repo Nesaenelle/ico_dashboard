@@ -1,0 +1,63 @@
+@import 'mixins.scss';
+@import 'reset.scss';
+@import 'variables.scss';
+@import 'buttons.scss';
+// @import 'header.scss';
+@import 'main.scss';
+@import 'slider.scss';
+@import 'modal.scss';
+@import 'table.scss';
+@import 'dropdown.scss';
+// @import 'footer.scss';
+@import 'inputs.scss';
+@import 'icons.scss';
+@import 'light-theme.scss';
+@import 'media.scss';
+
+
+
+
+// @font-face {
+//     font-family: 'Circe'; // src: url('fonts/Rubik-Light.eot'); /* IE9 Compat Modes */
+//     src: //url('fonts/Rubik-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//     // url('fonts/Rubik-Light.woff2') format('woff2'), /* Super Modern Browsers */
+//     // url('fonts/Rubik-Light.woff') format('woff'), /* Pretty Modern Browsers */
+//     url('fonts/Circe-Light.ttf') format('truetype');
+//     /* Safari, Android, iOS */
+//     // url('fonts/Rubik-Light.svg#svgFontName') format('svg'); /* Legacy iOS */
+//     font-weight: 300;
+// }
+
+@font-face {
+    font-family: 'ProximaNova'; // src: url('fonts/Rubik-Light.eot'); /* IE9 Compat Modes */
+    src: //url('fonts/Rubik-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    // url('fonts/Rubik-Light.woff2') format('woff2'), /* Super Modern Browsers */
+    // url('fonts/Rubik-Light.woff') format('woff'), /* Pretty Modern Browsers */
+    url('fonts/ProximaNova-Regular.ttf') format('truetype');
+    /* Safari, Android, iOS */
+    // url('fonts/Rubik-Light.svg#svgFontName') format('svg'); /* Legacy iOS */
+    // font-weight: 400;
+}
+
+
+// @font-face {
+//     font-family: 'Circe'; // src: url('fonts/Rubik-Light.eot'); /* IE9 Compat Modes */
+//     src: //url('fonts/Rubik-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//     // url('fonts/Rubik-Light.woff2') format('woff2'), /* Super Modern Browsers */
+//     // url('fonts/Rubik-Light.woff') format('woff'), /* Pretty Modern Browsers */
+//     url('fonts/Circe-Bold.ttf') format('truetype');
+//     /* Safari, Android, iOS */
+//     // url('fonts/Rubik-Light.svg#svgFontName') format('svg'); /* Legacy iOS */
+//     font-weight: 600;
+// }
+
+// @font-face {
+//     font-family: 'Circe'; // src: url('fonts/Rubik-Light.eot'); /* IE9 Compat Modes */
+//     src: //url('fonts/Rubik-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+//     // url('fonts/Rubik-Light.woff2') format('woff2'), /* Super Modern Browsers */
+//     // url('fonts/Rubik-Light.woff') format('woff'), /* Pretty Modern Browsers */
+//     url('fonts/Circe-ExtraBold.ttf') format('truetype');
+//     /* Safari, Android, iOS */
+//     // url('fonts/Rubik-Light.svg#svgFontName') format('svg'); /* Legacy iOS */
+//     font-weight: 800;
+// }

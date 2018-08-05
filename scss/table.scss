@@ -1,0 +1,42 @@
+.table {
+    &-filter {
+        background: #333f52;
+    }
+    &-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        height: 30px;
+        &.filled {
+
+            background: #333f52;
+        }
+        &__col {
+            font-size: 12px;
+            color: #7f8fa4;
+        }
+    }
+    &-body {
+        $c: &;
+        &__row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 20px;
+            padding: 0 20px;
+        }
+        &__col {
+            color: #fff;
+            font-size: 12px;
+        }
+        &.filled {
+            #{$c}__row:nth-child(even) {
+                background: #333f52;
+            }
+        }
+        &.scrolled {
+            overflow: auto;
+        }
+    }
+}

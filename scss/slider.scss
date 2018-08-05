@@ -1,0 +1,81 @@
+// .slider {
+//     height: 268px;
+//     position: relative; //     img {
+//     // width: 100%;
+//     //     }
+//     &__inner {
+//         overflow: hidden;
+//         font-size: 0;
+//         height: 268px;
+//     }
+//     &__scrollable {
+//         display: flex;
+//         transition: 0.3s;
+//     }
+//     &__item {
+//         position: relative;
+//         height: 268px;
+//         width: 100%;
+//         min-width: 100%;
+//         text-align: center;
+//         padding: 0px 50px;
+
+//         &__title {
+//             font-size: 22px;
+//             font-weight: 600;
+//             color: #fff;
+//         }
+//         &__descr {
+//             margin: 15px auto 0;
+//             width: 78%;
+//             font-size: 22px;
+//             color: #fff;
+//             padding: 20px;
+//             line-height: 29px;
+//             position: relative;
+//             &:before {
+//                 content: '';
+//                 background: url(../img/q.svg);
+//                 position: absolute;
+//                 width: 27px;
+//                 height: 30px;
+//                 left: -30px;
+//                 bottom: 0;
+//                 top: -80px;
+//                 margin: auto;
+
+//             }
+//             &:after {
+//                 content: '';
+//                 background: url(../img/q.svg);
+//                 position: absolute;
+//                 width: 27px;
+//                 height: 30px;
+//                 right: -30px;
+//                 bottom: 0;
+//                 top: 80px;
+//                 margin: auto;
+//                 transform: rotate(180deg);
+//             }
+
+//         }
+//     }
+//     &__controls {
+//         position: absolute;
+//         bottom: 0px;
+//         width: 100%;
+//         display: flex;
+//         justify-content: center;
+//         &__item {
+//             cursor: pointer;
+//             border-radius: 100%;
+//             width: 6px;
+//             height: 6px;
+//             background: #ced0da;
+//             margin: 0px 3px;
+//             &.active {
+//                 background: #353c48;
+//             }
+//         }
+//     }
+// }
