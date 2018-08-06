@@ -1,177 +1,202 @@
 var API = new API_CONSTRUCTOR();
 
-var find = function(selector, context) {
-    return context ? context.querySelector(selector) : document.querySelector(selector);
+var $ = new CORE();
+
+function ELEM (params) {
+    this.el = params.el || null;
 };
 
-var findAll = function(selector, context) {
-    return context ? context.querySelectorAll(selector) : document.querySelectorAll(selector);
+ELEM.prototype.addEvent = function(type, fn) {
+    this.el.addEventListener(type, fn, false);
+    return this;
 };
 
-var addEvent = function(elem, type, fn) {
-    elem.addEventListener(type, fn, false);
+ELEM.prototype.addClass = function(className) {
+    this.el.classList.add(className);
+    return this;
 };
 
-var toggleClass = function(elem, className) {
-    if (elem.classList.contains(className)) {
-        elem.classList.remove(className);
+ELEM.prototype.removeClass = function(className) {
+    this.el.classList.remove(className);
+    return this;
+};
+
+ELEM.prototype.toggleClass = function(className) {
+    if (this.el.classList.contains(className)) {
+        this.el.classList.remove(className);
     } else {
-        elem.classList.add(className);
+        this.el.classList.add(className);
     }
+    return this;
 };
 
-var addClass = function(elem, className) {
-    elem.classList.add(className);
+
+ELEM.prototype.find = function(selector) {
+    var el = this.el.querySelector(selector);
+    return new ELEM({el: el});
 };
 
-var removeClass = function(elem, className) {
-    elem.classList.remove(className);
+ELEM.prototype.findAll = function(selector) {
+    var self = this;
+    var els = this.el.querySelectorAll(selector);
+    els = Array.prototype.slice.call(els);
+    return els.map(function(el) {
+        return new ELEM({el: el});
+    });
 };
+
+function CORE() {
+
+};
+
+CORE.prototype.initElem = function(el) { 
+    return new ELEM({el: el});
+};
+
+CORE.prototype.find = function(selector, context) {
+    var el;
+    if(selector instanceof HTMLElement) {
+        el = selector;
+    } else {
+        el = context ? context.querySelector(selector) : document.querySelector(selector);
+    }
+
+    return this.initElem(el);
+};
+
+CORE.prototype.findAll = function(selector, context) {
+    var self = this;
+    var els = context ? context.querySelectorAll(selector) : document.querySelectorAll(selector);
+    els = Array.prototype.slice.call(els);
+    return els.map(function(o) {
+        return self.initElem(o)
+    });
+};
+
 
 function API_CONSTRUCTOR() {
 
 };
 
-API_CONSTRUCTOR.prototype.add = function(name, constructor, methods) {
+API_CONSTRUCTOR.prototype.add = function(name, params) {
     if (!name || typeof name !== 'string') {
         throw new Error('API ERROR');
     }
 
-    for (var method in methods) {
-        constructor.prototype[method] = methods[method];
+    for (var method in params) {
+        if(method !== 'constructor') {
+           params.constructor.prototype[method] = params[method];
+        }
     }
 
-    this[name] = new constructor();
+    this[name] = new params.constructor();
 };
 
-API.add('themeSwitcher', function() {
-    var checkbox = find('[data-theme-switcher] input');
-    var self = this;
-    addEvent(checkbox, 'change', function() {
-        self.changeTheme(checkbox);
-    });
-}, {
-    changeTheme: function(checkbox) {
-        if (checkbox.checked) {
-            removeClass(document.body, 'light-theme');
+
+API.add('themeSwitcher', {
+    constructor: function() {
+        this.checkbox = $.find('[data-theme-switcher] input');
+        var self = this;
+        this.checkbox.addEvent('change', function() {
+            self.changeTheme();
+        });
+    },
+    changeTheme: function() {
+        if (this.checkbox.el.checked) {
+            $.find(document.body).removeClass('light-theme');
         } else {
-            addClass(document.body, 'light-theme');
+            $.find(document.body).addClass('light-theme');
         }
     }
 });
 
-API.add('tabs', function() {
-    var tabs = findAll('[data-tabs]');
-    tabs.forEach(function(context) {
-        var items = findAll('[data-tabs-item]', context);
-        var contents = findAll('[data-tabs-content]', context);
-        items.forEach(function(tab) {
-            addEvent(tab, 'click', function(e) {
+API.add('tabs', {
+    constructor: function() {
+        var tabs = $.findAll('[data-tabs]');
+        tabs.forEach(function(context) {
+            var items = context.findAll('[data-tabs-item]');
+            var contents = context.findAll('[data-tabs-content]');
+            
+            items.forEach(function(tab) {
+                tab.addEvent('click', function(e) {
 
-                items.forEach(function(a) { removeClass(a, 'active') });
-                addClass(tab, 'active');
-                var id = e.currentTarget.getAttribute('data-tabs-item');
-                var content = find('[data-tabs-content="' + id + '"]', context);
-                contents.forEach(function(a) { removeClass(a, 'active') });
-                if (content) {
-                    addClass(content, 'active');
+                    items.forEach(function(a) { a.removeClass('active') });
+                    tab.addClass('active');
+
+                    var id = e.currentTarget.getAttribute('data-tabs-item');
+                    var content = context.find('[data-tabs-content="' + id + '"]');
+                    contents.forEach(function(a) { a.removeClass('active') });
+                    if (content) {
+                        content.addClass('active');
+                    }
+                });
+
+            });
+        });
+    }
+});
+
+
+API.add('dropdown', {
+    constructor: function() {
+        var self = this;
+        this.dropdowns = $.findAll('[data-dropdown]');
+        this.dropdowns.forEach(function(dropdown) {
+            var valueElem = dropdown.find('[data-dropdown-value]');
+            var contentElem = dropdown.find('[data-dropdown-content]');
+            var items = dropdown.findAll('[data-dropdown-item]');
+
+            valueElem.addEvent('click', function(e) {
+                e.stopPropagation();
+                self.closeAll();
+                dropdown.toggleClass('opened');
+            });
+
+            items.forEach(function(item) {
+                item.addEvent('click', function() {
+                    valueElem.innerHTML = this.innerHTML;
+                    dropdown.removeClass('opened');
+                });
+            });
+
+            window.addEventListener('click', function(e) {
+                if (dropdown.el.classList.contains('opened') && !contentElem.el.contains(e.target)) {
+                    dropdown.removeClass('opened');
                 }
-            });
-
+            }, false);
         });
-    });
-});
-
-
-API.add('dropdown', function() {
-    var self = this;
-    this.dropdowns = findAll('[data-dropdown]');
-    this.dropdowns.forEach(function(dropdown) {
-        var valueElem = find('[data-dropdown-value]', dropdown);
-        var contentElem = find('[data-dropdown-content]', dropdown);
-        var items = findAll('[data-dropdown-item]', dropdown);
-
-        addEvent(valueElem, 'click', function(e) {
-            e.stopPropagation();
-            self.closeAll();
-            toggleClass(dropdown, 'opened');
-        });
-
-        items.forEach(function(item) {
-            addEvent(item, 'click', function() {
-                valueElem.innerHTML = this.innerHTML;
-                removeClass(dropdown, 'opened');
-            });
-        });
-
-        window.addEventListener('click', function(e) {
-            if (dropdown.classList.contains('opened') && !contentElem.contains(e.target)) {
-                removeClass(dropdown, 'opened');
-            }
-        }, false);
-    });
-}, {
+    },
     closeAll: function() {
-        this.dropdowns.forEach(function(dropdown) { removeClass(dropdown, 'opened') });
+        this.dropdowns.forEach(function(dropdown) { dropdown.removeClass('opened') });
     }
 });
 
-API.add('fake-data', function() {
-    var tpl1 = find("#trade-log-sell-template").innerHTML;
-    var tpl2 = find("#trade-log-buy-template").innerHTML;
-    var tpl3 = find("#trade-history-template").innerHTML;
-    var tpl4 = find("#order-list-open-template").innerHTML;
-    var tpl5 = find("#order-list-history-template").innerHTML;
-    var tradeHistory = find('#trade-history');
-    var tradeLogSellList = find('#trade-log-sell-list');
-    var tradeLogBuyList = find('#trade-log-buy-list');
-    var ordersOpenList = find('#orders-list-open');
-    var ordersHistoryList = find('#orders-list-history');
+API.add('fake-data', {
+    constructor: function() {
+        var tpl1 = $.find("#trade-log-sell-template").el.innerHTML;
+        var tpl2 = $.find("#trade-log-buy-template").el.innerHTML;
+        var tpl3 = $.find("#trade-history-template").el.innerHTML;
+        var tpl4 = $.find("#order-list-open-template").el.innerHTML;
+        var tpl5 = $.find("#order-list-history-template").el.innerHTML;
+        var tradeHistory = $.find('#trade-history').el;
+        var tradeLogSellList = $.find('#trade-log-sell-list').el;
+        var tradeLogBuyList = $.find('#trade-log-buy-list').el;
+        var ordersOpenList = $.find('#orders-list-open').el;
+        var ordersHistoryList = $.find('#orders-list-history').el;
 
-    var item = document.createElement('div');
-    var template = Handlebars.compile(tpl1);
-    for (var i = 0; i < 30; i++) {
-        tradeLogSellList.appendChild(item);
-        item.outerHTML = template();
-    }
+        this.addItems(tpl1, tradeLogSellList, 30);
+        this.addItems(tpl2, tradeLogBuyList, 30);
+        this.addItems(tpl3, tradeHistory, 30);
+        this.addItems(tpl4, ordersOpenList, 15);
+        this.addItems(tpl5, ordersHistoryList, 15);
 
-    var template = Handlebars.compile(tpl2);
-    var item = document.createElement('div');
-    for (var i = 0; i < 30; i++) {
-        tradeLogBuyList.appendChild(item);
-        item.outerHTML = template();
-    }
+        setTimeout(function() {
+            var a = $.find('#trade-scroller');
+            var b = a.find('.simplebar-scroll-content').el;
+            b.scrollTop = b.scrollHeight / 2 - b.clientHeight / 2;
+        }, 0);
 
-
-    var template = Handlebars.compile(tpl3);
-    var item = document.createElement('div');
-    for (var i = 0; i < 30; i++) {
-        tradeHistory.appendChild(item);
-        item.outerHTML = template();
-    }
-
-    // var template = Handlebars.compile(tpl4);
-    // var item = document.createElement('div');
-    // for (var i = 0; i < 15; i++) {
-    //     ordersOpenList.appendChild(item);
-    //     item.outerHTML = template();
-    // }
-    this.addItems(tpl4, ordersOpenList, 15);
-    // var template = Handlebars.compile(tpl5);
-    // var item = document.createElement('div');
-    // for (var i = 0; i < 15; i++) {
-    //     ordersHistoryList.appendChild(item);
-    //     item.ordersHistoryList = template(template);
-    // }
-    this.addItems(tpl5, ordersHistoryList, 15);
-
-    setTimeout(function() {
-        var qwe = find('#trade-scroller'); //
-        var qwer = find('.simplebar-scroll-content', qwe);
-        qwer.scrollTop = qwer.scrollHeight / 2 - qwer.clientHeight / 2;
-    }, 0);
-
-}, {
+    },
     addItems: function(tpl, elem, count) {
         var template = Handlebars.compile(tpl);
         var item = document.createElement('div');
@@ -182,81 +207,81 @@ API.add('fake-data', function() {
     }
 });
 
-API.add('toggle', function() {
-    var btn = find('[data-toggle]');
-    var elem;
-    addEvent(btn, 'click', function(e) {
-        e.stopPropagation();
-        var id = btn.getAttribute('data-toggle');
-        elem = find('[data-toggle-content="' + id + '"]');
-        toggleClass(elem, 'active');
-    });
+API.add('toggle', {
+    constructor: function() {
+        var btn = $.find('[data-toggle]');
+        var elem;
+        btn.addEvent('click', function(e) {
+            e.stopPropagation();
+            var id = btn.el.getAttribute('data-toggle');
+            elem = $.find('[data-toggle-content="' + id + '"]');
+            elem.toggleClass('active');
+        });
 
-    window.addEventListener('click', function(e) {
-        if (elem && elem.classList.contains('active') && !elem.contains(e.target)) {
-            removeClass(elem, 'active');
-        }
-    }, false);
+        window.addEventListener('click', function(e) {
+            if (elem && elem.el.classList.contains('active') && !elem.el.contains(e.target)) {
+                elem.removeClass('active');
+            }
+        }, false);
+    }
 });
 
 
-API.add('modal', function() {
-    var self = this;
-    this.popupBtns = findAll('[data-modal-open]');
-    this.modalOverlay = find('#modal-overlay');
-    this.closeBtns = findAll('.js-close-modal');
-    this.activeModal;
+API.add('modal', {
+    constructor: function() {
+        var self = this;
+        this.popupBtns = $.findAll('[data-modal-open]');
+        this.modalOverlay = $.find('#modal-overlay');
+        this.closeBtns = $.findAll('.js-close-modal');
+        this.activeModal;
 
-    this.popupBtns.forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            var id = e.currentTarget.getAttribute('data-modal-open');
-            e.stopPropagation();
-            self.openModal(id);
+        this.popupBtns.forEach(function(btn) {
+            btn.addEvent('click', function(e) {
+                e.preventDefault();
+                var id = e.currentTarget.getAttribute('data-modal-open');
+                e.stopPropagation();
+                self.openModal(id);
+            });
         });
-    });
 
 
-    this.closeBtns.forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-            self.activeModal.classList.remove('opened');
-            self.modalOverlay.classList.remove('opened');
+        this.closeBtns.forEach(function(btn) {
+            btn.addEvent('click', function(e) {
+                self.activeModal.removeClass('opened');
+                self.modalOverlay.removeClass('opened');
+            });
         });
-    });
 
 
-    window.addEventListener('click', function(e) {
-        if (self.activeModal && !self.activeModal.querySelector('.modal-body').contains(e.target)) {
-            self.closeModal();
-        }
-    }, false);
+        window.addEventListener('click', function(e) {
+            if (self.activeModal && !self.activeModal.find('.modal-body').el.contains(e.target)) {
+                self.closeModal();
+            }
+        }, false);
+    },
 
-
-
-}, {
     closeModal: function(e) {
         if (this.activeModal) {
-            this.activeModal.classList.remove('opened');
-            this.modalOverlay.classList.remove('opened');
+            this.activeModal.removeClass('opened');
+            this.modalOverlay.removeClass('opened');
         }
     },
 
     openModal: function(id) {
         var self = this;
         this.closeModal();
-        this.modalOverlay.classList.add('opened');
-        this.activeModal = find('.modal[data-modal="' + id + '"]');
-        this.activeModal.classList.add('opened');
+        this.modalOverlay.addClass('opened');
+        this.activeModal = $.find('.modal[data-modal="' + id + '"]');
+        this.activeModal.addClass('opened');
 
         if (id === 'sign-in') {
-            var formInst = new Form(find('#sign-in-form', this.activeModal));
+            var formInst = new Form(this.activeModal.find('#sign-in-form').el);
             formInst.onSubmit(function() {
-                addClass(find('.dashboard-auth'), 'authorized');
+                $.find('.dashboard-auth').addClass('authorized');
                 self.closeModal();
             });
         }
     }
-
 });
 
 
@@ -369,17 +394,17 @@ Input.prototype.clear = function() {
 function getPattern(o) {
     var pattern;
     switch (o) {
-        // case 'email':
-        //     pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        //     break;
+        case 'email':
+            pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            break;
 
         // case 'login':
         //     pattern = /^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$/;
         //     break;
 
-        // case 'password':
-        //     pattern = /^(?=.*[a-zA-Z0-9])(?=.*).{7,40}$/;
-        //     break;
+        case 'password':
+            pattern = /^(?=.*[a-zA-Z0-9])(?=.*).{7,40}$/;
+            break;
 
         // case 'checkbox':
         //     pattern = /^on$/;
@@ -394,14 +419,14 @@ function getPattern(o) {
 
 
 
-new Form(find('#limit-buy'));
-new Form(find('#limit-sell'));
+new Form($.find('#limit-buy').el);
+new Form($.find('#limit-sell').el);
 
 
-var inputs = findAll('[data-number-input]');
+var inputs = $.findAll('[data-number-input]');
 
 inputs.forEach(function(input) {
-    var numberMask = new IMask(input, {
+    var numberMask = new IMask(input.el, {
       mask: Number,  // enable number mask
 
       // other options are optional with defaults below
