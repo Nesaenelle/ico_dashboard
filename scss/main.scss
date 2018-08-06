@@ -2,7 +2,7 @@ body {
     font-family: 'ProximaNova', sans-serif;
     min-width: 320px;
     background: #516173;
-    padding: 20px;
+    padding: 10px 15px;
 }
 
 main {
@@ -55,13 +55,13 @@ main {
 
 .dashboard-header {
     height: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     &__left {
-        width: calc(60% - 20px);
+        width: calc(60% - 10px);
         display: flex;
         justify-content: space-between;
     }
@@ -95,18 +95,21 @@ main {
 .dashboard-pairs {
     padding: 10px;
     display: flex;
-    width: calc(70% - 20px);
+    width: calc(70% - 10px);
     justify-content: space-between;
     align-items: center;
     height: 80px;
     .table {
         width: calc(100% - 120px);
+        .table-body__col {
+            font-size: 14px;
+        }
     }
 }
 
 .dashboard-balance {
     padding: 10px;
-    width: calc(50% - 20px);
+    width: calc(50% - 10px);
     position: relative;
     height: 80px;
     &__item {
@@ -149,7 +152,7 @@ main {
 
 .dashboard-auth {
     $c: &;
-    width: calc(50% - 20px);
+    width: calc(50% - 10px);
     flex-wrap: wrap;
     display: flex;
     justify-content: flex-end;
@@ -188,14 +191,14 @@ main {
 }
 
 .dashboard-chart {
-    width: calc(60% - 20px); // height: calc(50%);
-    height: calc(50vh - 20px);
+    width: calc(60% - 10px); // height: calc(50%);
+    height: calc(50vh - 10px);
     &__panel {}
 }
 
 .dashboard-trade-log {
-    width: calc(20% - 20px);
-    height: calc(50vh - 20px);
+    width: calc(20% - 10px);
+    height: calc(50vh - 10px);
     padding: 10px 20px;
     &__tabs {
         width: 80px;
@@ -240,7 +243,7 @@ main {
 
 .dashboard-trade-history {
     width: 20%;
-    height: calc(50vh - 20px);
+    height: calc(50vh - 10px);
     padding: 10px 20px;
     .table {
         height: calc(100% - 30px);
@@ -252,9 +255,9 @@ main {
 }
 
 .dashboard-orders {
-    margin-top: 20px;
-    width: calc(60% - 20px);
-    height: calc(36vh - 20px);
+    margin-top: 10px;
+    width: calc(60% - 10px);
+    height: calc(36vh - 10px);
     padding-right: 10px;
     &__tabs {
         display: flex;
@@ -283,23 +286,34 @@ main {
 
 .dashboard-limit {
     width: 40%;
-    height: calc(36vh - 20px);
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    height: calc(36vh - 10px);
+    margin-top: 10px;
+
     &__buy {
-        width: 45%;
+        width: calc(50% - 5px);
         padding: 10px;
         .dashboard-block__title {
             text-align: center;
         }
     }
     &__sell {
-        width: 45%;
+        width: calc(50% - 5px);
         padding: 10px;
         .dashboard-block__title {
             text-align: center;
+        }
+    }
+    &__wrapper {
+        // display: flex;
+        // justify-content: space-between;
+        // flex-wrap: wrap;
+        height: calc(100% - 20px);
+        
+        .simplebar-content {        
+            display: flex;
+            // width: 100%; 
+            flex-wrap: wrap;
+            justify-content: space-between;
         }
     }
     &__balance {
@@ -344,6 +358,13 @@ main {
                 width: 100%;
                 border-bottom: 1px solid #fff;
                 font-family: 'ProximaNova', sans-serif;
+
+                &.invalid {
+                    border-color: #f85359!important;
+                }
+                &.valid {
+                    border-color: #39b54a!important;
+                }
             }
 
             &__label {

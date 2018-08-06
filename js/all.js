@@ -117,86 +117,86 @@ API.add('dropdown', function() {
 });
 
 API.add('fake-data', function() {
-	var tpl1 = find("#trade-log-sell-template").innerHTML;
-	var tpl2 = find("#trade-log-buy-template").innerHTML;
-	var tpl3 = find("#trade-history-template").innerHTML;
-	var tpl4 = find("#order-list-open-template").innerHTML;
-	var tpl5 = find("#order-list-history-template").innerHTML;
-	var tradeHistory = find('#trade-history');
-	var tradeLogSellList = find('#trade-log-sell-list');
-	var tradeLogBuyList = find('#trade-log-buy-list');
-	var ordersOpenList = find('#orders-list-open');
-	var ordersHistoryList = find('#orders-list-history');
+    var tpl1 = find("#trade-log-sell-template").innerHTML;
+    var tpl2 = find("#trade-log-buy-template").innerHTML;
+    var tpl3 = find("#trade-history-template").innerHTML;
+    var tpl4 = find("#order-list-open-template").innerHTML;
+    var tpl5 = find("#order-list-history-template").innerHTML;
+    var tradeHistory = find('#trade-history');
+    var tradeLogSellList = find('#trade-log-sell-list');
+    var tradeLogBuyList = find('#trade-log-buy-list');
+    var ordersOpenList = find('#orders-list-open');
+    var ordersHistoryList = find('#orders-list-history');
 
-	var item = document.createElement('div');
-	var template = Handlebars.compile(tpl1);
-	for (var i = 0; i < 30; i++) {
-	    tradeLogSellList.appendChild(item);
-	    item.outerHTML = template();
-	}
+    var item = document.createElement('div');
+    var template = Handlebars.compile(tpl1);
+    for (var i = 0; i < 30; i++) {
+        tradeLogSellList.appendChild(item);
+        item.outerHTML = template();
+    }
 
-	var template = Handlebars.compile(tpl2);
-	var item = document.createElement('div');
-	for (var i = 0; i < 30; i++) {
-	    tradeLogBuyList.appendChild(item);
-	    item.outerHTML = template();
-	}
+    var template = Handlebars.compile(tpl2);
+    var item = document.createElement('div');
+    for (var i = 0; i < 30; i++) {
+        tradeLogBuyList.appendChild(item);
+        item.outerHTML = template();
+    }
 
 
-	var template = Handlebars.compile(tpl3);
-	var item = document.createElement('div');
-	for (var i = 0; i < 30; i++) {
-	    tradeHistory.appendChild(item);
-	    item.outerHTML = template();
-	}
+    var template = Handlebars.compile(tpl3);
+    var item = document.createElement('div');
+    for (var i = 0; i < 30; i++) {
+        tradeHistory.appendChild(item);
+        item.outerHTML = template();
+    }
 
-	// var template = Handlebars.compile(tpl4);
-	// var item = document.createElement('div');
-	// for (var i = 0; i < 15; i++) {
-	//     ordersOpenList.appendChild(item);
-	//     item.outerHTML = template();
-	// }
-	this.addItems(tpl4, ordersOpenList, 15);
-	// var template = Handlebars.compile(tpl5);
-	// var item = document.createElement('div');
-	// for (var i = 0; i < 15; i++) {
-	//     ordersHistoryList.appendChild(item);
-	//     item.ordersHistoryList = template(template);
-	// }
-	this.addItems(tpl5, ordersHistoryList, 15);
+    // var template = Handlebars.compile(tpl4);
+    // var item = document.createElement('div');
+    // for (var i = 0; i < 15; i++) {
+    //     ordersOpenList.appendChild(item);
+    //     item.outerHTML = template();
+    // }
+    this.addItems(tpl4, ordersOpenList, 15);
+    // var template = Handlebars.compile(tpl5);
+    // var item = document.createElement('div');
+    // for (var i = 0; i < 15; i++) {
+    //     ordersHistoryList.appendChild(item);
+    //     item.ordersHistoryList = template(template);
+    // }
+    this.addItems(tpl5, ordersHistoryList, 15);
 
-	setTimeout(function() {
-		var qwe = find('#trade-scroller');//
-		var qwer = find('.simplebar-scroll-content', qwe);
-		qwer.scrollTop  = qwer.scrollHeight / 2 - qwer.clientHeight/ 2;
-	}, 0);
+    setTimeout(function() {
+        var qwe = find('#trade-scroller'); //
+        var qwer = find('.simplebar-scroll-content', qwe);
+        qwer.scrollTop = qwer.scrollHeight / 2 - qwer.clientHeight / 2;
+    }, 0);
 
 }, {
-	addItems: function(tpl, elem, count) {
-		var template = Handlebars.compile(tpl);
-		var item = document.createElement('div');
-		for (var i = 0; i < count; i++) {
-		    elem.appendChild(item);
-		    item.outerHTML = template();
-		}
-	}
+    addItems: function(tpl, elem, count) {
+        var template = Handlebars.compile(tpl);
+        var item = document.createElement('div');
+        for (var i = 0; i < count; i++) {
+            elem.appendChild(item);
+            item.outerHTML = template();
+        }
+    }
 });
 
 API.add('toggle', function() {
-	var btn = find('[data-toggle]');
-	var elem;
-	addEvent(btn, 'click', function(e) {
-		e.stopPropagation();
-		var id = btn.getAttribute('data-toggle');
-		elem = find('[data-toggle-content="'+id+'"]');
-		toggleClass(elem, 'active');
-	});
+    var btn = find('[data-toggle]');
+    var elem;
+    addEvent(btn, 'click', function(e) {
+        e.stopPropagation();
+        var id = btn.getAttribute('data-toggle');
+        elem = find('[data-toggle-content="' + id + '"]');
+        toggleClass(elem, 'active');
+    });
 
-	window.addEventListener('click', function(e) {
-	    if (elem && elem.classList.contains('active') && !elem.contains(e.target)) {
-	        removeClass(elem, 'active');
-	    }
-	}, false);
+    window.addEventListener('click', function(e) {
+        if (elem && elem.classList.contains('active') && !elem.contains(e.target)) {
+            removeClass(elem, 'active');
+        }
+    }, false);
 });
 
 
@@ -242,7 +242,7 @@ API.add('modal', function() {
     },
 
     openModal: function(id) {
-    	var self = this;
+        var self = this;
         this.closeModal();
         this.modalOverlay.classList.add('opened');
         this.activeModal = find('.modal[data-modal="' + id + '"]');
@@ -312,7 +312,7 @@ Form.prototype.onSubmit = function(fn) {
 function Input(input, parent) {
     var self = this;
     this.parent = parent;
-    this.msg = document.createElement('div');
+    // this.msg = document.createElement('div');
     this.pattern = getPattern(input.getAttribute('data-pattern'));
     this.input = input;
     this.valid = false;
@@ -344,47 +344,78 @@ Input.prototype.validate = function() {
 Input.prototype.addError = function() {
     this.input.classList.add('invalid');
     this.input.classList.remove('valid');
-    this.msg.className = 'input-msg invalid';
-    this.msg.innerHTML = 'Enter the correct email';
-    this.input.parentNode.appendChild(this.msg);
+    // this.msg.className = 'input-msg invalid';
+    // this.msg.innerHTML = 'Enter the correct email';
+    // this.input.parentNode.appendChild(this.msg);
     this.valid = false;
 };
 
 Input.prototype.removeError = function() {
     this.input.classList.add('valid');
     this.input.classList.remove('invalid');
-    this.msg.className = 'input-msg valid';
-    this.msg.innerHTML = 'This is correct email';
-    this.input.parentNode.appendChild(this.msg);
+    // this.msg.className = 'input-msg valid';
+    // this.msg.innerHTML = 'This is correct email';
+    // this.input.parentNode.appendChild(this.msg);
     this.valid = true;
 };
 
 Input.prototype.clear = function() {
     this.input.classList.remove('valid');
     this.input.classList.remove('invalid');
-    this.input.parentNode.removeChild(this.msg);
+    // this.input.parentNode.removeChild(this.msg);
     this.valid = false;
 };
 
 function getPattern(o) {
     var pattern;
     switch (o) {
-        case 'email':
-            pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            break;
+        // case 'email':
+        //     pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        //     break;
 
-        case 'login':
-            pattern = /^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$/;
-            break;
+        // case 'login':
+        //     pattern = /^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$/;
+        //     break;
 
-        case 'password':
-            pattern = /^(?=.*[a-zA-Z0-9])(?=.*).{7,40}$/;
-            break;
+        // case 'password':
+        //     pattern = /^(?=.*[a-zA-Z0-9])(?=.*).{7,40}$/;
+        //     break;
 
-        case 'checkbox':
-            pattern = /^on$/;
-            break;
+        // case 'checkbox':
+        //     pattern = /^on$/;
+        //     break;
+        case 'number':
+        	pattern = /^[0-9.,]+$/;
+        break;
     }
 
     return pattern;
 }
+
+
+
+new Form(find('#limit-buy'));
+new Form(find('#limit-sell'));
+
+
+var inputs = findAll('[data-number-input]');
+
+inputs.forEach(function(input) {
+    var numberMask = new IMask(input, {
+      mask: Number,  // enable number mask
+
+      // other options are optional with defaults below
+      // scale: 2,  // digits after point, 0 for integers
+      // signed: false,  // disallow negative
+      // thousandsSeparator: '',  // any single char
+      // padFractionalZeros: false,  // if true, then pads zeros at end to the length of scale
+      // normalizeZeros: true,  // appends or removes zeros at ends
+      // radix: ',',  // fractional delimiter
+      // mapToRadix: ['.']  // symbols to process as radix
+
+      // additional number interval options (e.g.)
+      min: 0,
+      max: 1000000000000,
+      thousandsSeparator: ','
+    });
+});

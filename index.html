@@ -173,8 +173,14 @@
                 <div class="table col-8 active" data-tabs-content="1">
                     <div class="table-filter">
                         Period
-                        <div class="dropdown dropdown-green dropdown-small">
-                            <div class="dropdown-value">Month</div>
+                        <div class="dropdown dropdown-green dropdown-small" data-dropdown>
+                            <div class="dropdown-value" data-dropdown-value>Month</div>
+                            <div class="dropdown-content" data-dropdown-content>
+                                <!-- <input type="text"> -->
+                                <ul>
+                                    <li data-dropdown-item>Month</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="table-head filled">
@@ -194,8 +200,14 @@
                 <div class="table col-9" data-tabs-content="2">
                     <div class="table-filter">
                         Period
-                        <div class="dropdown dropdown-green dropdown-small">
-                            <div class="dropdown-value">Month</div>
+                        <div class="dropdown dropdown-green dropdown-small" data-dropdown>
+                            <div class="dropdown-value" data-dropdown-value>Month</div>
+                            <div class="dropdown-content" data-dropdown-content>
+                                <!-- <input type="text"> -->
+                                <ul>
+                                    <li data-dropdown-item>Month</li>
+                                </ul>
+                            </div>
                         </div>
                         From to
                         <button class="btn btn-small btn-grey">Search</button>
@@ -217,39 +229,41 @@
             </div>
             <div class="dashboard-block dashboard-limit">
                 <div class="dashboard-block__title">Limit</div>
-                <div class="dashboard-limit__buy dashboard-block__inner">
-                    <div class="dashboard-block__title">Buy BTC</div>
-                    <form>
-                        <div class="dashboard-limit__balance">BTC Balance: <span>0,000.00000000</span></div>
-                        <div class="input">
-                            <div class="input__label">Price: <div class="input__label_extra">last</div></div>  <div class="input__tag">USD</div> 
-                            <input type="text">
-                        </div>
-                        <div class="input">
-                            <div class="input__label">Amount: <div class="input__label_extra">all</div></div> <div class="input__tag">BTC</div>
-                            <input type="text">
-                        </div>
-                        <div class="dashboard-limit__subtitle">Fee: 0.0000000 BTC</div>
-                        <div class="dashboard-limit__total">Total: <div class="dashboard-limit__total_value">0,000.00000000 USD</div></div>
-                    </form>
-                    <button class="btn btn-green btn-big">Log in or Register to trade</button>
-                </div>
-                <div class="dashboard-limit__sell dashboard-block__inner">
-                    <div class="dashboard-block__title">Sell BTC</div>
-                    <form>
-                        <div class="dashboard-limit__balance">BTC Balance: <span>0,000.00000000</span></div>
-                        <div class="input">
-                            <div class="input__label">Price: <div class="input__label_extra">last</div></div>  <div class="input__tag">USD</div> 
-                            <input type="text">
-                        </div>
-                        <div class="input">
-                            <div class="input__label">Amount: <div class="input__label_extra">all</div></div> <div class="input__tag">BTC</div>
-                            <input type="text">
-                        </div>
-                        <div class="dashboard-limit__subtitle">Fee: 0.0000000 BTC</div>
-                        <div class="dashboard-limit__total">Total: <div class="dashboard-limit__total_value">0,000.00000000 USD</div></div>
-                    </form>
-                    <button class="btn btn-green btn-big">Log in or Register to trade</button>
+                <div class="dashboard-limit__wrapper"  data-simplebar data-simplebar-auto-hide="false">                
+                    <div class="dashboard-limit__buy dashboard-block__inner">
+                        <div class="dashboard-block__title">Buy BTC</div>
+                        <form id="limit-buy">
+                            <div class="dashboard-limit__balance">BTC Balance: <span>0,000.00000000</span></div>
+                            <div class="input">
+                                <div class="input__label">Price: <div class="input__label_extra">last</div></div>  <div class="input__tag">USD</div> 
+                                <input type="text" data-number-input data-pattern="number">
+                            </div>
+                            <div class="input">
+                                <div class="input__label">Amount: <div class="input__label_extra">all</div></div> <div class="input__tag">BTC</div>
+                                <input type="text" data-number-input data-pattern="number">
+                            </div>
+                            <div class="dashboard-limit__subtitle">Fee: 0.0000000 BTC</div>
+                            <div class="dashboard-limit__total">Total: <div class="dashboard-limit__total_value">0,000.00000000 USD</div></div>
+                            <button class="btn btn-green btn-big">Log in or Register to trade</button>
+                        </form>
+                    </div>
+                    <div class="dashboard-limit__sell dashboard-block__inner">
+                        <div class="dashboard-block__title">Sell BTC</div>
+                        <form id="limit-sell">
+                            <div class="dashboard-limit__balance">BTC Balance: <span>0,000.00000000</span></div>
+                            <div class="input">
+                                <div class="input__label">Price: <div class="input__label_extra">last</div></div>  <div class="input__tag">USD</div> 
+                                <input type="text" data-number-input data-pattern="number">
+                            </div>
+                            <div class="input">
+                                <div class="input__label">Amount: <div class="input__label_extra">all</div></div> <div class="input__tag">BTC</div>
+                                <input type="text" data-number-input data-pattern="number">
+                            </div>
+                            <div class="dashboard-limit__subtitle">Fee: 0.0000000 BTC</div>
+                            <div class="dashboard-limit__total">Total: <div class="dashboard-limit__total_value">0,000.00000000 USD</div></div>
+                           <button class="btn btn-green btn-big">Log in or Register to trade</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -329,6 +343,7 @@
     </script>
     <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
     <script src="js/handlebars-v4.0.11.js"></script>
+    <script src="https://unpkg.com/imask@3.4.0/dist/imask.js"></script>
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
     <script src="js/all.js"></script>
 </body>
