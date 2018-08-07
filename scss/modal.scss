@@ -196,6 +196,16 @@
         .input-msg {
             display: none;
         }
+        &.invalid {
+            input {
+                border: 1px solid #f85359!important;
+            }
+        }
+        &.valid {
+            input {
+                border: 1px solid #39b54a!important;
+            }
+        }
         input {
             outline: none;
             padding: 0 20px;
@@ -203,13 +213,6 @@
             border: none;
             width: 100%;
             border-radius: 2px;
-            &.invalid {
-                // box-shadow: none;
-                border: 1px solid #f85359;
-            }
-            &.valid {
-                border: 1px solid #39b54a;
-            }
             &::-webkit-input-placeholder {
                 opacity: 0.3;
                 font-family: Helvetica;
@@ -302,7 +305,7 @@
     }
 
     &__close {
-        background: url(img/icons/icon/close.svg) no-repeat;
+        background: url(img/close.svg) no-repeat;
         background-size: cover;
         position: absolute;
         right: 15px;

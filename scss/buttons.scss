@@ -7,8 +7,7 @@
     font-family: Circe, sans-serif;
     position: relative;
     color: #fff;
-        font-family: 'ProximaNova', sans-serif;
-    // display: flex;
+    font-family: 'ProximaNova', sans-serif; // display: flex;
     // align-items: center;
     transition: 0.2s;
     &-small {
@@ -24,14 +23,26 @@
     }
     &-grey {
         background: #516173;
-        &:hover {
+        &:hover:not(:disabled){
             background: darken(#516173, 10%);
+        }
+    }
+    &-grey-dark {
+        background: #333f52;
+        &:hover:not(:disabled){
+            background: darken(#333f52, 10%);
         }
     }
     &-green {
         background: #39b54a;
-        &:hover {
+        &:hover:not(:disabled){
             background: darken(#39b54a, 10%);
+        }
+    }
+    &-red {
+        background: #f85359;
+        &:hover:not(:disabled){
+            background: darken(#f85359, 10%);
         }
     }
     &-toggle {
@@ -41,5 +52,8 @@
     }
     &:active {
         transform: translateY(1px);
+    }
+    &:disabled {
+        cursor: auto;
     }
 }

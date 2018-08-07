@@ -83,7 +83,8 @@ main {
 
 .dashboard-status {
     display: flex;
-    width: calc(20%);
+    align-items: center;
+    width: calc(30%);
     padding-left: 20px;
     &__time {
         color: #fff;
@@ -104,6 +105,9 @@ main {
         .table-body__col {
             font-size: 14px;
         }
+    }
+    .dropdown-content {
+        width: 116px;
     }
 }
 
@@ -134,19 +138,36 @@ main {
         margin-top: 5px;
     }
     .toggle-content {
-        position: absolute;
-        width: 100%;
-        padding: 15px;
-        background: #333f52;
-        left: 0;
-        top: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.3s;
-        &.active {
-            opacity: 1;
-            visibility: visible;
+        .btn {
+            float: right;
+            margin-top: 10px;
         }
+    }
+}
+
+.toggle-content {
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    background: #333f52;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 99;
+    &__title {
+        color: #7f8fa4;
+        font-size: 12px;
+
+        margin-top: 10px;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    &.active {
+        opacity: 1;
+        visibility: visible;
     }
 }
 
@@ -157,6 +178,10 @@ main {
     display: flex;
     justify-content: flex-end;
     padding-right: 20px;
+    &__email {
+        font-size: 14px;
+        color: #fff;
+    }
     &__buttons {
         width: 100%;
         display: flex;
@@ -193,7 +218,59 @@ main {
 .dashboard-chart {
     width: calc(60% - 10px); // height: calc(50%);
     height: calc(50vh - 10px);
-    &__panel {}
+    overflow: hidden;
+    &__panel {
+        justify-content: space-between;
+        align-items: center;
+        display: flex;
+        padding: 3px 10px;
+        &_buttons {
+
+            display: flex;
+            align-items: center;
+            &_btn {
+                color: #fff;
+                font-size: 14px;
+                padding: 0px 5px;
+                background: #516173;
+                min-width: 28px;
+                border: solid 1px transparent;
+                margin-left: 7px;
+                cursor: pointer;
+                height: 25px;
+                line-height: 23px;
+                transition: 0.3s;
+                &.active {
+                    border: solid 1px #1bb934;
+                    background: #273142;
+                }
+                &:hover {
+
+                }
+                &.full-size {
+                    padding: 0;
+                    position: relative;
+                    img {
+                        width: 17px;
+                        margin: auto;
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+    .canvas {
+        width: 100%;
+        height: calc(100% - 15px);
+        .highcharts-credits {
+            display: none;
+        }
+    }
 }
 
 .dashboard-trade-log {
@@ -210,6 +287,12 @@ main {
             width: 22px;
             height: 22px;
             background: #516173;
+            border: 1px solid transparent;
+            transition: 0.3s;
+            img {
+                width: 100%;
+                height: 100%;
+            }
             &.active {
                 background: none;
                 border: 1px solid #1bb934;
@@ -279,7 +362,23 @@ main {
     .table {
         height: calc(100% - 42px);
         &-body {
-            height: calc(100% - 46px);
+            height: calc(100% - 72px);
+        }
+    }
+
+    .toggle-content {
+        width: 177px;
+        background: #516173;
+        transform: translateX(-50%);
+        &__title {
+            color: #ffffff;
+            font-size: 10px;
+            text-align: center;
+        }
+        &__buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
         }
     }
 }
@@ -308,10 +407,9 @@ main {
         // justify-content: space-between;
         // flex-wrap: wrap;
         height: calc(100% - 20px);
-        
-        .simplebar-content {        
-            display: flex;
-            // width: 100%; 
+
+        .simplebar-content {
+            display: flex; // width: 100%; 
             flex-wrap: wrap;
             justify-content: space-between;
         }
@@ -324,17 +422,17 @@ main {
     }
     &__total {
         margin-top: 10px;
-       font-size: 14px;
-       color: #7f8fa4;
-       display: flex;
-       justify-content: space-between;
-       &_value {
-        color: #ffffff;
-       } 
+        font-size: 14px;
+        color: #7f8fa4;
+        display: flex;
+        justify-content: space-between;
+        &_value {
+            color: #ffffff;
+        }
     }
     &__subtitle {
         margin-top: 3px;
-        font-size: 10px;   
+        font-size: 10px;
         color: #7f8fa4;
     }
     .btn {
@@ -346,8 +444,23 @@ main {
         .input {
             position: relative;
             width: 100%;
-            margin-top: 10px;
-            // height: 60px;
+            margin-top: 10px; // height: 60px;
+            &.invalid {
+                input {
+                    border-color: #f85359!important;
+                }
+                .input__tag {
+                    color: #f85359;
+                }
+            }
+            &.valid {
+                input {
+                    border-color: #39b54a!important;
+                }
+                .input__tag {
+                    color: #39b54a;
+                }
+            }
             input {
                 padding: 5px;
                 border: none;
@@ -358,13 +471,6 @@ main {
                 width: 100%;
                 border-bottom: 1px solid #fff;
                 font-family: 'ProximaNova', sans-serif;
-
-                &.invalid {
-                    border-color: #f85359!important;
-                }
-                &.valid {
-                    border-color: #39b54a!important;
-                }
             }
 
             &__label {

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
     <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
@@ -15,7 +16,8 @@
             <div class="dashboard-status">
                 <div class="dashboard-logo"><img src="img/logo.svg" alt=""></div>
                 <div>
-                    <button class="btn btn-small btn-green">OPEN TRADE</button>
+                    <button class="btn btn-small btn-green" disabled>OPEN TRADE</button>
+                    <!-- <button class="btn btn-small btn-red" disabled>TRADE CLOSED</button> -->
                     <div class="dashboard-status__time">June 25, 2018 16:38:23</div>
                 </div>
             </div>
@@ -23,7 +25,7 @@
                 <div class="dropdown dropdown-grey dropdown-big" data-dropdown>
                     <div class="dropdown-value" data-dropdown-value>BTC / USD</div>
                     <div class="dropdown-content" data-dropdown-content>
-                        <input type="text">
+                        <input type="text" placeholder="Value">
                         <ul>
                             <li data-dropdown-item>BTC / ETH 1</li>
                             <li data-dropdown-item>BTC / ETH 2</li>
@@ -64,7 +66,7 @@
                     <button class="btn btn-small btn-grey">Check balance</button>
                 </div>
                 <div class="toggle-content" data-toggle-content="1">
-                    <div>Active Pair</div>
+                    <div class="toggle-content__title">Active Pair</div>
                     <div class="dashboard-balance__item">
                         <div class="dashboard-balance__item_title">BTC Balance:</div>
                         <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
@@ -73,7 +75,7 @@
                         <div class="dashboard-balance__item_title">ETH Balance: </div>
                         <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
                     </div>
-                    <div>Others Coin Balance</div>
+                    <div class="toggle-content__title">Others Coin Balance</div>
                     <div class="dashboard-balance__item">
                         <div class="dashboard-balance__item_title">EKL Balance:</div>
                         <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
@@ -82,17 +84,19 @@
                         <div class="dashboard-balance__item_title">HHI Balance: </div>
                         <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
                     </div>
+                    <button class="btn btn-grey btn-small">Check balance</button>
                 </div>
             </div>
             <div class="dashboard-auth">
                 <div class="dashboard-theme">
-                    <img src="" alt="">
                     <label class="checkbox" data-theme-switcher>
                         <input type="checkbox" checked>
-                        <div class="checkbox__bg"></div>
-                        <div class="checkbox__inner"></div>
+                        <img class="checkbox__left-img" src="img/yoda.svg" alt="">
+                        <div class="checkbox__bg">
+                            <div class="checkbox__inner"></div>
+                        </div>
+                        <img class="checkbox__right-img" src="img/dart.svg" alt="">
                     </label>
-                    <img src="" alt="">
                 </div>
                 <div class="dashboard-auth__buttons">
                     <div class="dashboard-auth__unauthorized">
@@ -100,7 +104,7 @@
                         <button class="btn btn-green btn-small">REGISTER</button>
                     </div>
                     <div class="dashboard-auth__authorized">
-                        <span>xkjhcdihbce@gmail.com</span>
+                        <span class="dashboard-auth__email">xkjhcdihbce@gmail.com</span>
                         <button class="btn btn-grey btn-small">LOG OUT</button>
                     </div>
                 </div>
@@ -118,25 +122,37 @@
     </div>
     <main>
         <div class="dashboard-container">
-            <div class="dashboard-block dashboard-chart">
+            <div class="dashboard-block dashboard-chart" data-chart>
                 <div class="dashboard-chart__panel dashboard-block__inner">
-                    <div class="dropdown dropdown-green dropdown-small">
-                        <div class="dropdown-value">Year</div>
+                    <div class="dropdown dropdown-green dropdown-small" data-dropdown>
+                        <div class="dropdown-value" data-dropdown-value>Year</div>
+                        <div class="dropdown-content" data-dropdown-content>
+                            <!-- <input type="text"> -->
+                            <ul>
+                                <li data-dropdown-item>Day</li>
+                                <li data-dropdown-item>Week</li>
+                                <li data-dropdown-item>Month</li>
+                                <li data-dropdown-item>Year</li>
+                            </ul>
+                        </div>
                     </div>
-                    TradeChart Depth
-                    <div></div>
+                    <div class="dashboard-chart__panel_buttons">
+                        <div class="dashboard-chart__panel_buttons_btn active" data-chart-item>TradeChart</div>
+                        <div class="dashboard-chart__panel_buttons_btn" data-chart-item>Depth</div>
+                        <div class="dashboard-chart__panel_buttons_btn full-size" data-chart-item><img src="img/full_screen.svg" alt=""></div>
+                    </div>
                 </div>
-                <div class="canvas"></div>
+                <div id="container" class="canvas"></div>
             </div>
-            <div class="dashboard-block dashboard-trade-log" data-tabs>
+            <div class="dashboard-block dashboard-trade-log" data-trade>
                 <div class="dashboard-block__title">Trade Log
                     <div class="dashboard-trade-log__tabs">
-                        <div class="dashboard-trade-log__tabs_item active" data-tabs-item="1"></div>
-                        <div class="dashboard-trade-log__tabs_item" data-tabs-item="1"></div>
-                        <div class="dashboard-trade-log__tabs_item" data-tabs-item="1"></div>
+                        <div class="dashboard-trade-log__tabs_item active" data-trade-item="1"><img src="img/icon_trade.svg" alt=""></div>
+                        <div class="dashboard-trade-log__tabs_item" data-trade-item="2"><img src="img/icon_trade_sell.svg" alt=""></div>
+                        <div class="dashboard-trade-log__tabs_item" data-trade-item="3"><img src="img/icon_trade_buy.svg" alt=""></div>
                     </div>
                 </div>
-                <div class="table col-3 active" data-tabs-content="1">
+                <div class="table col-3 active">
                     <div class="table-head">
                         <div class="table-head__col">Price (USD)</div>
                         <div class="table-head__col">Amount (BTC)</div>
@@ -172,13 +188,18 @@
                 </div>
                 <div class="table col-8 active" data-tabs-content="1">
                     <div class="table-filter">
+                        <span class="table-filter__item">
                         Period
+                        </span>
                         <div class="dropdown dropdown-green dropdown-small" data-dropdown>
                             <div class="dropdown-value" data-dropdown-value>Month</div>
                             <div class="dropdown-content" data-dropdown-content>
                                 <!-- <input type="text"> -->
                                 <ul>
+                                    <li data-dropdown-item>Day</li>
+                                    <li data-dropdown-item>Week</li>
                                     <li data-dropdown-item>Month</li>
+                                    <li data-dropdown-item>Year</li>
                                 </ul>
                             </div>
                         </div>
@@ -192,24 +213,45 @@
                         <div class="table-head__col">Price</div>
                         <div class="table-head__col">Fidded %</div>
                         <div class="table-head__col">
-                            <button class="btn btn-grey btn-small">Cancel All</button>
+                            <button class="btn btn-grey btn-small" data-toggle="2">Cancel All</button>
+                            <div class="toggle-content" data-toggle-content="2">
+                                <div class="toggle-content__title">You really want to cancel all orders?</div>
+                                <div class="toggle-content__buttons">
+                                    <button class="btn btn-grey-dark btn-small">Leave All</button>
+                                    <button class="btn btn-green btn-small">Cancel All</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="table-body filled scrolled" id="orders-list-open" data-simplebar data-simplebar-auto-hide="false"></div>
+                    <div class="table-body filled" id="orders-list-open">
+                        <div class="table-empty">Empty</div>
+                    </div>
                 </div>
                 <div class="table col-9" data-tabs-content="2">
                     <div class="table-filter">
+                        <span class="table-filter__item">
                         Period
+                        </span>
                         <div class="dropdown dropdown-green dropdown-small" data-dropdown>
                             <div class="dropdown-value" data-dropdown-value>Month</div>
                             <div class="dropdown-content" data-dropdown-content>
                                 <!-- <input type="text"> -->
                                 <ul>
+                                    <li data-dropdown-item>Day</li>
+                                    <li data-dropdown-item>Week</li>
                                     <li data-dropdown-item>Month</li>
+                                    <li data-dropdown-item>Year</li>
                                 </ul>
                             </div>
                         </div>
-                        From to
+                        <span class="table-filter__item">
+                        from
+                        </span>
+                        <input type="text" class="data-picker">
+                        <span class="table-filter__item">
+                        to
+                        </span>
+                        <input type="text" class="data-picker">
                         <button class="btn btn-small btn-grey">Search</button>
                     </div>
                     <div class="table-head filled">
@@ -224,26 +266,34 @@
                             Status
                         </div>
                     </div>
-                    <div class="table-body filled scrolled" id="orders-list-history" data-simplebar data-simplebar-auto-hide="false"></div>
+                    <div class="table-body filled" id="orders-list-history"></div>
                 </div>
             </div>
             <div class="dashboard-block dashboard-limit">
                 <div class="dashboard-block__title">Limit</div>
-                <div class="dashboard-limit__wrapper"  data-simplebar data-simplebar-auto-hide="false">                
+                <div class="dashboard-limit__wrapper" data-simplebar data-simplebar-auto-hide="false">
                     <div class="dashboard-limit__buy dashboard-block__inner">
                         <div class="dashboard-block__title">Buy BTC</div>
                         <form id="limit-buy">
                             <div class="dashboard-limit__balance">BTC Balance: <span>0,000.00000000</span></div>
                             <div class="input">
-                                <div class="input__label">Price: <div class="input__label_extra">last</div></div>  <div class="input__tag">USD</div> 
+                                <div class="input__label">Price:
+                                    <div class="input__label_extra">last</div>
+                                </div>
+                                <div class="input__tag">USD</div>
                                 <input type="text" data-number-input data-pattern="number">
                             </div>
                             <div class="input">
-                                <div class="input__label">Amount: <div class="input__label_extra">all</div></div> <div class="input__tag">BTC</div>
+                                <div class="input__label">Amount:
+                                    <div class="input__label_extra">all</div>
+                                </div>
+                                <div class="input__tag">BTC</div>
                                 <input type="text" data-number-input data-pattern="number">
                             </div>
                             <div class="dashboard-limit__subtitle">Fee: 0.0000000 BTC</div>
-                            <div class="dashboard-limit__total">Total: <div class="dashboard-limit__total_value">0,000.00000000 USD</div></div>
+                            <div class="dashboard-limit__total">Total:
+                                <div class="dashboard-limit__total_value">0,000.00000000 USD</div>
+                            </div>
                             <button class="btn btn-green btn-big">Log in or Register to trade</button>
                         </form>
                     </div>
@@ -252,16 +302,24 @@
                         <form id="limit-sell">
                             <div class="dashboard-limit__balance">BTC Balance: <span>0,000.00000000</span></div>
                             <div class="input">
-                                <div class="input__label">Price: <div class="input__label_extra">last</div></div>  <div class="input__tag">USD</div> 
+                                <div class="input__label">Price:
+                                    <div class="input__label_extra">last</div>
+                                </div>
+                                <div class="input__tag">USD</div>
                                 <input type="text" data-number-input data-pattern="number">
                             </div>
                             <div class="input">
-                                <div class="input__label">Amount: <div class="input__label_extra">all</div></div> <div class="input__tag">BTC</div>
+                                <div class="input__label">Amount:
+                                    <div class="input__label_extra">all</div>
+                                </div>
+                                <div class="input__tag">BTC</div>
                                 <input type="text" data-number-input data-pattern="number">
                             </div>
                             <div class="dashboard-limit__subtitle">Fee: 0.0000000 BTC</div>
-                            <div class="dashboard-limit__total">Total: <div class="dashboard-limit__total_value">0,000.00000000 USD</div></div>
-                           <button class="btn btn-green btn-big">Log in or Register to trade</button>
+                            <div class="dashboard-limit__total">Total:
+                                <div class="dashboard-limit__total_value">0,000.00000000 USD</div>
+                            </div>
+                            <button class="btn btn-green btn-big">Log in or Register to trade</button>
                         </form>
                     </div>
                 </div>
@@ -320,7 +378,7 @@
         <div class="table-body__row">
             <div class="table-body__col">28-Jan-2018</div>
             <div class="table-body__col">BTC/ETH</div>
-            <div class="table-body__col green">Buy</div>
+            <div class="table-body__col {{className}}">{{text}}</div>
             <div class="table-body__col">9,999.99999999</div>
             <div class="table-body__col">0.00000000</div>
             <div class="table-body__col">0.00000000</div>
@@ -332,7 +390,7 @@
         <div class="table-body__row">
             <div class="table-body__col">28-Jan-2018</div>
             <div class="table-body__col">BTC/ETH</div>
-            <div class="table-body__col green">Buy</div>
+            <div class="table-body__col {{className}}">{{text}}</div>
             <div class="table-body__col">9,999.99999999</div>
             <div class="table-body__col">0.00000000</div>
             <div class="table-body__col">0.00000000</div>
@@ -345,6 +403,9 @@
     <script src="js/handlebars-v4.0.11.js"></script>
     <script src="https://unpkg.com/imask@3.4.0/dist/imask.js"></script>
     <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <script src="js/all.js"></script>
 </body>
 
