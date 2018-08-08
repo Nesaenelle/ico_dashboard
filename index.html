@@ -144,19 +144,21 @@
                     </ul>
                 </div>
             </div>
-            <div class="table col-4">
-                <div class="table-head">
-                    <div class="table-head__col">Last price</div>
-                    <div class="table-head__col">24h Change</div>
-                    <div class="table-head__col">24h High / Low </div>
-                    <div class="table-head__col"> 24h Volume</div>
-                </div>
-                <div class="table-body">
-                    <div class="table-body__row">
-                        <div class="table-body__col">$ 6,100.67</div>
-                        <div class="table-body__col">$ 6,100.67 <span class="green">+3,44%</span></div>
-                        <div class="table-body__col"><span class="green">$ 6,100.67 </span> <span class="red">6,100.67</span></div>
-                        <div class="table-body__col">234,356,100.67</div>
+            <div class="scroll-x">            
+                <div class="table col-4">
+                    <div class="table-head">
+                        <div class="table-head__col">Last price</div>
+                        <div class="table-head__col">24h Change</div>
+                        <div class="table-head__col">24h High / Low </div>
+                        <div class="table-head__col"> 24h Volume</div>
+                    </div>
+                    <div class="table-body">
+                        <div class="table-body__row">
+                            <div class="table-body__col">$ 6,100.67</div>
+                            <div class="table-body__col">$ 6,100.67 <span class="green">+3,44%</span></div>
+                            <div class="table-body__col"><span class="green">$ 6,100.67 </span> <span class="red">6,100.67</span></div>
+                            <div class="table-body__col">234,356,100.67</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -277,86 +279,88 @@
                         <div class="dashboard-orders__tabs_item" data-tabs-item="2">Order History</div>
                         <div class="dashboard-orders__tabs_item" data-tabs-item="3">Funds</div>
                     </div>
-                    <div class="table col-8 active" data-tabs-content="1">
-                        <div class="table-filter">
-                            <span class="table-filter__item">
-                            Period
-                            </span>
-                            <div class="dropdown dropdown-green dropdown-small" data-dropdown>
-                                <div class="dropdown-value" data-dropdown-value>Month</div>
-                                <div class="dropdown-content" data-dropdown-content>
-                                    <!-- <input type="text"> -->
-                                    <ul>
-                                        <li data-dropdown-item>Day</li>
-                                        <li data-dropdown-item>Week</li>
-                                        <li data-dropdown-item>Month</li>
-                                        <li data-dropdown-item>Year</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="table-head filled">
-                            <div class="table-head__col">Value</div>
-                            <div class="table-head__col">Pair</div>
-                            <div class="table-head__col">Type</div>
-                            <div class="table-head__col">Amount</div>
-                            <div class="table-head__col">Filled</div>
-                            <div class="table-head__col">Price</div>
-                            <div class="table-head__col">Fidded %</div>
-                            <div class="table-head__col">
-                                <button class="btn btn-grey btn-small" data-toggle="2">Cancel All</button>
-                                <div class="toggle-content" data-toggle-content="2">
-                                    <div class="toggle-content__title">You really want to cancel all orders?</div>
-                                    <div class="toggle-content__buttons">
-                                        <button class="btn btn-grey-dark btn-small" data-toggle-content-close>Leave All</button>
-                                        <button class="btn btn-green btn-small" data-toggle-content-action>Cancel All</button>
+                    <div class="scroller-x">              
+                        <div class="table col-8 active" data-tabs-content="1">
+                            <div class="table-filter">
+                                <span class="table-filter__item">
+                                Period
+                                </span>
+                                <div class="dropdown dropdown-green dropdown-small" data-dropdown>
+                                    <div class="dropdown-value" data-dropdown-value>Month</div>
+                                    <div class="dropdown-content" data-dropdown-content>
+                                        <!-- <input type="text"> -->
+                                        <ul>
+                                            <li data-dropdown-item>Day</li>
+                                            <li data-dropdown-item>Week</li>
+                                            <li data-dropdown-item>Month</li>
+                                            <li data-dropdown-item>Year</li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="table-body filled" id="orders-list-open">
-                            <div class="table-empty">Empty</div>
-                        </div>
-                    </div>
-                    <div class="table col-9" data-tabs-content="2">
-                        <div class="table-filter">
-                            <span class="table-filter__item">
-                            Period
-                            </span>
-                            <div class="dropdown dropdown-green dropdown-small" data-dropdown>
-                                <div class="dropdown-value" data-dropdown-value>Month</div>
-                                <div class="dropdown-content" data-dropdown-content>
-                                    <!-- <input type="text"> -->
-                                    <ul>
-                                        <li data-dropdown-item>Day</li>
-                                        <li data-dropdown-item>Week</li>
-                                        <li data-dropdown-item>Month</li>
-                                        <li data-dropdown-item>Year</li>
-                                    </ul>
+                            <div class="table-head filled">
+                                <div class="table-head__col">Value</div>
+                                <div class="table-head__col">Pair</div>
+                                <div class="table-head__col">Type</div>
+                                <div class="table-head__col">Amount</div>
+                                <div class="table-head__col">Filled</div>
+                                <div class="table-head__col">Price</div>
+                                <div class="table-head__col">Fidded %</div>
+                                <div class="table-head__col">
+                                    <button class="btn btn-grey btn-small" data-toggle="2">Cancel All</button>
+                                    <div class="toggle-content" data-toggle-content="2">
+                                        <div class="toggle-content__title">You really want to cancel all orders?</div>
+                                        <div class="toggle-content__buttons">
+                                            <button class="btn btn-grey-dark btn-small" data-toggle-content-close>Leave All</button>
+                                            <button class="btn btn-green btn-small" data-toggle-content-action>Cancel All</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <span class="table-filter__item">
-                            From
-                            </span>
-                            <input type="text" class="data-picker">
-                            <span class="table-filter__item">
-                            to
-                            </span>
-                            <input type="text" class="data-picker">
-                            <button class="btn btn-small btn-grey">Search</button>
+                            <div class="table-body filled" id="orders-list-open">
+                                <div class="table-empty">Empty</div>
+                            </div>
                         </div>
-                        <div class="table-head filled">
-                            <div class="table-head__col">Value</div>
-                            <div class="table-head__col">Pair</div>
-                            <div class="table-head__col">Type</div>
-                            <div class="table-head__col">Amount</div>
-                            <div class="table-head__col">Filled</div>
-                            <div class="table-head__col">Price</div>
-                            <div class="table-head__col">Fidded %</div>
-                            <div class="table-head__col">Total</div>
-                            <div class="table-head__col">Status</div>
+                        <div class="table col-9" data-tabs-content="2">
+                            <div class="table-filter">
+                                <span class="table-filter__item">
+                                Period
+                                </span>
+                                <div class="dropdown dropdown-green dropdown-small" data-dropdown>
+                                    <div class="dropdown-value" data-dropdown-value>Month</div>
+                                    <div class="dropdown-content" data-dropdown-content>
+                                        <!-- <input type="text"> -->
+                                        <ul>
+                                            <li data-dropdown-item>Day</li>
+                                            <li data-dropdown-item>Week</li>
+                                            <li data-dropdown-item>Month</li>
+                                            <li data-dropdown-item>Year</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <span class="table-filter__item">
+                                From
+                                </span>
+                                <input type="text" class="data-picker">
+                                <span class="table-filter__item">
+                                to
+                                </span>
+                                <input type="text" class="data-picker">
+                                <button class="btn btn-small btn-grey">Search</button>
+                            </div>
+                            <div class="table-head filled">
+                                <div class="table-head__col">Value</div>
+                                <div class="table-head__col">Pair</div>
+                                <div class="table-head__col">Type</div>
+                                <div class="table-head__col">Amount</div>
+                                <div class="table-head__col">Filled</div>
+                                <div class="table-head__col">Price</div>
+                                <div class="table-head__col">Fidded %</div>
+                                <div class="table-head__col">Total</div>
+                                <div class="table-head__col">Status</div>
+                            </div>
+                            <div class="table-body filled" id="orders-list-history"></div>
                         </div>
-                        <div class="table-body filled" id="orders-list-history"></div>
                     </div>
                 </div>
             </div>

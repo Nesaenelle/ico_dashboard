@@ -41,6 +41,9 @@ main {
 
 .mobile-sub-header {
     display: none;
+    .scroll-x {
+        width: calc(100% - 120px);
+    }
 }
 
 .dashboard-block {
@@ -131,6 +134,7 @@ main {
     width: calc(53% - 10px);
     position: relative;
     height: 80px;
+    min-width: 295px;
     &__item {
         display: flex;
         justify-content: space-between;
@@ -428,8 +432,11 @@ main {
             }
         }
     }
-    .table {
+    .scroller-x {
         height: calc(100% - 39px);
+    }
+    .table {
+        height: 100%;
 
         &-body {
             height: calc(100% - 72px);

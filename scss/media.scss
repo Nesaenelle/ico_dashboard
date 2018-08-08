@@ -70,6 +70,17 @@
     }
 }
 
+@media screen and (max-width: 860px) {
+    .dashboard-orders {
+        .scroller-x {
+            overflow: auto;
+        }
+        .table {
+            min-width: 800px;
+        }
+    }
+}
+
 @media screen and (max-width: 768px) {
     .dashboard-status {
         padding-left: 0;
@@ -96,6 +107,15 @@
     .dashboard-pairs {
         padding: 10px;
     }
+    .dashboard-pairs {
+        .scroll-x {
+            width: 100%;
+            overflow: auto;
+        }
+        .table {
+            min-width: 500px;
+        }
+    }
     body {
         padding: 13px 10px 10px;
     }
@@ -105,7 +125,7 @@
     .dashboard-limit {
         height: auto;
         &__wrapper {
-            height: 100%;
+            height: auto;
         }
         .dashboard-limit__buy {
             margin-bottom: 8px;
@@ -118,12 +138,17 @@
             height: 100%;
             margin-bottom: 10px;
             display: block;
+            margin: 0!important;
+            padding: 0!important;
             overflow: hidden!important;
         }
         .simplebar-scroll-content {
             overflow: hidden!important;
+            margin: 0!important;
+            padding: 0!important;
         }
     }
+
     .table-filter {
         flex-wrap: wrap;
         overflow: hidden;
@@ -153,6 +178,9 @@
             left: 20px;
             top: 25px;
         }
+        &__time {
+            margin-bottom: 5px;
+        }
     }
     .dashboard-logo {
         margin: 0;
@@ -161,7 +189,7 @@
         width: 100%;
         text-align: center;
     }
-       .dashboard-auth {
+    .dashboard-auth {
         justify-content: center;
     }
     .dashboard-auth__buttons {
