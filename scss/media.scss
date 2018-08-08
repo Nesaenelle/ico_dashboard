@@ -13,17 +13,18 @@
 @media screen and (max-width: 1440px) {}
 
 @media screen and (max-width: 1280px) {
-	main {
-		margin-bottom: 20px;
-	}
-    .dashboard-header {    
+    main {
+        margin-bottom: 20px;
+    }
+    .dashboard-header {
         .dashboard-balance,
         .dashboard-pairs {
             display: none;
         }
     }
-    .dashboard-auth, .dashboard-status{
-    	width: 100%;
+    .dashboard-auth,
+    .dashboard-status {
+        width: 100%;
     }
     .dashboard-header__right {
         justify-content: flex-end;
@@ -39,7 +40,7 @@
         height: 396px;
     }
     .dashboard-limit {
-    	margin-top: 0;
+        margin-top: 0;
         height: 340px;
     }
     .mobile-sub-header {
@@ -56,18 +57,16 @@
             width: 100%;
         }
     }
-
 }
 
 @media screen and (max-width: 980px) {
     .dashboard-pairs {
         height: auto;
         flex-wrap: wrap;
-        .table  {
+        .table {
             margin-top: 8px;
             width: 100%;
         }
-     
     }
 }
 
@@ -102,7 +101,30 @@
     }
 }
 
-@media screen and (max-width: 600px) {}
+@media screen and (max-width: 600px) {
+    .dashboard-limit {
+        height: auto;
+        &__wrapper {
+            height: 100%;
+        }
+        .dashboard-limit__buy {
+            margin-bottom: 8px;
+            width: 100%;
+        }
+        .dashboard-limit__sell {
+            width: 100%;
+        }
+        .simplebar-content {
+            height: 100%;
+            margin-bottom: 10px;
+            display: block;
+            overflow: hidden!important;
+        }
+        .simplebar-scroll-content {
+            overflow: hidden!important;
+        }
+    }
+}
 
 @media screen and (max-width: 480px) {}
 
