@@ -6,7 +6,7 @@
     }
     &-filter {
         background: #333f52;
-        padding: 10px;
+        padding: 8px 10px;
         display: flex;
         align-items: center;
         &__item {
@@ -23,8 +23,8 @@
             background: 0 0;
             outline: 0;
             color: #fff;
-            font-size: 14px;
-            width: 150px;
+            font-size: 12px;
+            width: 80px;
             border-bottom: 1px solid #fff;
         }
         .btn {
@@ -59,6 +59,7 @@
         &__col {
             color: #fff;
             font-size: 12px;
+            font-weight: 300;
         }
         &.filled {
             #{$c}__row:nth-child(even) {
@@ -73,10 +74,17 @@
     &.col-3 {
         .table-head__col,
         .table-body__col {
-            width: calc(100%/3);
+            // width: calc(100%/3);
             text-align: right;
             &:first-child {
                 text-align: left;
+                width: 20%;
+            }
+            &:nth-child(2){
+                width: 40%;
+            }
+            &:nth-child(3){
+                width: 40%;
             }
         }
     }

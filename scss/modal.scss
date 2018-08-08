@@ -252,20 +252,20 @@
         .input-msg {
             display: none;
         }
+
+        &.invalid input +.modal-checkbox-icon {
+            // box-shadow: none;
+            border: 1px solid #f85359;
+        }
+        &.valid input +.modal-checkbox-icon {
+            border: 1px solid #39b54a;
+        }
         input {
             display: none;
             &:checked+.modal-checkbox-icon {
                 background: url(img/check_icon.svg) #fff no-repeat;
 
                 background-size: 70%;
-            }
-
-            &.invalid+.modal-checkbox-icon {
-                // box-shadow: none;
-                border: 1px solid #f85359;
-            }
-            &.valid+.modal-checkbox-icon {
-                border: 1px solid #39b54a;
             }
         }
         a {

@@ -159,8 +159,11 @@ input {
                 left: 18px;
             }
         }
+        &:checked ~ .checkbox__right-img {
+            opacity: 1;
+        }
         &:checked ~ .checkbox__left-img {
-            opacity: 0.6;
+            opacity: 0.4;
         }
     }
     &__bg {
@@ -172,6 +175,7 @@ input {
         transition: 0.3s;
         border-radius: 20px;
         width: 36px;
+        margin: 0 1px;
     }
 
     &__inner {
@@ -187,10 +191,20 @@ input {
         left: 3px;
         z-index: 2;
     }
-    &__left-img {}
-    &__right-img {}
+    &__left-img {
+        width: 20px;
+        background: url(img/yoda.svg);
+        background-size: cover;
+        opacity: 1;
+    }
+    &__right-img {
+        width: 20px;
+        background: url(img/dart.svg);
+        background-size: cover;
+        opacity: 0.4;
+    }
     img {
-        width: 30px;
+        width: 25px;
         height: 24px;
     }
 }

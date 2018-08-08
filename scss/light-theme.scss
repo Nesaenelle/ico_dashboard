@@ -1,33 +1,113 @@
 .light-theme {
-	background: #fff;
-	.dashboard-block{
-		background: #f1f4f8;
-	}
+    background: #fff;
+    .dashboard-block {
+        background: #f1f4f8;
+        &.dashboard-trade-log,
+        &.dashboard-trade-history {
+            background: #e2e7ee;
+        }
+    }
 
-	.dashboard-block__inner {
-		background: #e2e7ee;
-	}
+    .dashboard-block__inner {
+        background: #e2e7ee;
+    }
 
-	.dashboard-block__title {
-		color: #333f52;
-	}
-		
-	.dashboard-limit__buy .dashboard-block__title, .dashboard-limit__sell .dashboard-block__title{
-		color: #516173;
+    .dashboard-block__title {
+        color: #333f52;
+    }
 
-	}
+    .dashboard-limit__buy .dashboard-block__title,
+    .dashboard-limit__sell .dashboard-block__title {
+        color: #516173;
+    }
 
-	.table {
-		
-		&-head {
-			&__col {
-				color: #7f8fa4;
-			}
-		}
-		&-body {
-			&__col {
-				color: #354052;
-			}
-		}
-	}
+    .dashboard-status__time {
+        color: #354052;
+    }
+
+    .dashboard-balance__item_title {
+        color: #354052;
+    }
+    .dashboard-balance__item_value {
+        color: #354052;
+    }
+
+    .table {
+
+        &-head {
+            &__col {
+                color: #7f8fa4;
+            }
+        }
+        &-body {
+            &__col {
+                color: #354052;
+            }
+            &.filled .table-body__row:nth-child(even) {
+                background: #e2e7ee;
+            }
+        }
+
+        .btn-grey {
+            background: #a8aab7;
+        }
+    }
+
+    .table-head.filled {
+        background-color: #e2e7ee;
+    }
+
+    .table-filter {
+        background-color: #e2e7ee;
+    }
+
+
+
+    .dashboard-chart__panel_buttons_btn.active,
+    .dashboard-orders__tabs_item.active {
+        background-color: #c5d0de;
+        color: #354052;
+    }
+
+    .dashboard-trade-log__price.dashboard-block__inner {
+        background: #c5d0de;
+        color: #354052;
+    }
+
+    .highcharts-axis-labels.highcharts-yaxis-labels {
+        text {
+            fill: #7f8fa4!important;
+        }
+    }
+    .highcharts-axis-labels.highcharts-xaxis-labels {
+        text {
+            fill: #354052!important;
+        }
+    }
+
+    
+    .dashboard-limit form .input input {
+    	border-color: #7f8fa4;
+        color: #7f8fa4;
+    }
+    .dashboard-limit__total_value  {
+    	color: #7f8fa4;
+    }
+
+    .table-filter input {
+            border-color: #7f8fa4;
+            color: #7f8fa4;
+    }
+    .dashboard-trade-log__tabs_item.active {
+        background: #c5d0de;
+    }
+
+    .checkbox__left-img {
+        background: url(img/yoda-white.svg);
+        background-size: cover;
+    }
+    .checkbox__right-img {
+        background: url(img/dart-white.svg);
+        background-size: cover;
+    }
 }

@@ -2,7 +2,7 @@ body {
     font-family: 'ProximaNova', sans-serif;
     min-width: 320px;
     background: #516173;
-    padding: 10px 15px;
+    padding: 13px 23px 10px 23px;
 }
 
 main {
@@ -47,7 +47,7 @@ main {
     }
     &__title {
         font-size: 22px;
-        font-weight: 600;
+        font-weight: 400;
         color: #fff;
         width: 100%;
     }
@@ -55,18 +55,18 @@ main {
 
 .dashboard-header {
     height: 100px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     &__left {
-        width: calc(60% - 10px);
+        width: calc(63% - 15px);
         display: flex;
         justify-content: space-between;
     }
     &__right {
-        width: 40%;
+        width: calc(37% + 5px);
         display: flex;
         justify-content: space-between;
     }
@@ -90,13 +90,22 @@ main {
         color: #fff;
         margin-top: 10px;
         font-size: 14px;
+        &_date {
+
+        }
+        &_hours {
+            margin-left: 10px;
+        }
+    }
+    .btn {
+        padding: 0 6px;
     }
 }
 
 .dashboard-pairs {
-    padding: 10px;
+    padding: 10px 16px;
     display: flex;
-    width: calc(70% - 10px);
+    width: calc(66% - 12px);
     justify-content: space-between;
     align-items: center;
     height: 80px;
@@ -105,6 +114,9 @@ main {
         .table-body__col {
             font-size: 14px;
         }
+        &-head {
+            height: 20px;
+        }
     }
     .dropdown-content {
         width: 116px;
@@ -112,16 +124,21 @@ main {
 }
 
 .dashboard-balance {
-    padding: 10px;
-    width: calc(50% - 10px);
+    padding: 7px 15px 7px 13px;
+    width: calc(53% - 10px);
     position: relative;
     height: 80px;
     &__item {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        margin-bottom: 5px;
+        padding-right: 8px;
+        &:first-child {}
         &_title {
             font-size: 14px;
             color: #fff;
+            font-weight: 300;
         }
         &_value {
             font-size: 12px;
@@ -138,6 +155,7 @@ main {
         margin-top: 5px;
     }
     .toggle-content {
+        padding-bottom: 18px;
         .btn {
             float: right;
             margin-top: 10px;
@@ -160,7 +178,8 @@ main {
         color: #7f8fa4;
         font-size: 12px;
 
-        margin-top: 10px;
+        margin-top: 18px;
+        margin-bottom: 3px;
         &:first-child {
             margin-top: 0;
         }
@@ -173,11 +192,12 @@ main {
 
 .dashboard-auth {
     $c: &;
-    width: calc(50% - 10px);
+    width: calc(47% - 10px);
     flex-wrap: wrap;
     display: flex;
     justify-content: flex-end;
-    padding-right: 20px;
+    align-items: baseline;
+    padding-right: 16px;
     &__email {
         font-size: 14px;
         color: #fff;
@@ -202,7 +222,14 @@ main {
         display: none;
     }
     .dashboard-theme {
-        // width: 100%;
+        margin-top: 3px; // width: 100%;
+        margin-bottom: 4px;
+    }
+    .dropdown {
+        margin-top: 8px;
+        .dropdown-value {
+            padding: 0 15px 0 7px;
+        }
     }
 }
 
@@ -213,17 +240,31 @@ main {
     justify-content: space-between;
     flex-wrap: wrap;
     height: 100%; // height: calc(100vh - 160px);
+    &__left {
+        width: calc(63% - 15px);
+    }
+    &__right {
+        width: calc(37% + 5px);
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .dashboard-chart {
-    width: calc(60% - 10px); // height: calc(50%);
+    // width: calc(60% - 10px); // height: calc(50%);
+    // width: calc(63% - 15px);
+    width: 100%;
     height: calc(50vh - 10px);
     overflow: hidden;
+    padding: 14px 12px 14px 20px;
     &__panel {
         justify-content: space-between;
         align-items: center;
         display: flex;
-        padding: 3px 10px;
+        padding: 2px 8px;
+        .dropdown {
+            width: 60px;
+        }
         &_buttons {
 
             display: flex;
@@ -231,27 +272,24 @@ main {
             &_btn {
                 color: #fff;
                 font-size: 14px;
-                padding: 0px 5px;
+                padding: 0 9px;
                 background: #516173;
                 min-width: 28px;
-                border: solid 1px transparent;
+                border: 1px solid transparent;
                 margin-left: 7px;
                 cursor: pointer;
-                height: 25px;
-                line-height: 23px;
-                transition: 0.3s;
+                height: 30px;
+                line-height: 29px;
                 &.active {
                     border: solid 1px #1bb934;
                     background: #273142;
                 }
-                &:hover {
-
-                }
+                &:hover {}
                 &.full-size {
                     padding: 0;
                     position: relative;
                     img {
-                        width: 17px;
+                        width: 16px;
                         margin: auto;
                         display: block;
                         position: absolute;
@@ -274,21 +312,23 @@ main {
 }
 
 .dashboard-trade-log {
-    width: calc(20% - 10px);
+    // width: calc(20% - 10px);
+    width: calc(53% - 10px);
     height: calc(50vh - 10px);
-    padding: 10px 20px;
+    padding: 10px 8px 10px 2px;
     &__tabs {
-        width: 80px;
+        width: 84px;
         display: flex;
         justify-content: space-between;
         float: right;
+        margin-top: 3px;
+        padding-right: 8px;
         &_item {
             cursor: pointer;
             width: 22px;
             height: 22px;
             background: #516173;
-            border: 1px solid transparent;
-            transition: 0.3s;
+            border: 1px solid transparent; // transition: 0.3s;
             img {
                 width: 100%;
                 height: 100%;
@@ -305,54 +345,76 @@ main {
         display: flex;
         justify-content: space-between;
         padding: 10px;
-        margin: 5px 0;
+        margin: 8px 0;
+        font-size: 14px;
         div {
             width: calc(100% / 3);
             text-align: right;
+            font-weight: 600;
             &:first-child {
                 text-align: left;
+                font-weight: 300;
             }
         }
     }
-
+    .dashboard-block__title {
+        padding-left: 11px;
+    }
     .table {
         height: calc(100% - 30px);
         overflow: auto;
+        margin-top: 7px;
+        &-head {
+            height: 20px;
+        }
         &-body {
             height: calc(100% - 30px);
+            &__row {
+                height: 18px;
+            }
         }
     }
 }
 
 .dashboard-trade-history {
-    width: 20%;
+    width: calc(48% - 5px);
     height: calc(50vh - 10px);
-    padding: 10px 20px;
+    padding: 10px 8px 10px 2px;
+    .dashboard-block__title {
+        padding-left: 11px;
+    }
     .table {
         height: calc(100% - 30px);
         overflow: auto;
+        margin-top: 7px;
+        &-head {
+            height: 20px;
+        }
         &-body {
             height: calc(100% - 30px);
+            &__row {
+                height: 18px;
+            }
         }
     }
 }
 
 .dashboard-orders {
-    margin-top: 10px;
-    width: calc(60% - 10px);
+    margin-top: 10px; // width: calc(60% - 10px);
+    width: 100%;
     height: calc(36vh - 10px);
-    padding-right: 10px;
+    padding: 14px 6px 20px 15px;
     &__tabs {
         display: flex;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         &_item {
-            padding: 10px;
+            padding: 7px 6px 5px 6px;
             background: #516173;
-            margin-right: 10px;
+            margin-right: 7px;
             color: #fff;
             cursor: pointer;
             border: 1px solid transparent;
-            transition: 0.3s;
+            font-size: 14px;
             &.active {
                 background: no-repeat;
                 border: 1px solid #1bb934;
@@ -360,7 +422,7 @@ main {
         }
     }
     .table {
-        height: calc(100% - 42px);
+        height: calc(100% - 39px);
         &-body {
             height: calc(100% - 72px);
         }
@@ -381,25 +443,45 @@ main {
             justify-content: space-between;
         }
     }
+    .table-filter {
+        .dropdown {
+            width: 57px;
+            margin-right: 15px;
+        }
+    }
+    .table-head {
+        height: 34px;
+    }
+
+    .table-body__row {
+        height: 28px;
+    }
 }
 
 .dashboard-limit {
-    width: 40%;
+    // width: 40%;
+    width: 100%;
     height: calc(36vh - 10px);
     margin-top: 10px;
-
+    padding: 12px 13px 20px 14px;
+    .dashboard-block__title {
+        font-size: 20px;
+        font-weight: 400;
+        margin-top: 5px;
+        letter-spacing: 1px;
+    }
     &__buy {
         width: calc(50% - 5px);
         padding: 10px;
-        .dashboard-block__title {
-            text-align: center;
+        .dashboard-block__title { 
+        text-align: center;
         }
     }
     &__sell {
         width: calc(50% - 5px);
         padding: 10px;
-        .dashboard-block__title {
-            text-align: center;
+        .dashboard-block__title { 
+        text-align: center;
         }
     }
     &__wrapper {
@@ -407,11 +489,13 @@ main {
         // justify-content: space-between;
         // flex-wrap: wrap;
         height: calc(100% - 20px);
+        margin-top: 9px;
 
         .simplebar-content {
             display: flex; // width: 100%; 
             flex-wrap: wrap;
             justify-content: space-between;
+            align-items: flex-start;
         }
     }
     &__balance {
@@ -419,6 +503,10 @@ main {
         color: #7f8fa4;
         display: flex;
         justify-content: space-between;
+        span {
+            font-size: 12px;
+            padding-right: 14px;
+        }
     }
     &__total {
         margin-top: 10px;
@@ -428,6 +516,8 @@ main {
         justify-content: space-between;
         &_value {
             color: #ffffff;
+            padding-right: 14px;
+            font-size: 12px;
         }
     }
     &__subtitle {
@@ -437,10 +527,11 @@ main {
     }
     .btn {
         width: 100%;
-        margin-top: 10px;
+        margin-top: 7px;
+        height: 36px;
     }
     form {
-        margin-top: 10px;
+        margin-top: 16px;
         .input {
             position: relative;
             width: 100%;
@@ -462,7 +553,7 @@ main {
                 }
             }
             input {
-                padding: 5px;
+                padding: 5px 5px 2px 11px;
                 border: none;
                 background: none;
                 outline: none;
@@ -482,6 +573,7 @@ main {
                 justify-content: space-between;
                 &_extra {
                     font-size: 12px;
+                    padding-right: 13px;
                 }
             }
             &__tag {
@@ -509,6 +601,109 @@ main {
 .simplebar-scrollbar:before {
     background: #273142;
 }
+
+
+#ui-datepicker-div {
+
+    // .ui-datepicker {
+    font-family: 'ProximaNova', sans-serif;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    .ui-widget-header {
+        background: #516173;
+        border: none;
+        border-radius: 0;
+    }
+    .ui-datepicker-title {
+        color: #fff;
+        font-weight: 400;
+    }
+    table {
+        margin-bottom: 0;
+    }
+    thead {
+        background-color: #516173;
+        color: #fff;
+        font-size: 10px;
+        th {
+            font-weight: 300;
+        }
+    }
+    tbody {
+        font-size: 10px;
+        td {
+            padding: 4px;
+        }
+    }
+    .ui-datepicker-calendar {
+        background: #e2e7ee;
+    }
+
+    .ui-state-default {
+        padding: 4px;
+        width: 22px;
+        text-align: center;
+        border: 1px solid transparent;
+        background: none;
+        &.ui-state-highlight {
+            background: #516173;
+            border-color: transparent;
+            color: #fff;
+            border-radius: 100%;
+        }
+        &.ui-state-active {
+            background: #39b54a;
+            border-color: transparent;
+            color: #fff;
+            border-radius: 100%;
+        }
+    } // }
+    .ui-datepicker-prev {
+        background: none!important;
+        border: none!important;
+        left: 2px;
+        top: 2px;
+        cursor: pointer;
+        .ui-icon {
+            background-image: none;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-right: 6px solid #e2e7ee;
+            left: 10px!important;
+            top: 5px;
+        }
+    }
+
+    .ui-datepicker-next {
+        background: none!important;
+        border: none!important;
+        right: 2px;
+        top: 2px;
+        cursor: pointer;
+        .ui-icon {
+            background-image: none;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 6px solid #e2e7ee;
+            right: 10px!important;
+            top: 5px;
+        }
+    }
+}
+
 
 
 

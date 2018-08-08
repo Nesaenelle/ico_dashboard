@@ -35,7 +35,7 @@
 
     ELEM.prototype.find = function(selector) {
         var el = this.el.querySelector(selector);
-        return new ELEM({ el: el });
+        return el ? new ELEM({ el: el }) : null;
     };
 
     ELEM.prototype.findAll = function(selector) {
@@ -94,6 +94,28 @@
         this[name] = new params.constructor();
     };
 
+    API.add('clock', {
+        constructor: function() {
+            var self = this;
+            this.clock = $.find('[data-clock]');
+            this.date = this.clock.find('[data-clock-date]');
+            this.time = this.clock.find('[data-clock-time]');
+            var self = this;
+
+            this.monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"
+            ];
+            self.update();
+            setInterval(function() {
+                self.update();
+            }, 1000);
+        },
+        update: function() {
+            var date = new Date();
+            this.date.el.innerHTML = this.monthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+            this.time.el.innerHTML = date.toTimeString().split(' ')[0];
+        }
+    });
 
     API.add('themeSwitcher', {
         constructor: function() {
@@ -199,7 +221,7 @@
                             },
                             style: {
                                 color: '#f1f4f8',
-                                 fontSize: 12
+                                fontSize: 12
                             }
                         }
                     },
@@ -269,6 +291,19 @@
                 var valueElem = dropdown.find('[data-dropdown-value]');
                 var contentElem = dropdown.find('[data-dropdown-content]');
                 var items = dropdown.findAll('[data-dropdown-item]');
+                var input = dropdown.find('[data-dropdown-content-input]');
+
+                if (input) {
+                    input.addEvent('keyup', function(e) {
+                        items.forEach(function(item) {
+                            if (item.el.innerHTML.toUpperCase().indexOf(e.target.value.toUpperCase().trim()) > -1) {
+                                item.el.style.display = 'block';
+                            } else {
+                                item.el.style.display = 'none';
+                            }
+                        });
+                    });
+                }
 
                 valueElem.addEvent('click', function(e) {
                     e.stopPropagation();
@@ -309,8 +344,8 @@
             var ordersOpenList = $.find('#orders-list-open').el;
             var ordersHistoryList = $.find('#orders-list-history').el;
 
-            self.addItems(tpl1, tradeLogSellList, 30);
-            self.addItems(tpl2, tradeLogBuyList, 30);
+            self.addItems(tpl1, tradeLogSellList, 11);
+            self.addItems(tpl2, tradeLogBuyList, 11);
             self.addItems(tpl3, tradeHistory, 30);
             setTimeout(function() {
                 self.addItems(tpl4, ordersOpenList, 15);
@@ -406,6 +441,14 @@
                 var formInst = new Form(this.activeModal.find('#sign-in-form').el);
                 formInst.onSubmit(function() {
                     $.find('.dashboard-auth').addClass('authorized');
+                    self.closeModal();
+                });
+            }
+
+            if (id === 'sign-up') {
+                var formInst = new Form(this.activeModal.find('#sign-up-form').el);
+                formInst.onSubmit(function() {
+                    // $.find('.dashboard-auth').addClass('authorized');
                     self.closeModal();
                 });
             }
@@ -526,17 +569,17 @@
                 pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 break;
 
-                // case 'login':
-                //     pattern = /^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$/;
-                //     break;
+            case 'login':
+                pattern = /^(?=.*[A-Za-z0-9]$)[A-Za-z][A-Za-z\d.-]{0,19}$/;
+                break;
 
             case 'password':
                 pattern = /^(?=.*[a-zA-Z0-9])(?=.*).{7,40}$/;
                 break;
 
-                // case 'checkbox':
-                //     pattern = /^on$/;
-                //     break;
+            case 'checkbox':
+                pattern = /^on$/;
+                break;
             case 'number':
                 pattern = /^[0-9.,]+$/;
                 break;
@@ -575,5 +618,4 @@
 
 }($));
 
-$(".data-picker").datepicker();
-
+$(".data-picker").datepicker({ dateFormat: 'dd-M-yy' });
