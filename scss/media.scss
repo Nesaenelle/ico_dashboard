@@ -72,6 +72,15 @@
 }
 
 @media screen and (max-width: 768px) {
+    .dashboard-status {
+        padding-left: 0;
+    }
+    .dashboard-auth {
+        padding-right: 0;
+    }
+    .dashboard-block {
+        padding: 10px;
+    }
     .dashboard-container__right {
         flex-wrap: wrap;
     }
@@ -81,6 +90,15 @@
     }
     .dashboard-trade-history {
         width: 100%;
+    }
+    .dashboard-pairs .table .table-body__col {
+        font-size: 12px;
+    }
+    .dashboard-pairs {
+        padding: 10px;
+    }
+    body {
+        padding: 13px 10px 10px;
     }
 }
 
