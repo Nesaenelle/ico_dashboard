@@ -6,38 +6,86 @@
 // .mobile {
 //     display: none;
 // }
-@media screen and (max-width: 1800px) {
+@media screen and (max-width: 1800px) {}
 
-}
+@media screen and (max-width: 1600px) {}
 
-@media screen and (max-width: 1600px) {
-  
-}
-
-@media screen and (max-width: 1440px) {
- 
-}
+@media screen and (max-width: 1440px) {}
 
 @media screen and (max-width: 1280px) {
- 
+	main {
+		margin-bottom: 20px;
+	}
+    .dashboard-header {    
+        .dashboard-balance,
+        .dashboard-pairs {
+            display: none;
+        }
+    }
+    .dashboard-auth, .dashboard-status{
+    	width: 100%;
+    }
+    .dashboard-header__right {
+        justify-content: flex-end;
+    }
+    .dashboard-container__left {
+        width: 100%;
+    }
+    .dashboard-container__right {
+        width: 100%;
+        margin-top: 8px;
+    }
+    .dashboard-orders {
+        height: 396px;
+    }
+    .dashboard-limit {
+    	margin-top: 0;
+        height: 340px;
+    }
+    .mobile-sub-header {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+        padding-right: 12px;
+        .dashboard-pairs {
+            width: 100%;
+            margin-bottom: 8px;
+        }
+        .dashboard-balance {
+            width: 100%;
+        }
+    }
+
 }
 
 @media screen and (max-width: 980px) {
-   
+    .dashboard-pairs {
+        height: auto;
+        flex-wrap: wrap;
+        .table  {
+            margin-top: 8px;
+            width: 100%;
+        }
+     
+    }
 }
 
 @media screen and (max-width: 768px) {
-
+    .dashboard-container__right {
+        flex-wrap: wrap;
+    }
+    .dashboard-trade-log {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .dashboard-trade-history {
+        width: 100%;
+    }
 }
 
-@media screen and (max-width: 600px) {
-   
-}
+@media screen and (max-width: 600px) {}
 
-@media screen and (max-width: 480px) {
-   
-}
+@media screen and (max-width: 480px) {}
 
-@media screen and (max-width: 375px) {
-
-}
+@media screen and (max-width: 375px) {}

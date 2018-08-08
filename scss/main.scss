@@ -39,6 +39,10 @@ main {
     color: #7f8fa4!important;
 }
 
+.mobile-sub-header {
+    display: none;
+}
+
 .dashboard-block {
     background: #273142;
     padding: 20px; // overflow: auto;
@@ -302,7 +306,7 @@ main {
     }
     .canvas {
         width: 100%;
-        height: calc(100% - 15px);
+        height: calc(100% - 20px);
         .highcharts-credits {
             display: none;
         }
@@ -425,6 +429,7 @@ main {
     }
     .table {
         height: calc(100% - 39px);
+
         &-body {
             height: calc(100% - 72px);
         }

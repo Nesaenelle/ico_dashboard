@@ -21,6 +21,21 @@
         color: #516173;
     }
 
+    .dashboard-limit .dashboard-block__inner.active {
+        background: #e2e7ee;
+    }
+    .dashboard-limit .dashboard-block__inner {
+        background: #c5d0de;
+    }
+    
+    .dashboard-limit .dashboard-block__inner.active .dashboard-block__title {
+        color: #516173;
+    }
+
+    .dashboard-limit .dashboard-block__inner.active form .input input {
+        border-color: #7f8fa4;
+    }
+
     .dashboard-status__time {
         color: #354052;
     }
