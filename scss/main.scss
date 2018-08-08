@@ -348,12 +348,13 @@ main {
         margin: 8px 0;
         font-size: 14px;
         div {
-            width: calc(100% / 3);
+            width: 40%;
             text-align: right;
             font-weight: 600;
             &:first-child {
                 text-align: left;
                 font-weight: 300;
+                width: 20%;
             }
         }
     }

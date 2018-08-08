@@ -251,6 +251,10 @@
             var tabs = $.find('[data-trade]');
             var tradeScroller = $.find('#trade-scroller');
             var items = tabs.findAll('[data-trade-item]');
+            var title = tabs.find('[data-trade-title]').el;
+            var tradeLogSellList = $.find('#trade-log-sell-list').el;
+            var tradeLogBuyList = $.find('#trade-log-buy-list').el;
+
             items.forEach(function(tab) {
                 tab.addEvent('click', function(e) {
                     items.forEach(function(a) { a.removeClass('active') });
@@ -261,14 +265,23 @@
                         case '1':
                             var tradeScrollerContent = tradeScroller.find('.simplebar-scroll-content').el;
                             tradeScrollerContent.scrollTop = tradeScrollerContent.scrollHeight / 2 - tradeScrollerContent.clientHeight / 2;
+                            title.innerHTML = 'Trade Log';
+                            tradeLogSellList.style.display = 'block';
+                            tradeLogBuyList.style.display = 'block';
                             break;
                         case '2':
                             var tradeScrollerContent = tradeScroller.find('.simplebar-scroll-content').el;
                             tradeScrollerContent.scrollTop = 0;
+                            title.innerHTML = 'Sell Log';
+                            tradeLogSellList.style.display = 'block';
+                            tradeLogBuyList.style.display = 'none';
                             break;
                         case '3':
                             var tradeScrollerContent = tradeScroller.find('.simplebar-scroll-content').el;
                             tradeScrollerContent.scrollTop = tradeScrollerContent.scrollHeight;
+                            title.innerHTML = 'Buy Log';
+                            tradeLogSellList.style.display = 'none';
+                            tradeLogBuyList.style.display = 'block';
                             break;
                     }
                 });
@@ -347,13 +360,13 @@
             self.addItems(tpl1, tradeLogSellList, 11);
             self.addItems(tpl2, tradeLogBuyList, 11);
             self.addItems(tpl3, tradeHistory, 30);
-            setTimeout(function() {
+            // setTimeout(function() {
                 self.addItems(tpl4, ordersOpenList, 15);
                 self.addItems(tpl5, ordersHistoryList, 15);
 
                 new SimpleBar(ordersOpenList, { autoHide: false });
                 new SimpleBar(ordersHistoryList, { autoHide: false });
-            }, 1000);
+            // }, 200);
         },
         addItems: function(tpl, elem, count) {
             var template = Handlebars.compile(tpl);
@@ -372,13 +385,27 @@
             var elem;
 
             btns.forEach(function(btn) {
+                var id = btn.el.getAttribute('data-toggle');
+                var content = $.find('[data-toggle-content="' + id + '"]');
                 btn.addEvent('click', function(e) {
                     e.stopPropagation();
-                    var id = btn.el.getAttribute('data-toggle');
                     if (elem) elem.removeClass('active');
-                    elem = $.find('[data-toggle-content="' + id + '"]');
+                    elem = content;
                     elem.toggleClass('active');
                 });
+
+                var closeBtn = content.find('[data-toggle-content-close]');
+                var action = content.find('[data-toggle-content-action]');
+                if (closeBtn) {
+                    closeBtn.addEvent('click', function() {
+                        elem.removeClass('active');
+                    });
+                }
+                if (action) {
+                    action.addEvent('click', function() {
+                        //
+                    });
+                }
             });
 
             window.addEventListener('click', function(e) {
