@@ -90,9 +90,7 @@ main {
         color: #fff;
         margin-top: 10px;
         font-size: 14px;
-        &_date {
-
-        }
+        &_date {}
         &_hours {
             margin-left: 10px;
         }
@@ -308,6 +306,9 @@ main {
         .highcharts-credits {
             display: none;
         }
+        .highcharts-scrollbar-track {
+            display: none;
+        }
     }
 }
 
@@ -465,6 +466,30 @@ main {
     height: calc(36vh - 10px);
     margin-top: 10px;
     padding: 12px 13px 20px 14px;
+    .dashboard-block__inner {
+        background: none;
+        .dashboard-block__title {
+            color: #7f8fa4;
+        }
+        .btn {
+            background: #516173;
+        }
+        form .input input {
+            border-color: #7f8fa4;
+        }
+        &.active {
+            background: #333f52;
+            .dashboard-block__title {
+                color: #fff;
+            }
+            .btn {
+                background: #39b54a;
+            }
+            form .input input {
+                border-color: #fff;
+            }
+        }
+    }
     .dashboard-block__title {
         font-size: 20px;
         font-weight: 400;
@@ -474,15 +499,15 @@ main {
     &__buy {
         width: calc(50% - 5px);
         padding: 10px;
-        .dashboard-block__title { 
-        text-align: center;
+        .dashboard-block__title {
+            text-align: center;
         }
     }
     &__sell {
         width: calc(50% - 5px);
         padding: 10px;
-        .dashboard-block__title { 
-        text-align: center;
+        .dashboard-block__title {
+            text-align: center;
         }
     }
     &__wrapper {

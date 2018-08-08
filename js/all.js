@@ -416,6 +416,19 @@
         }
     });
 
+    API.add('limit', {
+        constructor: function() {
+            var limit = $.find('[data-limit]');
+            var items = limit.findAll('[data-limit-item]');
+            items.forEach(function(item){
+                item.addEvent('click', function() {
+                    items.forEach(function(a) { a.removeClass('active') });
+                    item.addClass('active');
+                });
+            });
+        }
+    });
+
 
     API.add('modal', {
         constructor: function() {
