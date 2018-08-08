@@ -268,6 +268,7 @@
                             title.innerHTML = 'Trade Log';
                             tradeLogSellList.style.display = 'block';
                             tradeLogBuyList.style.display = 'block';
+                            goCenter();
                             break;
                         case '2':
                             var tradeScrollerContent = tradeScroller.find('.simplebar-scroll-content').el;
@@ -288,10 +289,14 @@
 
             });
 
-            setTimeout(function() {
-                var tradeScrollerContent = tradeScroller.find('.simplebar-scroll-content').el;
-                tradeScrollerContent.scrollTop = tradeScrollerContent.scrollHeight / 2 - tradeScrollerContent.clientHeight / 2;
-            }, 0);
+            goCenter();
+            function goCenter() {          
+                setTimeout(function() {
+                    var tradeScrollerContent = tradeScroller.find('.simplebar-scroll-content').el;
+                    tradeScrollerContent.scrollTop = tradeScrollerContent.scrollHeight / 2 - tradeScrollerContent.clientHeight / 2;
+                }, 0);
+            }
+
         }
     });
 
