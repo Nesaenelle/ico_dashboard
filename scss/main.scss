@@ -7,18 +7,10 @@ body {
 
 main {
     min-height: calc(100% - 120px);
+    margin-bottom: 15px;
 }
 
-// .container {
-//     width: 100%;
-//     max-width: 1920px;
-//     margin: auto;
-//     padding: 0 25px;
-// }
-[data-animate] {
-    opacity: 0;
-    animation-fill-mode: forwards;
-}
+
 
 [data-tabs-content] {
     display: none;
@@ -126,8 +118,7 @@ main {
     }
     .dropdown {
         width: 125px;
-    }
-    // .dropdown-content {
+    } // .dropdown-content {
     //     width: 116px;
     // }
 }
@@ -184,7 +175,7 @@ main {
     visibility: hidden;
     transition: 0.3s;
     z-index: 99;
-        box-shadow: 0 20px 40px 0 rgba(0,0,0,.5);
+    box-shadow: 0 20px 40px 0 rgba(0, 0, 0, .5);
     &__title {
         color: #7f8fa4;
         font-size: 12px;
@@ -271,7 +262,7 @@ main {
     // width: calc(60% - 10px); // height: calc(50%);
     // width: calc(63% - 15px);
     width: 100%;
-    height: calc(50vh - 10px);
+    height: 477px;
     overflow: hidden;
     padding: 14px 12px 14px 20px;
     &.full-screen {
@@ -342,7 +333,7 @@ main {
 .dashboard-trade-log {
     // width: calc(20% - 10px);
     width: calc(53% - 10px);
-    height: calc(50vh - 10px);
+    height: 477px;
     padding: 10px 8px 10px 2px;
     &__tabs {
         width: 84px;
@@ -398,7 +389,7 @@ main {
             &__col {
                 white-space: nowrap;
                 font-size: 12px;
-                white-space: nowrap; 
+                white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
@@ -414,7 +405,7 @@ main {
 
 .dashboard-trade-history {
     width: calc(48% - 5px);
-    height: calc(50vh - 10px);
+    height: 477px;
     padding: 10px 8px 10px 2px;
     .dashboard-block__title {
         padding-left: 11px;
@@ -428,7 +419,7 @@ main {
             &__col {
                 white-space: nowrap;
                 font-size: 12px;
-                white-space: nowrap; 
+                white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
@@ -445,7 +436,7 @@ main {
 .dashboard-orders {
     margin-top: 8px; // width: calc(60% - 10px);
     width: 100%;
-    height: calc(36vh - 10px);
+    height: 350px;
     padding: 14px 6px 20px 15px;
     &__tabs {
         display: flex;
@@ -508,7 +499,7 @@ main {
 .dashboard-limit {
     // width: 40%;
     width: 100%;
-    height: calc(36vh - 10px);
+    height: 350px;
     margin-top: 8px;
     padding: 12px 13px 20px 14px;
     .dashboard-block__inner {
@@ -780,6 +771,7 @@ main {
 .simplebar-track.horizontal {
     display: none;
 }
+
 // .canvas {
 //     height: 400px;
 // }
