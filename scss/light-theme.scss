@@ -25,7 +25,7 @@
         background: #e2e7ee;
     }
     .dashboard-limit .dashboard-block__inner {
-        background: #c5d0de;
+        background: #F1F4F8;
     }
     
     .dashboard-limit .dashboard-block__inner.active .dashboard-block__title {
@@ -124,5 +124,11 @@
     .checkbox__right-img {
         background: url(img/dart-white.svg);
         background-size: cover;
+    }
+    .toggle-content {
+        background: #E2E7EE;
+    }
+    .dashboard-orders .toggle-content__title {
+        color: #7f8fa4;
     }
 }

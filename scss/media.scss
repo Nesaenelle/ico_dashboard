@@ -8,15 +8,26 @@
 // }
 @media screen and (max-width: 1800px) {}
 
-@media screen and (max-width: 1600px) {}
+@media screen and (max-width: 1600px) {
+    .dashboard-pairs {
+        width: 69%;
+    }
+}
 
-@media screen and (max-width: 1440px) {}
+@media screen and (max-width: 1440px) {
+    .dashboard-pairs {
+        .table .table-body__col {
+            font-size: 12px;
+        }
+    }
+}
 
 @media screen and (max-width: 1280px) {
     main {
-        margin-bottom: 20px;
+        margin-bottom: 8px;
     }
     .dashboard-header {
+        height: 85px;
         .dashboard-balance,
         .dashboard-pairs {
             display: none;
@@ -48,7 +59,7 @@
         justify-content: space-between;
         flex-wrap: wrap;
         margin-bottom: 8px;
-        padding-right: 12px;
+        padding: 0 10px 10px 10px;
         .dashboard-pairs {
             width: 100%;
             margin-bottom: 8px;
@@ -56,6 +67,26 @@
         .dashboard-balance {
             width: 100%;
         }
+    }
+    .dashboard-pairs .table .table-body__col {
+        font-size: 14px;
+    }
+
+    body {
+        padding: 8px 3px 10px;
+    }
+    .dashboard-header {
+        margin-bottom: 0;
+    }
+
+    .dashboard-chart {
+        height: 524px;
+        padding: 14px 10px 14px 10px;
+    }
+
+    .dashboard-trade-history,
+    .dashboard-trade-log {
+        height: 524px;
     }
 }
 
@@ -83,24 +114,17 @@
 
 @media screen and (max-width: 768px) {
     .dashboard-status {
-        padding-left: 0;
+        // padding-left: 0;
     }
     .dashboard-auth {
-        padding-right: 0;
-    }
-    .dashboard-block {
-        padding: 10px;
-    }
+        // padding-right: 0;
+    } // .dashboard-block {
+    //     padding: 10px;
+    // }
     .dashboard-container__right {
         flex-wrap: wrap;
     }
-    .dashboard-trade-log {
-        width: 100%;
-        margin-bottom: 8px;
-    }
-    .dashboard-trade-history {
-        width: 100%;
-    }
+
     .dashboard-pairs .table .table-body__col {
         font-size: 12px;
     }
@@ -116,8 +140,15 @@
             min-width: 500px;
         }
     }
-    body {
-        padding: 13px 10px 10px;
+}
+
+@media screen and (max-width: 680px) {
+    .dashboard-trade-log {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    .dashboard-trade-history {
+        width: 100%;
     }
 }
 

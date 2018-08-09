@@ -77,7 +77,8 @@
 
 
     function API_CONSTRUCTOR() {
-
+        this.promises = {};
+        this.collection = [];
     };
 
     API_CONSTRUCTOR.prototype.add = function(name, params) {
@@ -91,7 +92,22 @@
             }
         }
 
-        this[name] = new params.constructor();
+
+        this.collection.push({ name: name, params: params });
+        this.promises[name] = new Promise(function(resolve, reject) {
+            resolve();
+        });
+    };
+
+    API_CONSTRUCTOR.prototype.on = function(name) {
+        return this.promises[name];
+    };
+
+    API_CONSTRUCTOR.prototype.init = function(name) {
+        var self = this;
+        this.collection.forEach(function(o) {
+            self[o.name] = new o.params.constructor();
+        });
     };
 
     API.add('clock', {
@@ -163,22 +179,43 @@
     API.add('chart', {
         constructor: function() {
             var btns = $.findAll('[data-chart-item]');
+            var fullSize = $.find('[data-chart-full-size]');
+            var chartContainer = $.find('[data-chart]');
+            var chartInstance;
+            var jsonData;
             btns.forEach(function(btn) {
                 btn.addEvent('click', function(e) {
-
                     btns.forEach(function(a) { a.removeClass('active') });
                     btn.addClass('active');
-
-                    // var id = e.currentTarget.getAttribute('data-tabs-item');
-
+                    var id = e.currentTarget.getAttribute('data-chart-item');
+                    switch (id) {
+                        case 'trade':
+        
+                            break;
+                        case 'depth':
+                            break;
+                    }
                 });
 
             });
 
+            fullSize.addEvent('click', function() {
+                chartContainer.toggleClass('full-screen');
+
+                        // chartInstance.redraw()
+                        // chartInstance.series[0].setData(jsonData,true);
+                        // chartInstance.destroy();
+                       // setInterval(function() {
+                    
+                        chartInstance.setSize(null, null, false);
+                       // }, 500);
+
+            });
 
             jQuery.getJSON('js/data.json', function(data) {
                 // create the chart
-                Highcharts.stockChart('container', {
+                jsonData = data;
+                chartInstance = Highcharts.stockChart('container', {
                     rangeSelector: {
                         selected: 1
                     },
@@ -242,6 +279,7 @@
                         }
                     }]
                 });
+
             });
         }
     });
@@ -290,7 +328,8 @@
             });
 
             goCenter();
-            function goCenter() {          
+
+            function goCenter() {
                 setTimeout(function() {
                     var tradeScrollerContent = tradeScroller.find('.simplebar-scroll-content').el;
                     tradeScrollerContent.scrollTop = tradeScrollerContent.scrollHeight / 2 - tradeScrollerContent.clientHeight / 2;
@@ -326,7 +365,7 @@
                 valueElem.addEvent('click', function(e) {
                     e.stopPropagation();
                     self.closeAll();
-                    dropdown.toggleClass('opened');
+                    dropdown.addClass('opened');
                 });
 
                 items.forEach(function(item) {
@@ -356,22 +395,30 @@
             var tpl3 = $.find("#trade-history-template").el.innerHTML;
             var tpl4 = $.find("#order-list-open-template").el.innerHTML;
             var tpl5 = $.find("#order-list-history-template").el.innerHTML;
+            var tpl6 = $.find("#order-list-funds-template").el.innerHTML;
             var tradeHistory = $.find('#trade-history').el;
             var tradeLogSellList = $.find('#trade-log-sell-list').el;
             var tradeLogBuyList = $.find('#trade-log-buy-list').el;
             var ordersOpenList = $.find('#orders-list-open').el;
             var ordersHistoryList = $.find('#orders-list-history').el;
+            var ordersFundsList = $.find('#orders-list-funds').el;
 
             self.addItems(tpl1, tradeLogSellList, 11);
             self.addItems(tpl2, tradeLogBuyList, 11);
             self.addItems(tpl3, tradeHistory, 30);
             // setTimeout(function() {
-                self.addItems(tpl4, ordersOpenList, 15);
-                self.addItems(tpl5, ordersHistoryList, 15);
+            self.addItems(tpl4, ordersOpenList, 15);
+            self.addItems(tpl5, ordersHistoryList, 15);
+            self.addItems(tpl6, ordersFundsList, 15);
 
-                new SimpleBar(ordersOpenList, { autoHide: false });
-                new SimpleBar(ordersHistoryList, { autoHide: false });
+            new SimpleBar(ordersOpenList, { autoHide: false });
+            new SimpleBar(ordersHistoryList, { autoHide: false });
+            new SimpleBar(ordersFundsList, { autoHide: false });
             // }, 200);
+
+            // API.on('toggle').then(function(toggle) {
+            //     API.toggle.deligate();
+            // });
         },
         addItems: function(tpl, elem, count) {
             var template = Handlebars.compile(tpl);
@@ -394,6 +441,7 @@
                 var content = $.find('[data-toggle-content="' + id + '"]');
                 btn.addEvent('click', function(e) {
                     e.stopPropagation();
+                    console.log(content);
                     if (elem) elem.removeClass('active');
                     elem = content;
                     elem.toggleClass('active');
@@ -425,7 +473,7 @@
         constructor: function() {
             var limit = $.find('[data-limit]');
             var items = limit.findAll('[data-limit-item]');
-            items.forEach(function(item){
+            items.forEach(function(item) {
                 item.addEvent('click', function() {
                     items.forEach(function(a) { a.removeClass('active') });
                     item.addClass('active');
@@ -660,7 +708,7 @@
             thousandsSeparator: ','
         });
     });
-
+    API.init();
 }($));
 
 $(".data-picker").datepicker({ dateFormat: 'dd-M-yy' });

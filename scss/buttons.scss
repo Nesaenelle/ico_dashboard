@@ -49,6 +49,9 @@
         background: none;
         color: #7f8fa4;
         font-size: 12px;
+        &:hover {
+            color: #39B54A;
+        }
     }
     &:active {
         transform: translateY(1px);

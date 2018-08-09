@@ -226,9 +226,9 @@
                             </div>
                         </div>
                         <div class="dashboard-chart__panel_buttons">
-                            <div class="dashboard-chart__panel_buttons_btn active" data-chart-item>TradeChart</div>
-                            <div class="dashboard-chart__panel_buttons_btn" data-chart-item>Depth</div>
-                            <div class="dashboard-chart__panel_buttons_btn full-size" data-chart-item><img src="img/full_screen.svg" alt=""></div>
+                            <div class="dashboard-chart__panel_buttons_btn active" data-chart-item="trade">TradeChart</div>
+                            <div class="dashboard-chart__panel_buttons_btn" data-chart-item="depth">Depth</div>
+                            <div class="dashboard-chart__panel_buttons_btn full-size" data-chart-full-size><img src="img/full_screen.svg" alt=""></div>
                         </div>
                     </div>
                     <div id="container" class="canvas"></div>
@@ -307,8 +307,8 @@
                                 <div class="table-head__col">Price</div>
                                 <div class="table-head__col">Fidded %</div>
                                 <div class="table-head__col">
-                                    <button class="btn btn-grey btn-small" data-toggle="2">Cancel All</button>
-                                    <div class="toggle-content" data-toggle-content="2">
+                                    <button class="btn btn-grey btn-small" data-toggle="open-orders">Cancel All</button>
+                                    <div class="toggle-content" data-toggle-content="open-orders">
                                         <div class="toggle-content__title">You really want to cancel all orders?</div>
                                         <div class="toggle-content__buttons">
                                             <button class="btn btn-grey-dark btn-small" data-toggle-content-close>Leave All</button>
@@ -360,6 +360,47 @@
                                 <div class="table-head__col">Status</div>
                             </div>
                             <div class="table-body filled" id="orders-list-history"></div>
+                        </div>
+                        <div class="table col-8" data-tabs-content="3">
+                            <div class="table-filter">
+                                <span class="table-filter__item">
+                                Period
+                                </span>
+                                <div class="dropdown dropdown-green dropdown-small" data-dropdown>
+                                    <div class="dropdown-value" data-dropdown-value>Month</div>
+                                    <div class="dropdown-content" data-dropdown-content>
+                                        <!-- <input type="text"> -->
+                                        <ul>
+                                            <li data-dropdown-item>Day</li>
+                                            <li data-dropdown-item>Week</li>
+                                            <li data-dropdown-item>Month</li>
+                                            <li data-dropdown-item>Year</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-head filled">
+                                <div class="table-head__col">Value</div>
+                                <div class="table-head__col">Pair</div>
+                                <div class="table-head__col">Type</div>
+                                <div class="table-head__col">Amount</div>
+                                <div class="table-head__col">Filled</div>
+                                <div class="table-head__col">Price</div>
+                                <div class="table-head__col">Fidded %</div>
+                                <div class="table-head__col">
+                                    <button class="btn btn-grey btn-small" data-toggle="funds">Cancel All</button>
+                                    <div class="toggle-content" data-toggle-content="funds">
+                                        <div class="toggle-content__title">You really want to cancel all orders?</div>
+                                        <div class="toggle-content__buttons">
+                                            <button class="btn btn-grey-dark btn-small" data-toggle-content-close>Leave All</button>
+                                            <button class="btn btn-green btn-small" data-toggle-content-action>Cancel All</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-body filled" id="orders-list-funds">
+                                <div class="table-empty">Empty</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -515,7 +556,7 @@
             <div class="table-body__col">0.00000000</div>
             <div class="table-body__col">0.00000000</div>
             <div class="table-body__col">0.0099 %</div>
-            <div class="table-body__col grey">Cancel</div>
+            <div class="table-body__col cancel-btn" data-toggle="open-orders">Cancel</div>
         </div>
     </script>
     <script id="order-list-history-template" type="text/x-handlebars-template">
@@ -528,7 +569,19 @@
             <div class="table-body__col">0.00000000</div>
             <div class="table-body__col">0.0099 %</div>
             <div class="table-body__col">9,99999</div>
-            <div class="table-body__col red">Cancel</div>
+            <div class="table-body__col cancel-btn-red">Cancel</div>
+        </div>
+    </script>
+    <script id="order-list-funds-template" type="text/x-handlebars-template">
+        <div class="table-body__row">
+            <div class="table-body__col">28-Jan-2018</div>
+            <div class="table-body__col">BTC/ETH</div>
+            <div class="table-body__col {{className}}">{{text}}</div>
+            <div class="table-body__col">9,999.99999999</div>
+            <div class="table-body__col">0.00000000</div>
+            <div class="table-body__col">0.00000000</div>
+            <div class="table-body__col">0.0099 %</div>
+            <div class="table-body__col cancel-btn" data-toggle="funds">Cancel</div>
         </div>
     </script>
     <!-- <script src="js/jquery-3.3.1.min.js"></script> -->

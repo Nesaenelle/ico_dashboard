@@ -61,6 +61,20 @@
             color: #fff;
             font-size: 12px;
             font-weight: 300;
+            &.cancel-btn {
+                cursor: pointer;
+                color: #7f8fa4;
+                &:hover {
+                    color: #39B54A;
+                }
+            }
+            &.cancel-btn-red {
+                cursor: pointer;
+                color: #f85359;
+                &:hover {
+                    color: #39B54A;
+                }
+            }
         }
         &.filled {
             #{$c}__row:nth-child(even) {
@@ -93,7 +107,19 @@
     &.col-4 {
         .table-head__col,
         .table-body__col {
-            width: 25%;
+            &:first-child {
+                text-align: left;
+                width: 20%;
+            }
+            &:nth-child(2){
+                width: 30%;
+            }
+            &:nth-child(3){
+                width: 30%;
+            }
+            &:nth-child(4){
+                width: 20%;
+            }
         }
     }
 
