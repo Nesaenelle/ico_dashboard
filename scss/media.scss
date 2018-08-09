@@ -33,6 +33,12 @@
             display: none;
         }
     }
+    .dashboard-auth {
+        padding-right: 10px;
+    }
+    .dashboard-status {
+        padding-left: 30px;
+    }
     .dashboard-auth,
     .dashboard-status {
         width: 100%;
@@ -46,6 +52,10 @@
     .dashboard-container__right {
         width: 100%;
         margin-top: 8px;
+    }
+    .dashboard-pairs .table {
+        width: 100%;
+        padding-left: 40px;
     }
     .dashboard-orders {
         height: 396px;
@@ -87,6 +97,10 @@
     .dashboard-trade-history,
     .dashboard-trade-log {
         height: 524px;
+        width: calc(50% - 4px);
+    }
+    .dashboard-container__bottom {
+        flex-direction: column-reverse;
     }
 }
 
@@ -97,6 +111,7 @@
         .table {
             margin-top: 8px;
             width: 100%;
+            padding-left: 0;
         }
     }
 }
@@ -187,6 +202,12 @@
 }
 
 @media screen and (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+    main {
+        margin: 0;
+    }
     .dashboard-header__left {
         width: 100%;
     }
@@ -196,7 +217,11 @@
     .dashboard-status__right {
         // display: none;
     }
+    .dashboard-status {
+        padding-left: 0;
+    }
     .dashboard-header {
+        padding: 12px 0;
         flex-wrap: wrap;
         height: auto;
     }

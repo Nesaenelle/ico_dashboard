@@ -259,6 +259,12 @@ main {
         display: flex;
         justify-content: space-between;
     }
+    &__bottom {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex-wrap: wrap;
+    }
 }
 
 .dashboard-chart {
