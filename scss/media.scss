@@ -105,15 +105,7 @@
 }
 
 @media screen and (max-width: 980px) {
-    .dashboard-pairs {
-        height: auto;
-        flex-wrap: wrap;
-        .table {
-            margin-top: 8px;
-            width: 100%;
-            padding-left: 0;
-        }
-    }
+
 }
 
 @media screen and (max-width: 860px) {
@@ -152,7 +144,7 @@
             overflow: auto;
         }
         .table {
-            min-width: 500px;
+            min-width: 430px;
         }
     }
 }
@@ -165,6 +157,7 @@
     .dashboard-trade-history {
         width: 100%;
     }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -198,6 +191,15 @@
     .table-filter {
         flex-wrap: wrap;
         overflow: hidden;
+    }
+    .dashboard-pairs {
+        height: auto;
+        flex-wrap: wrap;
+        .table {
+            margin-top: 8px;
+            width: 100%;
+            padding-left: 0;
+        }
     }
 }
 
