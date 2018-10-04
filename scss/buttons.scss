@@ -3,7 +3,7 @@
     cursor: pointer;
     border: none;
     position: relative;
-    transition: 0.2s;
+    // transition: 0.2s;
     font-family: Circe, sans-serif;
     position: relative;
     color: #fff;
@@ -35,15 +35,27 @@
     }
     &-green {
         background: #39b54a;
+        text-transform: uppercase;
+        transition: none;
         &:hover:not(:disabled){
             background: darken(#39b54a, 10%);
         }
     }
     &-red {
         background: #f85359;
+        text-transform: uppercase;
+        transition: none;
         &:hover:not(:disabled){
             background: darken(#f85359, 10%);
         }
+    }
+    &-blue {
+
+    }
+    &-orange {
+        background: #f7981c;
+        text-transform: uppercase;
+        transition: none;
     }
     &-toggle {
         background: none;

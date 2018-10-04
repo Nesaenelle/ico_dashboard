@@ -1,13 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>dashboard</title>
+    <link rel="stylesheet" href="style_new.css">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="simplebar.css" />
+    <link rel="stylesheet" href="jquery-ui.css">
 </head>
 
 <body>
@@ -15,26 +17,25 @@
         <div class="dashboard-header__left">
             <div class="dashboard-status">
                 <div class="dashboard-logo"><img src="img/logo.svg" alt=""></div>
-                <div class="dashboard-status__right">
-                    <button class="btn btn-small btn-green" disabled>OPEN TRADE</button>
-                    <!-- <button class="btn btn-small btn-red" disabled>TRADE CLOSED</button> -->
+                <div class="dashboard-status__right">  
+                    <button class="btn" disabled data-status></button>
                     <div class="dashboard-status__time" data-clock>
-                        <span class="dashboard-status__time_date" data-clock-date></span> 
+                        <span class="dashboard-status__time_date" data-clock-date></span>
                         <span class="dashboard-status__time_hours" data-clock-time></span>
                     </div>
                 </div>
             </div>
             <div class="dashboard-pairs dashboard-block__inner">
                 <div class="dropdown dropdown-grey dropdown-big" data-dropdown>
-                    <div class="dropdown-value" data-dropdown-value>BTC / USD</div>
-                    <div class="dropdown-content" data-dropdown-content>
+                    <div class="dropdown-value" data-dropdown-value>BTC / ETH</div>
+                  <!--  <div class="dropdown-content" data-dropdown-content>
                         <input data-dropdown-content-input type="text" placeholder="Value">
                         <ul>
                             <li data-dropdown-item>BTC / ETH 1</li>
                             <li data-dropdown-item>BTC / ETH 2</li>
                             <li data-dropdown-item>BTC / ETH 3</li>
                         </ul>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="table col-4">
                     <div class="table-head">
@@ -45,10 +46,10 @@
                     </div>
                     <div class="table-body">
                         <div class="table-body__row">
-                            <div class="table-body__col">$ 6,100.67</div>
-                            <div class="table-body__col">$ 6,100.67 <span class="green">+3,44%</span></div>
-                            <div class="table-body__col"><span class="green">$ 6,100.67 </span> <span class="red">6,100.67</span></div>
-                            <div class="table-body__col">234,356,100.67</div>
+                            <div class="table-body__col course">ETH 6,100.67</div>
+                            <div class="table-body__col"><span class="hchange">ETH 6,10</span> <span class="green hchangep">+3,44%</span></div>
+                            <div class="table-body__col"><span class="green hhigh">ETH 6,100.67</span> <span class="red hlow">6,100.67</span></div>
+                            <div class="table-body__col hvol">234,356,100.67 ETH</div>
                         </div>
                     </div>
                 </div>
@@ -58,27 +59,27 @@
             <div class="dashboard-balance dashboard-block__inner">
                 <div class="dashboard-balance__item">
                     <div class="dashboard-balance__item_title">BTC Balance:</div>
-                    <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
+                    <div class="dashboard-balance__item_value balanceBTC">9,999.99999999<small> / 999,999.99 USD</small></div>
                 </div>
                 <div class="dashboard-balance__item">
                     <div class="dashboard-balance__item_title">ETH Balance: </div>
-                    <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
+                    <div class="dashboard-balance__item_value balanceETH">9,999.99999999<small> / 999,999.99 USD</small></div>
                 </div>
                 <div class="dashboard-balance__buttons">
-                    <button class="btn btn-toggle" data-toggle="1">Others coins</button>
-                    <button class="btn btn-small btn-grey">Check balance</button>
+                    <button class="btn btn-toggle" data-toggle="1">Other coins</button>
+                    <!--<button class="btn btn-small btn-grey">Check balance</button>-->
                 </div>
                 <div class="toggle-content" data-toggle-content="1">
                     <div class="toggle-content__title">Active Pair</div>
                     <div class="dashboard-balance__item">
                         <div class="dashboard-balance__item_title">BTC Balance:</div>
-                        <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
+                        <div class="dashboard-balance__item_value balanceBTC">9,999.99999999<small> / 999,999.99 USD</small></div>
                     </div>
                     <div class="dashboard-balance__item">
                         <div class="dashboard-balance__item_title">ETH Balance: </div>
-                        <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
+                        <div class="dashboard-balance__item_value balanceETH">9,999.99999999<small> / 999,999.99 USD</small></div>
                     </div>
-                    <div class="toggle-content__title">Others Coin Balance</div>
+                    <div class="toggle-content__title">Other Coin Balance</div>
                     <div class="dashboard-balance__item">
                         <div class="dashboard-balance__item_title">EKL Balance:</div>
                         <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
@@ -95,7 +96,7 @@
                         <div class="dashboard-balance__item_title">TSA Balance: </div>
                         <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
                     </div>
-                    <button class="btn btn-grey btn-small">Check balance</button>
+                    <!--<button class="btn btn-grey btn-small">Check balance</button>-->
                 </div>
             </div>
             <div class="dashboard-auth">
@@ -116,7 +117,7 @@
                     </div>
                     <div class="dashboard-auth__authorized">
                         <span class="dashboard-auth__email">xkjhcdihbce@gmail.com</span>
-                        <button class="btn btn-grey btn-small">LOG OUT</button>
+                        <button class="btn btn-grey btn-small" id="logOutButton">LOG OUT</button>
                     </div>
                 </div>
                 <div class="dropdown dropdown-dark-grey dropdown-small" data-dropdown>
@@ -134,17 +135,17 @@
     <div class="mobile-sub-header dashboard-block">
         <div class="dashboard-pairs dashboard-block__inner">
             <div class="dropdown dropdown-grey dropdown-big" data-dropdown>
-                <div class="dropdown-value" data-dropdown-value>BTC / USD</div>
-                <div class="dropdown-content" data-dropdown-content>
+                <div class="dropdown-value" data-dropdown-value>BTC / ETH</div>
+                <!--<div class="dropdown-content" data-dropdown-content>
                     <input data-dropdown-content-input type="text" placeholder="Value">
                     <ul>
                         <li data-dropdown-item>BTC / ETH 1</li>
                         <li data-dropdown-item>BTC / ETH 2</li>
                         <li data-dropdown-item>BTC / ETH 3</li>
                     </ul>
-                </div>
+                </div>-->
             </div>
-            <div class="scroll-x">            
+            <div class="scroll-x">
                 <div class="table col-4">
                     <div class="table-head">
                         <div class="table-head__col">Last price</div>
@@ -154,10 +155,10 @@
                     </div>
                     <div class="table-body">
                         <div class="table-body__row">
-                            <div class="table-body__col">$ 6,100.67</div>
-                            <div class="table-body__col">$ 6,100.67 <span class="green">+3,44%</span></div>
-                            <div class="table-body__col"><span class="green">$ 6,100.67 </span> <span class="red">6,100.67</span></div>
-                            <div class="table-body__col">234,356,100.67</div>
+                            <div class="table-body__col course" >$ 6,100.67</div>
+                            <div class="table-body__col"><span class="hchange">$ 6,100.67</span> <span class="green hchangep">+3,44%</span></div>
+                            <div class="table-body__col"><span class="green hhigh">$ 6,100.67 </span> <span class="red hlow">6,100.67</span></div>
+                            <div class="table-body__col hvol">234,356,100.67</div>
                         </div>
                     </div>
                 </div>
@@ -166,27 +167,27 @@
         <div class="dashboard-balance dashboard-block__inner">
             <div class="dashboard-balance__item">
                 <div class="dashboard-balance__item_title">BTC Balance:</div>
-                <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
+                <div class="dashboard-balance__item_value balanceBTC">9,999.99999999<small> / 999,999.99 USD</small></div>
             </div>
             <div class="dashboard-balance__item">
                 <div class="dashboard-balance__item_title">ETH Balance: </div>
-                <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
+                <div class="dashboard-balance__item_value balanceETH">9,999.99999999<small> / 999,999.99 USD</small></div>
             </div>
             <div class="dashboard-balance__buttons">
-                <button class="btn btn-toggle" data-toggle="2">Others coins</button>
-                <button class="btn btn-small btn-grey">Check balance</button>
+                <button class="btn btn-toggle" data-toggle="2">Other coins</button>
+                <!--<button class="btn btn-small btn-grey">Check balance</button>-->
             </div>
             <div class="toggle-content" data-toggle-content="2">
                 <div class="toggle-content__title">Active Pair</div>
                 <div class="dashboard-balance__item">
                     <div class="dashboard-balance__item_title">BTC Balance:</div>
-                    <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
+                    <div class="dashboard-balance__item_value balanceBTC">9,999.99999999<small> / 999,999.99 USD</small></div>
                 </div>
                 <div class="dashboard-balance__item">
                     <div class="dashboard-balance__item_title">ETH Balance: </div>
-                    <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
+                    <div class="dashboard-balance__item_value balanceETH">9,999.99999999<small> / 999,999.99 USD</small></div>
                 </div>
-                <div class="toggle-content__title">Others Coin Balance</div>
+                <div class="toggle-content__title">Other Coin Balance</div>
                 <div class="dashboard-balance__item">
                     <div class="dashboard-balance__item_title">EKL Balance:</div>
                     <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
@@ -203,7 +204,7 @@
                     <div class="dashboard-balance__item_title">TSA Balance: </div>
                     <div class="dashboard-balance__item_value">9,999.99999999<small> / 999,999.99 USD</small></div>
                 </div>
-                <button class="btn btn-grey btn-small">Check balance</button>
+                <!--<button class="btn btn-grey btn-small">Check balance</button>-->
             </div>
         </div>
     </div>
@@ -231,12 +232,12 @@
                             <div class="dashboard-chart__panel_buttons_btn full-size" data-chart-full-size><img src="img/full_screen.svg" alt=""></div>
                         </div>
                     </div>
-                    <div id="container" class="canvas"></div>
+                    <div id="chart"></div>
                 </div>
             </div>
-            <div class="dashboard-container__right">            
+            <div class="dashboard-container__right">
                 <div class="dashboard-block dashboard-trade-log" data-trade>
-                    <div class="dashboard-block__title"><span data-trade-title>Trade Log</span>
+                    <div class="dashboard-block__title"><span data-trade-title></span>
                         <div class="dashboard-trade-log__tabs">
                             <div class="dashboard-trade-log__tabs_item active" data-trade-item="1"><img src="img/icon_trade.svg" alt=""></div>
                             <div class="dashboard-trade-log__tabs_item" data-trade-item="2"><img src="img/icon_trade_sell.svg" alt=""></div>
@@ -245,16 +246,16 @@
                     </div>
                     <div class="table col-3 active">
                         <div class="table-head">
-                            <div class="table-head__col">Price (USD)</div>
+                            <div class="table-head__col">Price (ETH)</div>
                             <div class="table-head__col">Amount (BTC)</div>
-                            <div class="table-head__col">Total (USD)</div>
+                            <div class="table-head__col">Total (ETH)</div>
                         </div>
                         <div class="table-body" id="trade-scroller" data-simplebar data-simplebar-auto-hide="false">
                             <div id="trade-log-sell-list"></div>
                             <div class="dashboard-trade-log__price dashboard-block__inner">
-                                <div>BTC / USD</div>
-                                <div>6,1001.99</div>
-                                <div class="green">6,999.99 $</div>
+                                <div>BTC/ETH</div>
+                                <div id="course" class="course">6,1001.99</div>
+                                <div class="green volume">6,999.99 $</div>
                             </div>
                             <div id="trade-log-buy-list"></div>
                         </div>
@@ -264,11 +265,11 @@
                     <div class="dashboard-block__title">Trade History</div>
                     <div class="table col-3">
                         <div class="table-head">
-                            <div class="table-head__col">Price (USD)</div>
+                            <div class="table-head__col">Price (ETH)</div>
                             <div class="table-head__col">Amount (BTC)</div>
                             <div class="table-head__col">Deal Time</div>
                         </div>
-                        <div class="table-body" id="trade-history" data-simplebar data-simplebar-auto-hide="false"></div>
+                        <div class="table-body" id="trade-history"></div>
                     </div>
                 </div>
             </div>
@@ -278,9 +279,9 @@
                     <div class="dashboard-orders__tabs">
                         <div class="dashboard-orders__tabs_item active" data-tabs-item="1">Open Orders</div>
                         <div class="dashboard-orders__tabs_item" data-tabs-item="2">Order History</div>
-                        <div class="dashboard-orders__tabs_item" data-tabs-item="3">Funds</div>
+                        <div class="dashboard-orders__tabs_item" data-tabs-item="3">Transactions History</div>
                     </div>
-                    <div class="scroller-x">              
+                    <div class="scroller-x">
                         <div class="table col-8 active" data-tabs-content="1">
                             <div class="table-filter">
                                 <span class="table-filter__item">
@@ -300,13 +301,13 @@
                                 </div>
                             </div>
                             <div class="table-head filled">
-                                <div class="table-head__col">Value</div>
+                                <div class="table-head__col">Time</div>
                                 <div class="table-head__col">Pair</div>
                                 <div class="table-head__col">Type</div>
                                 <div class="table-head__col">Amount</div>
                                 <div class="table-head__col">Filled</div>
                                 <div class="table-head__col">Price</div>
-                                <div class="table-head__col">Fidded %</div>
+                                <div class="table-head__col">Total</div>
                                 <div class="table-head__col">
                                     <button class="btn btn-grey btn-small" data-toggle="open-orders">Cancel All</button>
                                     <div class="toggle-content" data-toggle-content="open-orders">
@@ -350,17 +351,19 @@
                                 <button class="btn btn-small btn-grey">Search</button>
                             </div>
                             <div class="table-head filled">
-                                <div class="table-head__col">Value</div>
+                                <div class="table-head__col">Time</div>
                                 <div class="table-head__col">Pair</div>
                                 <div class="table-head__col">Type</div>
                                 <div class="table-head__col">Amount</div>
                                 <div class="table-head__col">Filled</div>
                                 <div class="table-head__col">Price</div>
-                                <div class="table-head__col">Fidded %</div>
+                              <!--  <div class="table-head__col">Fidded %</div>-->
                                 <div class="table-head__col">Total</div>
                                 <div class="table-head__col">Status</div>
                             </div>
-                            <div class="table-body filled" id="orders-list-history"></div>
+                            <div class="table-body filled" id="orders-list-history">
+                                <div class="table-empty">Empty</div>
+                            </div>
                         </div>
                         <div class="table col-8" data-tabs-content="3">
                             <div class="table-filter">
@@ -381,13 +384,14 @@
                                 </div>
                             </div>
                             <div class="table-head filled">
-                                <div class="table-head__col">Value</div>
+                                <div class="table-head__col">Time</div>
                                 <div class="table-head__col">Pair</div>
                                 <div class="table-head__col">Type</div>
                                 <div class="table-head__col">Amount</div>
-                                <div class="table-head__col">Filled</div>
+
                                 <div class="table-head__col">Price</div>
-                                <div class="table-head__col">Fidded %</div>
+                                <div class="table-head__col">Total</div>
+                              <!--  <div class="table-head__col">Fidded %</div>-->
                                 <div class="table-head__col">
                                     <button class="btn btn-grey btn-small" data-toggle="funds">Cancel All</button>
                                     <div class="toggle-content" data-toggle-content="funds">
@@ -399,66 +403,70 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-body filled" id="orders-list-funds">
+                            <div class="table-body filled" id="transactions-list-history">
                                 <div class="table-empty">Empty</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="dashboard-container__right">            
+            <div class="dashboard-container__right">
                 <div class="dashboard-block dashboard-limit">
                     <div class="dashboard-block__title">Limit</div>
                     <div class="dashboard-limit__wrapper" data-simplebar data-simplebar-auto-hide="false" data-limit>
                         <div class="dashboard-limit__buy dashboard-block__inner active" data-limit-item>
                             <div class="dashboard-block__title">Buy BTC</div>
-                            <form id="limit-buy">
-                                <div class="dashboard-limit__balance">BTC Balance: <span>0,000.00000000</span></div>
+
+
+                            <form method="POST" id="limit-buy" action="http://localhost:8002/buy">
+                                <div class="dashboard-limit__balance">ETH Balance: <span id="balanceETH">-</span></div>
                                 <div class="input">
                                     <div class="input__label">Price:
                                         <div class="input__label_extra">last</div>
                                     </div>
-                                    <div class="input__tag">USD</div>
-                                    <input type="text" data-number-input data-pattern="number">
+                                    <div class="input__tag">ETH</div>
+                                    <input type="text" name="price"   onkeyup="numOnly(this)" onblur="numOnly(this)" autocomplete="off">
                                 </div>
                                 <div class="input">
                                     <div class="input__label">Amount:
                                         <div class="input__label_extra">all</div>
                                     </div>
                                     <div class="input__tag">BTC</div>
-                                    <input type="text" data-number-input data-pattern="number">
+                                    <input type="text"  name="volume"  onkeyup="numOnly(this)" onblur="numOnly(this)" autocomplete="off">
                                 </div>
-                                <div class="dashboard-limit__subtitle">Fee: 0.0000000 BTC</div>
+                                <div class="dashboard-limit__subtitle">Fee: - BTC</div>
                                 <div class="dashboard-limit__total">Total:
-                                    <div class="dashboard-limit__total_value">0,000.00000000 USD</div>
+                                    <div class="dashboard-limit__total_value"> - ETH</div>
                                 </div>
                                 <!-- <button class="btn btn-green btn-big">Log in or Register to trade</button> -->
-                                <button class="btn btn-green btn-big">BUY BTC</button>
+                                <button type="submit" class="btn btn-green btn-big" id="buy_button">BUY BTC</button>
+                                <button class="logInButton btn btn-green btn-big" data-modal-open="sign-in">Log in or Register to trade</button>
                             </form>
                         </div>
                         <div class="dashboard-limit__sell dashboard-block__inner active" data-limit-item>
                             <div class="dashboard-block__title">Sell BTC</div>
-                            <form id="limit-sell">
-                                <div class="dashboard-limit__balance">BTC Balance: <span>0,000.00000000</span></div>
+                            <form method="POST" id="limit-sell" action="http://localhost:8002/sell">
+                                <div class="dashboard-limit__balance">BTC Balance: <span id="balanceBTC">-</span></div>
                                 <div class="input">
                                     <div class="input__label">Price:
                                         <div class="input__label_extra">last</div>
                                     </div>
-                                    <div class="input__tag">USD</div>
-                                    <input type="text" data-number-input data-pattern="number">
+                                    <div class="input__tag">ETH</div>
+                                    <input type="text" name="price"  onkeyup="numOnly(this)" onblur="numOnly(this)" autocomplete="off">
                                 </div>
                                 <div class="input">
                                     <div class="input__label">Amount:
                                         <div class="input__label_extra">all</div>
                                     </div>
                                     <div class="input__tag">BTC</div>
-                                    <input type="text" data-number-input data-pattern="number">
+                                    <input type="text" name="volume"  onkeyup="numOnly(this)" onblur="numOnly(this)" autocomplete="off">
                                 </div>
-                                <div class="dashboard-limit__subtitle">Fee: 0.0000000 BTC</div>
+                                <div class="dashboard-limit__subtitle">Fee: - BTC</div>
                                 <div class="dashboard-limit__total">Total:
-                                    <div class="dashboard-limit__total_value">0,000.00000000 USD</div>
+                                    <div class="dashboard-limit__total_value"> - ETH</div>
                                 </div>
-                                <button class="btn btn-green btn-big" data-modal-open="sign-in">Log in or Register to trade</button>
+                                <button type="submit" class="btn btn-green btn-big" id="sell_button">SELL BTC</button>
+                                <button class="logInButton btn btn-green btn-big" data-modal-open="sign-in">Log in or Register to trade</button>
                                 <!-- <button class="btn btn-green btn-big">SELL BTC</button> -->
                             </form>
                         </div>
@@ -480,17 +488,18 @@
                     <div class="modal-input-link-icon"><img src="img/padlock.svg" alt=""></div><span><b>https:</b>//www.exchange2.net</span></div>
             </form>
             <div class="modal-line-text"></div>
-            <form id="sign-in-form" novalidate="">
+
+            <form method="POST" id="sign-in-form" action="http://localhost:8008/auth">
                 <div class="modal-label">Email</div>
                 <div class="modal-input">
-                    <input type="text" placeholder="Email" required="" data-pattern="email">
+                    <input type="text" name="login" placeholder="login" required data-pattern="email">
                 </div>
                 <div class="modal-label">Password</div>
                 <div class="modal-input">
-                    <input type="password" placeholder="Password" required="" data-pattern="password">
+                    <input type="password" name="password" placeholder="Password" required data-pattern="password">
                 </div>
                 <div class="modal-link">forgot password?</div>
-                <button class="btn">LOG IN</button>
+                <button class="btn" type="submit">LOG IN</button>
                 <div class="modal-bottom-text">Not on Exchange#2 yet? <span class="modal-link js-popup" data-modal-open="sign-up">register</span></div>
             </form>
         </div>
@@ -500,100 +509,183 @@
             <div class="js-close-modal modal__close"></div>
             <div class="modal-logo"><img class="modal-logo" src="img/logo.svg"></div>
             <div class="modal-line-text"><span>Create your account now</span></div>
-            <form id="sign-up-form" novalidate>
+            <form id="registration-form" method="POST">
                 <div class="js-close-modal modal__close"></div>
-                <div class="modal-label">Login</div>
-                <div class="modal-input">
-                    <input type="text" placeholder="Login" required data-pattern="login">
-                </div>
                 <div class="modal-label">Email</div>
                 <div class="modal-input">
-                    <input type="text" placeholder="Provide an active address" required data-pattern="email">
+                    <input type="text" name="login" placeholder="Provide an active address" required data-pattern="email">
                 </div>
                 <div class="modal-label">Password</div>
                 <div class="modal-input">
-                    <input type="password" placeholder="Minimum 7 characters" required data-pattern="password">
+                    <input type="password" name="password" placeholder="Minimum 7 characters" required data-pattern="password">
                 </div>
                 <div class="modal-label">Confirm Password</div>
                 <div class="modal-input">
-                    <input type="text" placeholder="Passwords must match" required data-pass-confirm="true">
+                    <input type="password" name="confirmPassword" placeholder="Passwords must match" required data-pass-confirm="true">
                 </div>
                 <label class="modal-checkbox">
-                    <input type="checkbox" data-pattern="checkbox" reuired data-pattern="checkbox">
+                    <input type="checkbox" name="agree" data-pattern="checkbox" reuired>
                     <div class="modal-checkbox-icon"></div>
-                    I agree with service <a href="">Terms &amp; Conditions</a>
+                    I agree with service <a href="/tos.html">Terms &amp; Conditions</a>
                 </label>
-                <button class="btn">REGISTER</button>
+                <button class="btn" id="signUpButton">REGISTER</button>
                 <div class="modal-bottom-text">Already have an account?<span class="modal-link js-popup" data-modal-open="sign-in">LOG IN</span></div>
             </form>
         </div>
     </div>
+    <div class="modal" data-modal="success">
+        <div class="modal-body">
+          <div class="js-close-modal modal__close"></div>
+            <div class="modal-logo"><img class="modal-logo" src="img/logo.svg"></div>
+            <div class="modal-title"><span>THANK YOU FOR REGISTRATION!</span></div>
+            <div class="modal-text">We sent a letter to your email. <br>
+                To complete the registration, confirm your email.</div>
+            <div class="modal-line"></div>
+            <div class="modal-text">
+                If the letter is not in the Inbox, check it in the Spam folder. <br>
+                If you did not receive the letter - let us know:
+            </div>
+            <div class="modal-bottom-text"><a href="support@exchange2.net" class="modal-link modal-lower js-popup">support@exchange2.net</a></div>
+        </div>
+    </div>
+    <div class="modal" data-modal="disconnected">
+        <div class="modal-body">
+          <div class="js-close-modal modal__close"></div>
+            <div class="modal-logo"><img class="modal-logo" src="img/logo.svg"></div>
+            <div class="modal-title"><span>OH! NOOOOOOO!…</span></div>
+            <div class="modal-text">Что-то пошло не так! По какой-то причине вы потеряли <br>контакт с нашей бирже! Не спешите перезагружать <br>страницу, мы сделаем это автоматически</div>
+            <div class="modal-rate-img">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="modal-text">
+                Если сбои работы нашей биржы-платформы происходят <br>постоянно, свяжитесь с нами:
+            </div>
+            <div class="modal-bottom-text"><a href="support@exchange2.net" class="modal-link modal-lower js-popup">support@exchange2.net</a></div>
+        </div>
+    </div>
     <script id="trade-log-sell-template" type="text/x-handlebars-template">
         <div class="table-body__row">
-            <div class="table-body__col red">6,100.99</div>
-            <div class="table-body__col">999.000000</div>
-            <div class="table-body__col">999.000000</div>
+            <div class="table-body__col red">{price}</div>
+            <div class="table-body__col">{amount}</div>
+            <div class="table-body__col">{total}</div>
         </div>
     </script>
     <script id="trade-log-buy-template" type="text/x-handlebars-template">
         <div class="table-body__row">
-            <div class="table-body__col green">6,100.99</div>
-            <div class="table-body__col">999.000000</div>
-            <div class="table-body__col">999.000000</div>
+            <div class="table-body__col green">{price}</div>
+            <div class="table-body__col">{amount}</div>
+            <div class="table-body__col">{total}</div>
         </div>
     </script>
     <script id="trade-history-template" type="text/x-handlebars-template">
-        <div class="table-body__row">
-            <div class="table-body__col green">6,100.99</div>
-            <div class="table-body__col">6,100.99</div>
-            <div class="table-body__col">12:32:23</div>
+        <div class="table-body__row trade-history-row">
+            <div class="table-body__col green">{price}</div>
+            <div class="table-body__col">{amount}</div>
+            <div class="table-body__col">{time}</div>
         </div>
     </script>
     <script id="order-list-open-template" type="text/x-handlebars-template">
         <div class="table-body__row">
-            <div class="table-body__col">28-Jan-2018</div>
-            <div class="table-body__col">BTC/ETH</div>
-            <div class="table-body__col {{className}}">{{text}}</div>
-            <div class="table-body__col">9,999.99999999</div>
-            <div class="table-body__col">0.00000000</div>
-            <div class="table-body__col">0.00000000</div>
-            <div class="table-body__col">0.0099 %</div>
+            <div class="table-body__col">{time}</div>
+            <div class="table-body__col">{pair}</div>
+            <div class="table-body__col {type}">{type}</div>
+            <div class="table-body__col">{amount}</div>
+            <div class="table-body__col">{status}</div>
+            <div class="table-body__col">{price}</div>
+            <div class="table-body__col">{total}</div>
+
             <div class="table-body__col cancel-btn" data-toggle="open-orders">Cancel</div>
         </div>
     </script>
     <script id="order-list-history-template" type="text/x-handlebars-template">
         <div class="table-body__row">
-            <div class="table-body__col">28-Jan-2018</div>
-            <div class="table-body__col">BTC/ETH</div>
-            <div class="table-body__col {{className}}">{{text}}</div>
-            <div class="table-body__col">9,999.99999999</div>
-            <div class="table-body__col">0.00000000</div>
-            <div class="table-body__col">0.00000000</div>
-            <div class="table-body__col">0.0099 %</div>
-            <div class="table-body__col">9,99999</div>
+            <div class="table-body__col">{time}</div>
+            <div class="table-body__col">{pair}</div>
+            <div class="table-body__col {type}">{type}</div>
+            <div class="table-body__col">{amount}</div>
+            <div class="table-body__col">{status}</div>
+            <div class="table-body__col">{price}</div>
+            <div class="table-body__col">{total}</div>
             <div class="table-body__col cancel-btn">Cancel</div>
         </div>
     </script>
     <script id="order-list-funds-template" type="text/x-handlebars-template">
         <div class="table-body__row">
-            <div class="table-body__col">28-Jan-2018</div>
-            <div class="table-body__col">BTC/ETH</div>
-            <div class="table-body__col {{className}}">{{text}}</div>
-            <div class="table-body__col">9,999.99999999</div>
-            <div class="table-body__col">0.00000000</div>
-            <div class="table-body__col">0.00000000</div>
-            <div class="table-body__col">0.0099 %</div>
+            <div class="table-body__col">{time}</div>
+            <div class="table-body__col">{pair}</div>
+            <div class="table-body__col {type}">{type}</div>
+            <div class="table-body__col">{amount}</div>
+
+
+            <div class="table-body__col">{price}</div>
+              <div class="table-body__col">{total}</div>
             <div class="table-body__col cancel-btn" data-toggle="funds">Cancel</div>
         </div>
     </script>
     <!-- <script src="js/jquery-3.3.1.min.js"></script> -->
     <script src="js/handlebars-v4.0.11.js"></script>
-    <script src="https://unpkg.com/imask@3.4.0/dist/imask.js"></script>
-    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
+    <script src="js/imask.js"></script>
+    <script src="js/simplebar.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!-- <script src="https://code.highcharts.com/stock/highstock.js"></script> -->
+    <script src="js/d3.v4.min.js"></script>
+    <script src="js/techan.min.js"></script>
+    <!-- <script src="js/chart.js"></script> -->
     <script src="js/all.js"></script>
+    <script type="text/javascript">
+      window.onbeforeunload = confirmExit;
+      function confirmExit()
+      {
+        return "Do you want to leave this page without saving?";
+      }
+    </script>
+    <script type="text/javascript" src="charting_library-master/charting_library/charting_library.min.js"></script>
+    <script type="text/javascript" src="charting_library-master/datafeeds/udf/dist/polyfills.js"></script>
+    <script type="text/javascript" src="charting_library-master/datafeeds/udf/dist/bundle.js"></script>
+    <script type="text/javascript">
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        TradingView.onready(function()
+        {
+            var widget = window.tvWidget = new TradingView.widget({
+                // debug: true, // uncomment this line to see Library errors and warnings in the console
+                // fullscreen: true,
+                symbol: 'AAPL',
+                interval: 'D',
+                container_id: "chart",
+
+                //  BEWARE: no trailing slash is expected in feed URL
+                datafeed: new Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
+                library_path: "charting_library-master/charting_library/",
+                locale: getParameterByName('lang') || "en",
+
+                preset: 'mobile',
+             
+                height: 400,
+            
+
+                disabled_features: ["use_localstorage_for_settings"],
+                enabled_features: ["study_templates"],
+                charts_storage_url: 'http://saveload.tradingview.com',
+                charts_storage_api_version: "1.1",
+                client_id: 'tradingview.com',
+                user_id: 'public_user_id',
+                theme: 'dark' //getParameterByName('theme'),
+            });
+        });
+
+    </script>
 </body>
 
 </html>
