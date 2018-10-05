@@ -648,7 +648,7 @@ API_CONSTRUCTOR.prototype.init = function(name) {
         this.value = input.value;
         input.oninput = function() {
             self.value = this.type === 'checkbox' ? this.checked : this.value;
-            self.parent.validate();
+            self.validate();
         };
     }
 
