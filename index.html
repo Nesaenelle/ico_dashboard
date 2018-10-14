@@ -263,7 +263,7 @@
                 </div>
                 <div class="dashboard-block dashboard-trade-history">
                     <div class="dashboard-block__title">Trade History</div>
-                    <div class="table col-3">
+                    <div class="table col-3" data-simplebar data-simplebar-auto-hide="false">
                         <div class="table-head">
                             <div class="table-head__col">Price (ETH)</div>
                             <div class="table-head__col">Amount (BTC)</div>
@@ -425,18 +425,18 @@
                                         <div class="input__label_extra">last</div>
                                     </div>
                                     <div class="input__tag">ETH</div>
-                                    <input type="text" name="price"   onkeyup="numOnly(this)" onblur="numOnly(this)" autocomplete="off">
+                                    <input type="text" name="price"   autocomplete="off">
                                 </div>
                                 <div class="input">
                                     <div class="input__label">Amount:
                                         <div class="input__label_extra">all</div>
                                     </div>
                                     <div class="input__tag">BTC</div>
-                                    <input type="text"  name="volume"  onkeyup="numOnly(this)" onblur="numOnly(this)" autocomplete="off">
+                                    <input type="text"  name="volume"  autocomplete="off">
                                 </div>
                                 <div class="dashboard-limit__subtitle">Fee: - BTC</div>
                                 <div class="dashboard-limit__total">Total:
-                                    <div class="dashboard-limit__total_value"> - ETH</div>
+                                    <div class="dashboard-limit__total_value"><span data-limit-total></span> - ETH</div>
                                 </div>
                                 <!-- <button class="btn btn-green btn-big">Log in or Register to trade</button> -->
                                 <button type="submit" class="btn btn-green btn-big" id="buy_button">BUY BTC</button>
@@ -452,18 +452,18 @@
                                         <div class="input__label_extra">last</div>
                                     </div>
                                     <div class="input__tag">ETH</div>
-                                    <input type="text" name="price"  onkeyup="numOnly(this)" onblur="numOnly(this)" autocomplete="off">
+                                    <input type="text" name="price"  autocomplete="off">
                                 </div>
                                 <div class="input">
                                     <div class="input__label">Amount:
                                         <div class="input__label_extra">all</div>
                                     </div>
                                     <div class="input__tag">BTC</div>
-                                    <input type="text" name="volume"  onkeyup="numOnly(this)" onblur="numOnly(this)" autocomplete="off">
+                                    <input type="text" name="volume"  autocomplete="off">
                                 </div>
                                 <div class="dashboard-limit__subtitle">Fee: - BTC</div>
                                 <div class="dashboard-limit__total">Total:
-                                    <div class="dashboard-limit__total_value"> - ETH</div>
+                                    <div class="dashboard-limit__total_value"><span data-limit-total></span> - ETH</div>
                                 </div>
                                 <button type="submit" class="btn btn-green btn-big" id="sell_button">SELL BTC</button>
                                 <button class="logInButton btn btn-green btn-big" data-modal-open="sign-in">Log in or Register to trade</button>

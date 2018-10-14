@@ -154,10 +154,10 @@ API_CONSTRUCTOR.prototype.init = function(name) {
             this.btn.el.className = 'btn btn-small ' + this.statuses.open.class;
             this.btn.el.innerText = this.statuses.open.text;
         },
-        setClosed: function() {
-            this.btn.el.className = 'btn btn-small ' + this.statuses.closed.class;
-            this.btn.el.innerText = this.statuses.closed.text;
-        },
+        // setClosed: function() {
+        //     this.btn.el.className = 'btn btn-small ' + this.statuses.closed.class;
+        //     this.btn.el.innerText = this.statuses.closed.text;
+        // },
         setDiconnected: function() {
             this.btn.el.className = 'btn btn-small ' + this.statuses.disconnected.class;
             this.btn.el.innerText = this.statuses.disconnected.text;
@@ -371,12 +371,32 @@ API_CONSTRUCTOR.prototype.init = function(name) {
         constructor: function() {
             var limit = $.find('[data-limit]');
             var items = limit.findAll('[data-limit-item]');
+            var self = this;
             items.forEach(function(item) {
                 item.addEvent('click', function() {
                     items.forEach(function(a) { a.removeClass('active') });
                     item.addClass('active');
                 });
+
+                var total = item.find('[data-limit-total]');
+                var price = item.find('[name="price"]');
+                var amount = item.find('[name="volume"]');
+                
+                
+
+                item.findAll('input').forEach(function(input) {
+                    input.addEvent('input', function(e){
+                      total.el.innerHTML = (parseInt(price.el.value) || 0)  + (parseInt(amount.el.value) || 0);
+                    });
+
+                    input.addEvent('keyup', function(){
+                        self.numOnly(this);
+                    });
+                });
             });
+        },
+        numOnly: function(input) {
+            input.value = input.value.replace(/[^0-9]/g, '');
         }
     });
 
@@ -727,8 +747,8 @@ API_CONSTRUCTOR.prototype.init = function(name) {
 
 
 
-    new Form($.find('#limit-buy').el);
-    new Form($.find('#limit-sell').el);
+    // new Form($.find('#limit-buy').el);
+    // new Form($.find('#limit-sell').el);
 
 
     var inputs = $.findAll('[data-number-input]');
@@ -1089,17 +1109,20 @@ function requestData() {
     // Handle any errors that occur.
     socket.onerror = function(error) {
         console.log('WebSocket Error: ' + error);
-        API.status.setDiconnected();
-        setTimeout(function(){
-            API.status.setConnecting();
-            setTimeout(function(){
-                requestData();
-            }, 1000);
-        }, 10000);
+        // API.status.setDiconnected();
+        // setTimeout(function(){
+        //     API.status.setConnecting();
+        //     setTimeout(function(){
+        //         requestData();
+        //     }, 1000);
+        // }, 10000);
+        reconnect();
     };
 
     socket.addEventListener('close', function (event) {
-          API.status.setClosed();
+          // API.status.setClosed();
+          // API.status.setDiconnected();
+          reconnect();
     });
 
     socket.addEventListener('open', function (event) {
@@ -1110,11 +1133,21 @@ function requestData() {
     socket.addEventListener('message', function(event) {
         // API.status.setOpen();
         addRow(event.data);
-        console.log(event.data);
+        // console.log(event.data);
         // chart.addRow(event.data);
     });
 
 
+}
+
+function reconnect() {
+    API.status.setDiconnected();
+    setTimeout(function(){
+        API.status.setConnecting();
+        setTimeout(function(){
+            requestData();
+        }, 1000);
+    }, 10000);
 }
 
 
@@ -1733,6 +1766,7 @@ function updateOrdersListData(dataObject, objectId) {
     // Replace the HTML of #list with final HTML
     //ordersListHeaderHtml +
     document.getElementById(objectId).innerHTML = listHtml;
+    new SimpleBar(document.getElementById(objectId), { autoHide: false });
 }
 
 /*Number.prototype.format = function(n, x, s, c) {
@@ -1758,9 +1792,7 @@ function formatMoney(amount, decimalCount = 6, decimal = ".", thousands = ",") {
     }
 };
 
-function numOnly(selector) {
-    selector.value = selector.value.replace(/[^0-9]/g, '');
-}
+
 
 $(".data-picker").datepicker({ dateFormat: 'dd-M-yy' });
 jQuery("#logOutButton").click(function() {
