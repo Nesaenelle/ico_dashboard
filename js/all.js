@@ -547,6 +547,7 @@ API_CONSTRUCTOR.prototype.init = function(name) {
 
                     $("#buy_button").show()
                     $("#sell_button").show()
+                    $(".dashboard-orders-table").show();
                     $(".logInButton").hide()
 
                 }
@@ -731,7 +732,7 @@ API_CONSTRUCTOR.prototype.init = function(name) {
                 break;
 
             case 'password':
-                pattern = /^(?=.*[a-zA-Z0-9])(?=.*).{7,40}$/;
+                pattern = /^(?=.*[a-zA-Z0-9])(?=.*).{4,40}$/;
                 break;
 
             case 'checkbox':
@@ -739,6 +740,10 @@ API_CONSTRUCTOR.prototype.init = function(name) {
                 break;
             case 'number':
                 pattern = /^[0-9.,]+$/;
+                break;
+
+            default:
+                pattern = /^[\W\w]+$/;
                 break;
         }
 
@@ -1803,9 +1808,10 @@ jQuery("#logOutButton").click(function() {
     alert('DONE!!! You are logged out!');
     session = "";
     userId = "";
-    jQuery("#buy_button").hide()
-    jQuery("#sell_button").hide()
-    jQuery(".logInButton").show()
+    jQuery("#buy_button").hide();
+    jQuery("#sell_button").hide();
+    jQuery(".dashboard-orders-table").hide();
+    jQuery(".logInButton").show();
     jQuery('.dashboard-auth').removeClass('authorized');
 
     //document.getElementById('balanceETH').innerHTML = "-";
@@ -1834,6 +1840,7 @@ $(document).ready(function() {
     if (session == "") {
         jQuery("#buy_button").hide()
         jQuery("#sell_button").hide()
+        jQuery(".dashboard-orders-table").hide();
 
         jQuery('.balanceETH').html("-")
         jQuery('#balanceETH').html("-")

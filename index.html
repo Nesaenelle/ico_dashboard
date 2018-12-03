@@ -281,6 +281,7 @@
                         <div class="dashboard-orders__tabs_item" data-tabs-item="2">Order History</div>
                         <div class="dashboard-orders__tabs_item" data-tabs-item="3">Transactions History</div>
                     </div>
+         
                     <div class="scroller-x">
                         <div class="table col-8 active" data-tabs-content="1">
                             <div class="table-filter">
@@ -319,8 +320,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-body filled" id="orders-list-open">
-                                <div class="table-empty">Empty</div>
+                            <button class="logInButton btn btn-green btn-big" data-modal-open="sign-in">Log in or Register to trade</button>
+                            <div class="dashboard-orders-table table-body filled" id="orders-list-open">
+                                <!-- <div class="table-empty">Empty</div> -->
                             </div>
                         </div>
                         <div class="table col-9" data-tabs-content="2">
@@ -361,8 +363,9 @@
                                 <div class="table-head__col">Total</div>
                                 <div class="table-head__col">Status</div>
                             </div>
-                            <div class="table-body filled" id="orders-list-history">
-                                <div class="table-empty">Empty</div>
+                            <button class="logInButton btn btn-green btn-big" data-modal-open="sign-in">Log in or Register to trade</button>
+                            <div class="dashboard-orders-table table-body filled" id="orders-list-history">
+                                <!-- <div class="table-empty">Empty</div> -->
                             </div>
                         </div>
                         <div class="table col-8" data-tabs-content="3">
@@ -403,8 +406,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="table-body filled" id="transactions-list-history">
-                                <div class="table-empty">Empty</div>
+                            <button class="logInButton btn btn-green btn-big" data-modal-open="sign-in">Log in or Register to trade</button>
+                            <div class="dashboard-orders-table table-body filled" id="transactions-list-history">
+                                <!-- <div class="table-empty">Empty</div> -->
                             </div>
                         </div>
                     </div>
@@ -492,7 +496,7 @@
             <form method="POST" id="sign-in-form" action="http://localhost:8008/auth">
                 <div class="modal-label">Email</div>
                 <div class="modal-input">
-                    <input type="text" name="login" placeholder="login" required data-pattern="email">
+                    <input type="text" name="login" placeholder="login" required data-pattern="text">
                 </div>
                 <div class="modal-label">Password</div>
                 <div class="modal-input">
@@ -537,34 +541,26 @@
         <div class="modal-body">
           <div class="js-close-modal modal__close"></div>
             <div class="modal-logo"><img class="modal-logo" src="img/logo.svg"></div>
-            <div class="modal-title"><span>THANK YOU FOR REGISTRATION!</span></div>
+            <div class="modal-title modal-title-big"><span>Thank You <br><small>for registration!</small></span></div>
             <div class="modal-text">We sent a letter to your email. <br>
                 To complete the registration, confirm your email.</div>
-            <div class="modal-line"></div>
             <div class="modal-text">
-                If the letter is not in the Inbox, check it in the Spam folder. <br>
-                If you did not receive the letter - let us know:
+                If the letter is not in the Inbox, check it in the <br>Spam folder. If you did not receive the letter,<br>
+                let us know:
             </div>
-            <div class="modal-bottom-text"><a href="support@exchange2.net" class="modal-link modal-lower js-popup">support@exchange2.net</a></div>
+            <div class="btn btn-grey-dark"><a href="http://support@exchange2.net" class="modal-link modal-lower js-popup">support@exchange2.net</a></div>
         </div>
     </div>
     <div class="modal" data-modal="disconnected">
         <div class="modal-body">
           <div class="js-close-modal modal__close"></div>
             <div class="modal-logo"><img class="modal-logo" src="img/logo.svg"></div>
-            <div class="modal-title"><span>OH! NOOOOOOO!…</span></div>
-            <div class="modal-text">Что-то пошло не так! По какой-то причине вы потеряли <br>контакт с нашей бирже! Не спешите перезагружать <br>страницу, мы сделаем это автоматически</div>
-            <div class="modal-rate-img">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="modal-title modal-title-big"><span>OH! NOOO!…</span></div>
+            <div class="modal-text">Something went wrong!  You have lost <br>the contact with our exchange <br>platform! Don`t rush to reload the <br>page, we will do it automatically.</div>
             <div class="modal-text">
-                Если сбои работы нашей биржы-платформы происходят <br>постоянно, свяжитесь с нами:
+                If the work of our exchange platform fails <br>constantly, contact us:
             </div>
-            <div class="modal-bottom-text"><a href="support@exchange2.net" class="modal-link modal-lower js-popup">support@exchange2.net</a></div>
+            <div class="btn btn-grey-dark"><a href="http://support@exchange2.net" class="modal-link modal-lower js-popup">support@exchange2.net</a></div>
         </div>
     </div>
     <script id="trade-log-sell-template" type="text/x-handlebars-template">

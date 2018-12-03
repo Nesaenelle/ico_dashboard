@@ -46,12 +46,54 @@
         }
     }
 
-    &[data-modal="success"], &[data-modal="disconnected"] {
+
+    &[data-modal="success"]{
         .modal-body {
-            padding: 40px 40px 40px;
+            background: #c5d0de url(img/start.png) no-repeat 90% 30px;
+        }
+    }
+
+    &[data-modal="disconnected"]{
+        .modal-body {
+            background: #c5d0de url(img/No_connect.png) no-repeat 94% 30px;
+        }
+    }
+
+    &[data-modal="success"],
+    &[data-modal="disconnected"] {
+        .modal-body {
+            width: 560px;
+            padding: 30px 60px 30px 60px;
+
+            .modal-logo {
+                margin: 10px 0 0 0 ;
+            }
 
             .modal-text {
-                padding: 0 40px;
+                // width: 50%;
+                // padding: 0 40px;
+            }
+
+            .btn {
+                background: #333f52;
+                color: #fff;
+                display: flex;
+                width: 207px;
+                align-items: center;
+                margin: auto;
+                font-size: 14px;
+                font-weight: 400;
+                border-radius: 0;
+                height: 30px;
+
+                a {
+                    font-family: ProximaNova;
+                    color: inherit;
+                    text-align: center;
+                    display: block;
+                    width: 100%;
+                    padding: 0;
+                }
             }
         }
     }
@@ -76,9 +118,8 @@
     &-text {
         font-family: Helvetica;
         font-size: 14px;
-        color: #5e6875;
-        margin: 15px 0;
-
+        color: #354052;
+        margin: 20px 0;
         a {
             color: inherit;
             font-weight: 600;
@@ -127,6 +168,7 @@
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
+
         span {
             width: 4px;
             background-color: #516173;
@@ -339,14 +381,14 @@
     }
 
     &__close {
-        background: url(img/close.svg) no-repeat;
+        background: url(img/cancel-music.svg) no-repeat;
         background-size: cover;
         position: absolute;
         right: 15px;
         top: 15px;
         cursor: pointer;
-        width: 15px;
-        height: 15px;
+        width: 10px;
+        height: 10px;
         z-index: 99;
 
         &:before {
@@ -366,7 +408,7 @@
     }
 
     &-title {
-        text-transform: uppercase;
+        // text-transform: uppercase;
         font-family: Helvetica;
         font-size: 18px;
         color: #39b54a;
@@ -380,6 +422,23 @@
             background: #c5d0de;
             padding: 0 20px;
         }
+
+        &-big {
+            font-size: 50px;
+            line-height: 34px;
+            font-weight: 600;
+            height: auto;
+            text-align: left;
+
+            font-family: ProximaNova;
+
+            span {
+                padding: 0;
+                background: none;
+            }
+        }
+
+
     }
 
     &-subtitle {
@@ -518,11 +577,18 @@
 
 @media screen and (max-width: 600px) {
     .modal {
-        &[data-modal="success"],&[data-modal="disconnected"]  {
+
+        &[data-modal="success"],
+        &[data-modal="disconnected"] {
             .modal-body {
+                .modal-title {
+                    text-align: center;
+                }
                 .modal-text {
                     padding: 0 20px;
                     text-align: center;
+                    width: 100%;
+
                     br {
                         display: none;
                     }
